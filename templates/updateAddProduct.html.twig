@@ -19,6 +19,7 @@
         <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.min.js"></script>
         
         <script src="{{ asset('js/validationGI.js') }}?v=123"></script>
+        <script src="{{ asset('js/validationBE.js') }}?v=123"></script>
         
         <script src="{{ asset('js/showLabelsInputs.js') }}"></script>
         <script src="{{ asset('js/hamburguerMenu.js') }}"></script>
@@ -33,9 +34,6 @@
     <!---->
 
     <div class="container-fluid"> 
-            <!--Edition searchs-->
-                {% include 'updateAddTemplates/searchs.html.twig' %}
-            <!---->
             <!--Basic edition-->
                 {{ render(path('basic_edition', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
             <!---->

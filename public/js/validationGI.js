@@ -1,4 +1,7 @@
 $(function() {
+    
+    console.log("----------------------------");
+
     $.validator.setDefaults({
         errorClass: 'text-danger',
         highlight: function(element) {
@@ -11,7 +14,7 @@ $(function() {
             .closest('.requiredInput')
             .addBack().css( "border-color", "rgb(185, 185, 185)" ); //Cambiar al color necesario
         },
-      });
+    });
 
     $.validator.addMethod("publishingDateFormat", function( value, element ) {
         return this.optional( element ) || 
@@ -26,7 +29,7 @@ $(function() {
         return this.optional( element ) || value >= 0 && Number.isInteger(Number(value));
     }, "Introduce un número de páginas válido");
 
-    $("#general_information").validate({
+    $(".dataForm").validate({
         rules: {
             "general_information_form[publishingDate]": {
                 required : true,

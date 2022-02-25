@@ -8,21 +8,22 @@
     <title>{% block title %}Basic edition{% endblock %}</title>
 </head>
 
-<body>   
-    <div class="row basic_edition">
-        <div class="col-12 col-lg-3 dropZone">
-            {{ render(path('dropzone', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
-        </div>
-        <div class="col-12 col-lg-9 contentBE">
-            {{ form_start(formBE, {'attr': {'class': 'dataForm'}}) }}
+<body>
+    <form name="basic_edition_form" id="basic_edition" class="dataForm" novalidate="novalidate" method="post" action="{{ path('basic_edition', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}">
+        {% include 'updateAddTemplates/searchs.html.twig' %} 
+        <div class="row basic_edition">
+            <div class="col-12 col-lg-3 dropZone">
+                {{ render(path('dropzone', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
+            </div>
+            <div class="col-12 col-lg-9 contentBE">
                 <div class="row first_BE">
                     <div class="col-12 col-lg-6 col-xl-7 inputsBE">
                         <label class="form-label">Registro de referencia</label>
                         {{ form_widget(formBE.recordReference, {'attr': {'class': 'form-control requiredInput', 'placeholder': 'Registro de referencia', 'type':'text'}}) }}
                     </div>
                     <div class="col-12 col-lg-6 col-xl-5 inputsBE">
-                        <label class="form-label">ISBN13</label>
-                        {{ form_widget(formBE.ISBN13, {'attr': {'class': 'form-control requiredInput', 'placeholder': 'ISBN13', 'type':'text'}}) }}
+                            <label class="form-label">ISBN13</label>
+                            {{ form_widget(formBE.ISBN13, {'attr': {'class': 'form-control requiredInput', 'placeholder': 'ISBN13', 'type':'text'}}) }}
                     </div>
                 </div>
                 <div class="row BE">
@@ -51,8 +52,8 @@
                         {{ form_widget(formBE.titleText, {'attr': {'class': 'form-control requiredInput', 'placeholder': 'Título', 'type':'text'}}) }}
                     </div>
                 </div>
-            {{ form_end(formBE) }}
+            </div>
         </div>
-    </div> 
+    </form>
 </body>
 </html>

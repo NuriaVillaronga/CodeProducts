@@ -27,15 +27,7 @@ class UpdateProductController extends UserService
     {
         $this->userCheckCredentials($user);
 
-        $ruta = 'updateAddProduct.html.twig';
-        if (isset($_POST['form-type']) == "simpleForm") {
-            $ruta = 'updateAddProduct.html.twig';
-        }
-        if (isset($_POST['form-type']) == "advancedForm") {
-            $ruta = 'updateAddProductAdvanced.html.twig';
-        }
-
-        return $this->render($ruta, [
+        return $this->render('updateAddProduct.html.twig', [
             'product' => $product, 
             'catalog' => $catalog,
             'user' => $user

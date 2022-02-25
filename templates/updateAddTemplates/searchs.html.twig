@@ -35,7 +35,7 @@
             <button class="shadow-sm btn changeOnGrey btn_justify" type="button">
                 <i class="bi bi-justify-left"></i>
             </button>
-            <button class="shadow-sm btn changeOnBlue btn_save" type="submit">
+            <button href="{{ path('update_product', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}" class="shadow-sm btn changeOnBlue btn_save" type="submit">
                 <i class="bi bi-save-fill"></i>
             </button>
             <button class="shadow-sm btn changeOnRed btn_close" type="reset">
