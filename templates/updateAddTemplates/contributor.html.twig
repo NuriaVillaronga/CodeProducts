@@ -25,7 +25,7 @@
                 {% endif %}
             {% endfor %}
             <li class="nav-item li-add-object" role="presentation">
-                <a class="btn btn-add-object" href="{{ path('new_contributor', {'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id}) }}">Add new Contributor</a>
+                <a id="addContributor" class="btn btn-add-object" href="{{ path('new_contributor', {'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id}) }}">Add new Contributor</a>
             </li>
         </ul>
         <div class="tab-content">

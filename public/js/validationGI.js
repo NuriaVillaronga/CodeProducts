@@ -1,6 +1,4 @@
 $(function() {
-    
-    console.log("----------------------------");
 
     $.validator.setDefaults({
         errorClass: 'text-danger',
@@ -29,7 +27,7 @@ $(function() {
         return this.optional( element ) || value >= 0 && Number.isInteger(Number(value));
     }, "Introduce un número de páginas válido");
 
-    $(".dataForm").validate({
+    $("#general_information").validate({
         rules: {
             "general_information_form[publishingDate]": {
                 required : true,
@@ -45,7 +43,7 @@ $(function() {
         messages: {
             "general_information_form[publishingDate]": {
                 required : 'Fecha de publicación es obligatorio'
-            },
+            }
         }
     });
 });

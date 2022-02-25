@@ -29,7 +29,9 @@ $(function() {
             /^(?=[0-9X]{13}$)[0-9]?[0-9]+[]?[0-9X]$/.test( value );
     }, "EAN must contain <u>13 digits</u>");
 
-    $(".dataForm").validate({
+    //-----------------------------
+
+    $("#basic_edition").validate({
         rules: {
             "basic_edition_form[recordReference]": {
                 required : true

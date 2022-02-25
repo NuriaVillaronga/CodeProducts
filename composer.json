@@ -12,6 +12,7 @@
         "doctrine/doctrine-bundle": "^2.4",
         "doctrine/doctrine-migrations-bundle": "^3.1",
         "doctrine/orm": "^2.10",
+        "fzaninotto/faker": "^1.9",
         "knplabs/knp-paginator-bundle": "^5.7",
         "library_onix/onix": "dev-master",
         "phpdocumentor/reflection-docblock": "^5.2",
@@ -54,6 +55,7 @@
     "require-dev": {
         "dbrekelmans/bdi": "^1.0",
         "doctrine/doctrine-fixtures-bundle": "^3.4",
+        "liip/test-fixtures-bundle": "^2.0.0",
         "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "5.3.*",
         "symfony/css-selector": "5.3.*",
