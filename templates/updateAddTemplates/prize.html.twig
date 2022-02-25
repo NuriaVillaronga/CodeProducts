@@ -15,17 +15,11 @@
                 {% set contadorPrize = contadorPrize + 1 %}
                 {% if contadorPrize == 1 %}
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="prize{{contadorPrize}}-tab" data-bs-toggle="tab" data-bs-target="#prize{{contadorPrize}}" type="button" role="tab" aria-controls="prize{{contadorPrize}}" aria-selected="true">
-                            Prize {{contadorPrize}}
-                            <a class="btn btn-remove-object" href="{{ path('delete_prize', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id, 'id_prize': prize.id }) }}">Delete prize</a>
-                        </button>
+                        <button class="nav-link active" id="prize{{contadorPrize}}-tab" data-bs-toggle="tab" data-bs-target="#prize{{contadorPrize}}" type="button" role="tab" aria-controls="prize{{contadorPrize}}" aria-selected="true">Prize {{contadorPrize}}</button>
                     </li>
                 {% else %}
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="prize{{contadorPrize}}-tab" data-bs-toggle="tab" data-bs-target="#prize{{contadorPrize}}" type="button" role="tab" aria-controls="prize{{contadorPrize}}" aria-selected="false">
-                            Prize {{contadorPrize}}
-                            <a class="btn btn-remove-object" href="{{ path('delete_prize', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id, 'id_prize': prize.id }) }}">Delete prize</a>
-                        </button>
+                        <button class="nav-link" id="prize{{contadorPrize}}-tab" data-bs-toggle="tab" data-bs-target="#prize{{contadorPrize}}" type="button" role="tab" aria-controls="prize{{contadorPrize}}" aria-selected="false">Prize {{contadorPrize}}</button>
                     </li>
                 {% endif %}
             {% endfor %}

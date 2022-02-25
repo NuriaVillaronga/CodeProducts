@@ -134,15 +134,21 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-12 col-lg-2 col-remove-object">
+                                                        <a class="btn btn-remove-object" href="{{ path('delete_price', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id, 'id_supplier': supplier.id, 'id_price': price.vars.value.id }) }}">Delete price{{contadorPrice}}</a>
+                                                    </div>
+                                                    <div class="col-12 col-lg-10 column_hidden_before_md"></div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <a class="btn btn-remove-object" href="{{ path('delete_price', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id, 'id_supplier': supplier.id, 'id_price': contadorPrice }) }}">Delete price{{contadorPrice}}</a>
                             </div>
                     {% endfor %}
                 </div>
             </div>
-            {# {{ render(path('price', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id, 'id_supplier': supplier.id } )) }} #}
             <div class="col-12">
                 <div class="row">
                     <div class="col-12 col-lg-2 col-remove-object">
