@@ -1,0 +1,505 @@
+@import "./variables/editionVariables.scss";
+@import "./variables/bootstrapVariables.scss";
+@import "./mixins/editionMixins.scss";
+
+/******************************/
+/************Menu**************/
+/******************************/
+.btn-remove-object {
+    font-size: $minSize;
+    color: white !important;
+    border-radius: 4px;
+    background-color: $closeColor;
+    &:hover {
+        background-color: $closeColorHover;
+    }
+}
+.navigation_bar { 
+    background-color: $primaryColor;
+    color: $colorMenu_Buttons; 
+    padding-top: 13px;
+    padding-bottom: 13px;
+    .menu_select_SM, .menu_select_XS {  
+        width: 80%;
+        .select_title { 
+            text-align: right;
+            padding-right: 0px;
+            padding-top: 4.5px;
+        }
+        .select_content {  
+            select {
+                color: $colorMenu_Buttons;
+                background-color: $primaryColor;
+                font-size: $mediumSize;
+                border-bottom: $borderInputsSelects !important;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .menu_select_XS {
+        display: none;
+    }
+    #menuItems {  
+        justify-content: right;
+        margin-right: 8px;
+        .ul-menuItems {
+            padding-left: 100px;
+            li {
+                padding-right: 7px;
+                div {
+                    @include styleDivItems;
+                    padding-top: 2px;
+                    a {
+                        padding-left: 10px;
+                        padding-right: 10px;
+                        color: $colorMenu_Buttons;
+                        i {
+                            &:hover { 
+                                cursor: pointer;
+                            }
+                        }
+                        span { 
+                            display: none; 
+                        }
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
+                .commentsItem {
+                    padding-top: 3px !important;
+                }
+                .exitItem {
+                    padding-top: 2.7px !important;
+                }
+            }
+            .separator_icon {
+                padding-top: 2px;
+                padding-left: 10px;
+                padding-right: 20px;
+            }
+        }
+    }  
+}
+/******************************/
+/********Edition searchs*******/
+/******************************/
+.form_bar {  
+    margin-left: 10px;
+    margin-right: 6px; 
+    padding-top: 15px;
+    font-size: $minSize; 
+    .form_bar_select { 
+        text-align: left;
+        padding-top: 6px;
+        select {
+            border-bottom: $borderInputsSelects !important;
+            width:47%;
+            font-size: $mediumSize;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    .form_bar_err {  
+        visibility: hidden;
+        text-align: center;
+        div {
+            color: $colorMedia_Err;
+            font-size: $maxSize;
+            padding: 8px;
+            i {
+                color: red;
+                padding-right: 6px;
+            }
+        }
+    }
+    .form_bar_buttons {  
+        text-align: right;
+        button {
+            width: 50px;
+        }
+        @include styleButton(0.60%, 30px);
+        .btn_close {
+            @include styleEspecificButtons($closeColor, $colorMenu_Buttons, $closeColorHover, $colorMenu_Buttons);
+        }
+        .btn_save {  
+            @include styleEspecificButtons($primaryColor, $colorMenu_Buttons, $primaryColorHover, $colorMenu_Buttons); 
+        }
+    }
+}
+
+/******************************/
+/********Basic edition*********/
+/******************************/
+.basic_edition {
+    padding-left: 27px; 
+    padding-right: 15px;
+    padding-top: 30px;
+    padding-bottom: 15px;
+    .dropZone { 
+        color: $colorFont_TabsButtonsLabels;
+        border: 1px solid rgb(158, 158, 158);
+        text-align: center;
+        font-size: $minSize;
+        font-weight: bold;
+        &:hover {
+            color: $colorMedia_Err;
+            cursor: pointer;
+        }
+    }
+    @include styleMedia(105px);
+    .contentBE {  
+        padding-bottom: 8px;
+        padding-left: 20px;
+        .BE { 
+            padding-top: 18px;
+        }
+        .first_BE, .BE {  
+            @include styleInputLabels;
+            .text-danger {
+                font-size: $mediumSize !important;
+            }
+        }
+    }
+}
+
+/******************************/
+/*********Tab styles***********/
+/******************************/
+.tab {
+    margin-left: 17px;
+    font-size: $mediumSize;
+    padding-top: 30px;
+    .tab {
+        margin-left: -12px !important;
+        border: 1px solid rgb(231, 229, 229);
+        margin-right: 15px !important;
+        ul {
+            border: none;
+            margin-left: 12px !important;
+            margin-right: 15px !important;
+            .li-add-object {
+                border: none !important;
+                &:hover {
+                    background-color: white !important;
+                }
+                .btn-add-object {
+                    margin-top: 5px !important;
+                    margin-left: 8px !important;
+                    font-size: $minSize;
+                    color: white !important;
+                    border-radius: 4px;
+                    background-color: $primaryColor;
+                    &:hover {
+                        background-color: $primaryColorHover;
+                    }
+                }
+            }
+        }
+        .tab-content {
+            margin-left: 12px !important;
+            margin-bottom: 25px !important;
+            .general_information_content {
+                .col-remove-object {
+                    padding-top: 12px !important;
+                    padding-bottom: 12px !important;
+                    text-align: left;
+                    .btn-remove-object {
+                        font-size: $minSize;
+                        color: white !important;
+                        border-radius: 4px;
+                        background-color: $closeColor;
+                        &:hover {
+                            background-color: $closeColorHover;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    ul {
+        border: none;
+        li {
+            border-right: $borderLiTab; 
+            border-left: $borderLiTab;
+            border-top: $borderLiTab;
+            border-bottom: $borderLiTab;
+            &:hover {
+                background-color: $colorLiTab;
+            }
+            button {
+                color: $colorFont_TabsButtonsLabels;
+                border-radius: 0% !important;
+                border-right: none !important;
+                border-left: none !important;
+                border-top: none !important;
+                border: 3px solid transparent !important;
+                &:hover {
+                    color: $colorFont_TabsButtonsLabels; 
+                }
+            }
+            .active {
+                border-bottom: 3px solid $primaryColor !important;
+            }
+        }
+    }
+    .tab-content {
+        .general_information_content { 
+            border: 1px solid rgb(231, 229, 229);
+            margin-right: 15px; 
+            div {
+                .first_GI, .GI{ 
+                    padding-top: 18px;
+                }
+                .last_GI { 
+                    padding-top: 18px;
+                    padding-bottom: 50px;
+                }
+                .first_GI, .GI, .last_GI {
+                    @include styleInputLabels;
+                    span {
+                        color: $colorFont_TabsButtonsLabels;
+                        font-size: $minSize;
+                    }
+                    .form-select {
+                        border-bottom: $borderInputsSelects !important;
+                        padding-left: 0px !important;
+                        padding-top: 7px !important;
+                        padding-bottom: 1px !important;
+                        font-size: $maxSize;
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                    
+                    #product_form_publishingDate[type="date"]::-webkit-calendar-picker-indicator  {
+                        background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='rgb(76, 137, 165)' class='bi bi-calendar' viewBox='0 0 16 16'><path d='M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z'/></svg>") no-repeat;
+                    }
+
+                    .select2, .select2-container, .select2-container--default, .select2-container--below {
+                        width: 100% !important;
+                        margin-top: -0.3px !important;
+                        .selection {
+                            .select2-selection {
+                                border-radius: 0% !important;
+                                border-top: none !important;
+                                border-left: none !important;
+                                border-right: none !important;
+                                border-bottom: $borderInputsSelects !important;
+                                .select2-search__field {
+                                    font-size: $maxSize !important;
+                                }
+                            }
+                        }
+                    }
+                }
+                .GI {
+                    #sellRights {
+                        input {
+                            background-image: url('../images/sellRights.svg') !important;
+                            background-repeat: no-repeat;
+                            background-position-x: right;
+                            background-size: 18px;
+                            background-color: transparent !important;
+                            padding-bottom: 0px !important; 
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/******************************/
+/****Bottom buttons styles*****/
+/******************************/
+.bottom_buttons { 
+    margin-top: 30px;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-bottom: 30px;
+    div {
+        .hiddenParagraphs {
+            display: none;
+        }
+        @include styleButton(0.23%, 32px);
+        .btn_close {
+            @include styleEspecificButtons($colorMenu_Buttons, $closeColor, $colorLiTab, $closeColorHover);
+        }
+        .btn_save {
+            @include styleEspecificButtons($colorMenu_Buttons, $primaryColor, $colorLiTab, $primaryColorHover);
+        }
+        .btn_close, .btn_save {
+            i {
+                font-size: $minSize;
+                padding-right: 3px;
+            }
+        }
+    }
+}
+
+/*------------------------------*/
+/*---------Responsive-----------*/
+/*------------------------------*/
+@media (max-width: 1472px) {
+    @include styleBarButtons(50px);
+}
+@media (max-width: 1400px) {
+    @include styleBarSelect(70% !important);
+}
+@media (max-width: 1314px) {
+    @include styleMedia(93px !important);
+}
+@media (max-width: 1199px) {
+    @include styleBarSelect(100% !important);
+}
+@media (max-width: 1141px) {
+    @include style_bottom_JustyCode_responsive(0.35%);
+}
+@media (max-width: 1077px) {
+    @include styleBarButtons(45px !important);
+}
+@media (max-width: 992px) {
+    .navigation_bar {
+        padding-right: 20px;
+        padding-left: 30px;
+        .hamburguerIcon { 
+            border-radius: 15px;
+            i {
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+        #menuItems{
+            border-radius: 10px;
+            color: $colorMenu_Buttons;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            ul{
+                margin: 0px !important;
+                padding: 0px !important;
+                li {
+                    padding-top: 15px;
+                    display: flex;
+                    justify-content: center !important;
+                    div {
+                        width: 205px;
+                        a {
+                            span { 
+                                display: inline !important;
+                                padding-left: 10px;
+                            }
+                        }
+                    }
+                }
+                .separator_icon { 
+                    display: none;
+                }
+                .last_item_hamburguer { 
+                    padding-bottom: 15px;
+                }
+            }
+        }
+    }
+    .form_bar_buttons {
+        display: none;
+    }
+    .basic_edition {
+        padding-right: 23px !important;
+        .dropZone {
+            div {
+                margin-top: 40px !important;
+                margin-bottom: 40px;
+            }
+        }
+        .contentBE {
+            padding-left: 10px !important;
+            .BE {
+                padding-top: 0px !important;
+            }
+            .BE, .first_BE {
+                .inputsBE {
+                    padding-top: 13px !important;
+                }
+            }
+        }
+    }
+    .GI, .last_GI, .first_GI {  
+        padding-top: 0px !important;
+        .inputsGI {
+            padding-top: 15px;
+        }
+        .column_hidden_before_md {
+            display: none;
+        }
+    }
+}
+@media (max-width: 877px) {
+    @include style_bottom_SaveClose_responsive(0.45%);
+    @include style_bottom_JustyCode_responsive(0.45%);
+}
+@media (max-width: 768px) {
+    @include styleBarSelect(55% !important);
+    .form_bar_err { 
+        div {
+            display: none;
+            margin-top: 25px;
+        }
+    }
+}
+@media (max-width: 607px) {
+    @include style_bottom_JustyCode_responsive(0.5%);
+}
+@media (max-width: 572px) {
+    @include style_bottom_JustyCode_responsive(0.55%);
+}
+@media (max-width: 522px) {
+    .bottom_buttons { 
+        div {
+            .hiddenParagraphs {
+                text-align: center !important;
+                display: block;
+                button {
+                    margin-left: 0px !important;
+                }
+            }
+            .visibleButtons {
+                display: none;
+            }
+        }
+    }
+    #sellRights {
+        input {
+            background-size: 0px !important;
+        }
+    }
+    @include style_bottom_SaveClose_responsive(0.55%);
+    @include style_bottom_JustyCode_responsive(0.85%);
+}
+@media (max-width: 450px) {
+    .menu_select_SM {
+        display: none;
+    }
+    .menu_select_XS {
+        width: 100%;
+        .select_title { 
+            text-align: left !important;
+            padding-left: 11px;
+            font-size: 13px;
+        }
+        .select_content {  
+            width: 100%;
+        }
+        display: block !important;
+    }
+}
+@media (max-width: 360px) {
+    @include style_bottom_SaveClose_responsive(0.7%);
+    @include style_bottom_JustyCode_responsive(0.95%);
+}
+
+

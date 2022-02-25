@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Bottom buttons{% endblock %}</title>
+</head>
+
+<body>
+    <div class="row bottom_buttons">
+        <div class="col-12">
+            <div class="visibleButtons">
+                <button href="{{ path('update_product', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}" class="shadow-sm btn changeOnGrey btn_save" type="submit"><i class="bi bi-save-fill"></i> Agregar este nuevo producto</button>
+                <button class="shadow-sm btn changeOnGrey btn_close" type="reset"><i class="bi bi-x-square"></i> Cancelar</button>
+                <button class="shadow-sm btn changeOnGrey btn_code" type="button"><i class="bi bi-code"></i></button>
+                <button class="shadow-sm btn changeOnGrey btn_justify" type="button"><i class="bi bi-justify-left"></i></button>
+            </div>
+            <p class="hiddenParagraphs">
+                <button class="shadow-sm btn changeOnGrey btn_save" type="submit"><i class="bi bi-save-fill"></i> Agregar este nuevo producto</button>
+            </p>
+            <p class="hiddenParagraphs">
+                <button class="shadow-sm btn changeOnGrey btn_close" type="reset"><i class="bi bi-x-square"></i> Cancelar</button>
+            </p>
+            <p class="hiddenParagraphs">
+                <button class="shadow-sm btn changeOnGrey btn_code" type="button"><i class="bi bi-code"></i></button>
+                <button class="shadow-sm btn changeOnGrey btn_justify" type="button"><i class="bi bi-justify-left"></i></button>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

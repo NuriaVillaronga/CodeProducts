@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Imprint{% endblock %}</title>
+</head>
+
+<body>   
+    <form name="imprint_form" method="post" class="dataForm" novalidate="novalidate" action="{{ path('imprint', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}">  
+        <div class="row general_information_content">
+            <div class="col-12">
+                <div class="row first_GI">
+                    <div class="col-12 inputsGI">
+                        <span>Name Code</span>
+                        {{ form_widget(formIm.nameCode, {'attr': {'class': 'form-select'}}) }} 
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 inputsGI">
+                        <label class="form-label">Name Code Value</label>
+                        {{ form_widget(formIm.nameCodeValue, {'attr': {'class': 'form-control', 'placeholder': 'Name Code Value', 'type':'text'}}) }} 
+                    </div>
+                </div>
+                <div class="row last_GI">
+                    <div class="col-12 inputsGI">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" placeholder="Name"><!---->
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ form_rest(formIm) }}
+
+        {% include 'updateAddTemplates/bottomButtons.html.twig' %}
+    </form>
+</body>
+</html>

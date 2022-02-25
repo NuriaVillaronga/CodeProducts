@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Basic edition{% endblock %}</title>
+</head>
+
+<body>   
+    <div class="row basic_edition">
+        <div class="col-12 col-lg-3 dropZone">
+            {{ render(path('dropzone', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
+        </div>
+        <div class="col-12 col-lg-9 contentBE">
+            {{ form_start(formBE, {'attr': {'class': 'dataForm'}}) }}
+                <div class="row first_BE">
+                    <div class="col-12 col-lg-6 col-xl-7 inputsBE">
+                        <label class="form-label">Registro de referencia</label>
+                        {{ form_widget(formBE.recordReference, {'attr': {'class': 'form-control requiredInput', 'placeholder': 'Registro de referencia', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-5 inputsBE">
+                        <label class="form-label">ISBN13</label>
+                        {{ form_widget(formBE.ISBN13, {'attr': {'class': 'form-control requiredInput', 'placeholder': 'ISBN13', 'type':'text'}}) }}
+                    </div>
+                </div>
+                <div class="row BE">
+                    <div class="col-12 col-lg-6 col-xl-7 inputsBE">
+                        <label class="form-label">EAN</label>
+                        {{ form_widget(formBE.EAN, {'attr': {'class': 'form-control requiredInput', 'placeholder': 'EAN', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-5 inputsBE">
+                        <label class="form-label">ISBN10</label>
+                        {{ form_widget(formBE.ISBN10, {'attr': {'class': 'form-control', 'placeholder': 'ISBN10', 'type':'text'}}) }}
+                    </div>
+                </div>
+                <div class="row BE">
+                    <div class="col-12 col-lg-6 col-xl-4 inputsBE">
+                        <label class="form-label">Prefijo de título</label>
+                        {{ form_widget(formBE.titlePrefix, {'attr': {'class': 'form-control', 'placeholder': 'Prefijo de título', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-8 inputsBE">
+                        <label class="form-label">Título sin prefijo</label>
+                        {{ form_widget(formBE.titleWithoutPrefix, {'attr': {'class': 'form-control requiredInput', 'placeholder': 'Título sin prefijo', 'type':'text'}}) }}
+                    </div>
+                </div>
+                <div class="row BE">
+                    <div class="col-12 inputsBE">
+                        <label class="form-label">Título</label>
+                        {{ form_widget(formBE.titleText, {'attr': {'class': 'form-control requiredInput', 'placeholder': 'Título', 'type':'text'}}) }}
+                    </div>
+                </div>
+            {{ form_end(formBE) }}
+        </div>
+    </div> 
+</body>
+</html>

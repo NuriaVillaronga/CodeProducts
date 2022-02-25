@@ -1,0 +1,200 @@
+@import "./variables/listVariables.scss";
+@import "./mixins/listMixins.scss";
+
+/*------------------------------*/
+/*-----------Searchs------------*/
+/*------------------------------*/
+form {
+    padding: 20px;
+    padding-bottom: $none;
+
+    .select_searchs {  
+        @include styleSelects($mediumSize);
+        span {
+            font-size: $minSize;
+            color: rgba(96, 96, 102, 0.938);
+        }
+        .input_search { 
+            margin-top: 22px;
+            .form-control {
+                font-size: $maxSize;
+                border: none;
+                border-bottom: $borderInputsSelects;
+                padding-bottom: 4.5px !important;
+                padding-left: 0px;
+            }
+        }
+        .select_behavoir { 
+            margin-top: 23px;
+        }
+    }
+
+    .button_searchs {
+        padding: 0px !important;
+        .visibleButtons {
+            padding-top: 18px;
+            text-align: right;
+            @include styleDivButtons(right, 0px, 10px);
+            @include styleButtons($maxSize);
+            @include styleReload($maxWidthReload);
+            @include styleOrder($maxWidthOrder, $maxPRorder, $minIconOrder, inline);
+            @include styleNew($maxWidthSearchNew, $maxSize, inline);
+            @include styleSearch($maxWidthSearchNew, $mediumSize, inline); 
+        }
+        .hiddenParagraphs {
+            display: none;
+        }
+    }
+}
+
+/*------------------------------*/
+/*------------List--------------*/
+/*------------------------------*/
+.productsList { 
+    padding-top: 25px;
+    margin: 0px !important;
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+    .hiddenTable {
+        display: none;
+    }
+    .visibleTable {
+        table {
+            @include styleTable();
+            tr {
+                @include styleColumnsTable(5px);
+                .center_items {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+/*------------------------------*/
+/*---------Pagination-----------*/
+/*------------------------------*/
+footer {
+    padding-top: 30px;
+    .title_pagination {
+        text-align: right;
+        padding-top: 4px;
+        span {
+            color: $secundaryFontColor;
+            font-size: $minSize;
+        }
+    }
+    @include styleSelects($minSize !important);
+    .icons_pagination {
+        padding-left: 15px;
+        padding-top: 2px;
+        font-size: $mediumSize !important;
+    }
+}
+
+
+/*------------------------------*/
+/*---------Responsive-----------*/
+/*------------------------------*/
+@media (max-width: 1837px) {
+    .button_searchs { 
+        @include styleButtons($mediumSize !important);
+        @include styleReload($minWidthOR);
+        @include styleOrder($minWidthOR, $minPRorder, $maxIconOrder, $none);
+        @include styleNew($minWidthNew, $mediumSize !important, $none); 
+        @include styleSearch($mediumWidthSearch, $minSize !important, $visible); 
+    }
+}
+@media (max-width: 1430px) {
+    .button_searchs {
+        @include styleSearch(120px !important, $minSize !important, $none);
+    }
+}
+@media (max-width: 1399px) {
+    .select_behavoir { 
+        margin-top: 15px;
+    }
+    .button_searchs {
+        .visibleButtons {
+            margin-left: 6px;
+            margin-right: 6px;
+            padding-top: 45px !important;
+            text-align: center !important;
+            @include styleDivButtons(center !important, 10px !important, 33px !important);
+            @include styleButtons($maxSize !important);
+            @include styleReload($maxWidthReload !important);
+            @include styleOrder($maxWidthOrder !important, $maxPRorder !important, $minIconOrder !important, $visible);
+            @include styleNew($maxWidthSearchNew !important, $maxSize !important, $visible); 
+            @include styleSearch($maxWidthSearchNew !important, $mediumSize !important, $visible);
+        }
+    }
+}
+@media (max-width: 768px) {
+    .input_search { 
+        margin-top: 15px;
+    }
+    .productsList { 
+        .visibleTable {
+            display: none;
+        }
+        .hiddenTable {
+            display: block;
+            table {
+                @include styleTable();
+                tr {
+                    @include styleColumnsTable(0px !important);
+                    text-align: center;
+                    th {
+                        background-color: rgba(240, 239, 239, 0.562);
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 639px) {
+    .button_searchs {
+        .visibleButtons {
+            @include styleButtons($mediumSize !important);
+            @include styleReload($minWidthOR);
+            @include styleOrder($minWidthOR, $minPRorder, $maxIconOrder, $none);
+            @include styleNew($minWidthNew, $mediumSize !important, $none);  
+            @include styleSearch($mediumWidthSearch, $minSize !important, $visible);  
+        }
+    }
+}
+@media (max-width: 576px) {
+    footer {
+        .title_pagination {
+            text-align: left;
+            padding-bottom: 10px;
+        }
+        .icons_pagination {
+            padding-left: 0px;
+        }
+    }
+}
+@media (max-width: 521px) {
+    .button_searchs {
+        margin-top: 40px !important;
+        .visibleButtons {
+            display: none;
+        }
+        .hiddenParagraphs {
+            margin-left: 6px;
+            margin-right: 6px;
+            text-align: center;
+            display: block !important;
+            @include styleDivButtons(center !important, 10px !important, 33px !important);
+            @include styleButtons($maxSize !important);
+            @include styleReload($maxWidthReload !important);
+            @include styleOrder($maxWidthOrder !important, $maxPRorder !important, $minIconOrder !important, $visible);
+            @include styleNew($maxWidthSearchNew !important, $maxSize !important, $visible); 
+            @include styleSearch($maxWidthSearchNew !important, $mediumSize !important, $visible);
+        }
+    }
+    .productsList {
+        padding-top: 4px !important;
+    }
+}
+

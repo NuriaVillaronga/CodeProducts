@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container" style="margin-top: 120px; margin-left: 320px; width:350px;">
+  
+  {{ form_start(form) }}
+
+        <div class="form-group">
+        Set the name from your new catalog  
+        <p>
+            {{ form_widget(form.name) }}
+        </p>
+        </div>
+
+        <button class="btn btn-primary">{{ button_label|default('Save catalog') }}</button>
+
+    {{ form_end(form) }}
+    
+</div>
+
+{% endblock %}

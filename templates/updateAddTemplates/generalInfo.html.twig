@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}General information{% endblock %}</title>
+</head>
+
+<body>
+    <form name="general_information_form" id="general_information" class="dataForm" novalidate="novalidate" method="post" action="{{ path('general_information', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}">  
+        <div class="row general_information_content">
+            <div class="col-12">
+                <div class="row first_GI">
+                    <div class="col-12 inputsGI">
+                        <label class="form-label">Subtitular</label>
+                        {{ form_widget(formGI.subtitle, {'attr': {'class': 'form-control', 'placeholder': 'Subtitular', 'type':'text'}}) }}
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 col-lg-6 inputsGI">
+                        <span>Tipo de notificación</span>
+                            {{ form_widget(formGI.notificationType, {'attr': {'class': 'form-select'}}) }} 
+                    </div>
+                    <div class="col-12 col-lg-6 inputsGI">
+                        <span>Protección tecnica EPUB</span>
+                        {{ form_widget(formGI.epubTechnicalProtection, {'attr': {'class': 'form-select'}}) }}
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 col-lg-6 inputsGI">
+                        <span>Forma de producto</span>
+                        {{ form_widget(formGI.productForm, {'attr': {'class': 'form-select'}}) }} 
+                    </div>
+                    <div class="col-12 col-lg-6 inputsGI">
+                        <span>Código de barras</span>
+                        {{ form_widget(formGI.barcodeType, {'attr': {'class': 'form-select'}}) }}
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 inputsGI">
+                        <span>Detalle del formulario del producto</span>
+                        {{ form_widget(formGI.productFormDetail, {'attr': {'class': 'js-example-basic-multiple'}}) }}  
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <span>Composición del producto</span>
+                        {{ form_widget(formGI.productComposition, {'attr': {'class': 'form-select'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <span>Empaquetado del producto</span>
+                        {{ form_widget(formGI.productPackaging, {'attr': {'class': 'form-select'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <span>Tipo de contenido principal</span>
+                        {{ form_widget(formGI.primaryContentType, {'attr': {'class': 'form-select'}}) }}
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <span>Tipo de colección</span>
+                        {{ form_widget(formGI.collectionType, {'attr': {'class': 'form-select'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">Nombre del editor</label>
+                        {{ form_widget(formGI.publisherName, {'attr': {'class': 'form-control', 'placeholder': 'Nombre del editor', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">Título de la colección</label>
+                        {{ form_widget(formGI.titleTextCollection, {'attr': {'class': 'form-control', 'placeholder': 'Título de la colección', 'type':'text'}}) }}
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 inputsGI">
+                        <span>Idioma del texto</span> 
+                        {{ form_widget(formGI.languageCode, {'attr': {'class': 'js-example-basic-multiple'}}) }}
+                    </div>
+                </div>
+                
+                <div class="row GI">
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">Fecha de publicación (AAAAMMDD)</label>
+                        {{ form_widget(formGI.publishingDate, {'attr': {'class': 'form-control requiredInput', 'placeholder': 'Fecha de publicación (AAAAMMDD)', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">Número de páginas</label>
+                        {{ form_widget(formGI.numberOfPages, {'attr': {'class': 'form-control', 'placeholder': 'Número de páginas', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">Número de pieza de la colección</label>
+                        {{ form_widget(formGI.collectionSequenceNumber, {'attr': {'class': 'form-control', 'placeholder': 'Número de pieza de la colección', 'type':'text'}}) }}
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <span>Estado de publicación</span>
+                        {{ form_widget(formGI.publishingStatus, {'attr': {'class': 'form-select'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">Número de piezas</label>
+                        {{ form_widget(formGI.partNumber, {'attr': {'class': 'form-control', 'placeholder': 'Número de piezas', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">Año de primera publicación</label>
+                        {{ form_widget(formGI.yearPublishingDate, {'attr': {'class': 'form-control', 'placeholder': 'Año de primera publicación', 'type':'text'}}) }}
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">Ciudad de publicación</label>
+                        {{ form_widget(formGI.cityOfPublication, {'attr': {'class': 'form-control', 'placeholder': 'Ciudad de publicación', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">Número de edición</label>
+                        {{ form_widget(formGI.editionNumber, {'attr': {'class': 'form-control', 'placeholder': 'Número de edición', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-4 inputsGI" id="sellRights">
+                        <label class="form-label">A la venta con derechos exclusivos</label>
+                        <input type="text" class="form-control" placeholder="A la venta con derechos exclusivos">
+                        {# {{ form_widget(formGI.titleText, {'attr': {'class': 'form-control', 'placeholder': 'A la venta con derechos exclusivos', 'type':'text'}}) }} #}
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 inputsGI">
+                        <span>País de publicación</span>
+                        {{ form_widget(formGI.countryOfPublication, {'attr': {'class': 'js-example-basic-multiple'}}) }}
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 inputsGI">
+                        <span>País de fabricación</span>
+                        {{ form_widget(formGI.countryOfManufacture, {'attr': {'class': 'js-example-basic-multiple'}}) }}
+                    </div>
+                </div>
+                <div class="row last_GI">
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">Año de Copyright</label>
+                        {{ form_widget(formGI.copyrightYear, {'attr': {'class': 'form-control', 'placeholder': 'Año de CopyRight', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-4 column_hidden_before_md"></div>
+                    <div class="col-12 col-lg-4 column_hidden_before_md"></div>
+                </div>
+            </div>
+        </div>
+        {{ form_rest(formGI) }}
+
+        {% include 'updateAddTemplates/bottomButtons.html.twig' %}
+    </form> 
+</body>
+</html>

@@ -1,0 +1,115 @@
+@mixin styleDivButtons($TAdiv, $PRdiv, $PTdiv) {
+    div {
+        padding-top: 12px;
+        div {
+            text-align: $TAdiv;
+            padding-top: $PTdiv;
+            padding-right: $PRdiv;
+        }
+    }
+}
+@mixin styleButtons($FS) {
+    button{
+        color: $colorFontButtons;
+        font-size: $FS;
+        height: 35px;
+        border: 1px solid rgb(228, 228, 228);
+        border-radius: 4px;
+        margin-right: 3px;
+        &:hover {
+            background-color: rgba(230, 227, 227, 0.644);
+            color: rgb(55, 100, 121);
+        }
+    }
+}
+@mixin styleReload($W) {
+    .btn_reload {
+        width: $W;
+        padding-top: $PTbuttons;
+        i {
+            font-size: 17px;
+            color: $colorFontButtons;
+        }
+    }
+}
+@mixin styleOrder($W, $PR, $F, $D) {
+    .btn_order {
+        width: $W;
+        padding-top: $PTbuttons;
+        i {
+            padding-right: $PR;
+            font-size: $F;
+            color: $colorFontButtons;
+        }
+        span {
+            display: $D;
+        }
+    }
+}
+@mixin styleNew($W, $F, $D) {
+    .btn_new {
+        padding-top: $PTbuttons;
+        width: $W;
+        i {
+            padding-right: 5px;
+            font-size: $F;
+            color: $colorFontButtons;
+            display: $D;
+        }
+    }
+}
+@mixin styleSearch($W, $F, $D) {
+    .btn_search {
+        padding-top: $PTbuttons;
+        width: $W;
+        i {
+            padding-right: 10px;
+            font-size: $F;
+            color: $colorFontButtons;
+        }
+        span {
+            display: $D;
+        }
+    }
+}
+
+@mixin styleSelects($FS) {
+    select {
+        border-bottom: $borderInputsSelects !important;
+        font-size: $FS;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+@mixin styleTable() {
+    font-size: $minSize;
+    border: $borderTable;
+}
+@mixin styleColumnsTable($PL) {
+    td, th{
+        color: $primaryFontColor;
+        border: $borderTable;
+        padding-top: 14px;
+        padding-bottom: 14px;
+        padding-left: $PL;
+        input {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        i {
+            font-size: $maxSize;
+            color: $secundaryFontColor;
+        }
+        .arrowIcon { 
+            font-size: $maxSize;
+            color: rgb(46, 45, 45);
+            &:hover {
+                color: $colorFontButtons;
+                cursor: pointer;
+            }
+        }
+    }
+}

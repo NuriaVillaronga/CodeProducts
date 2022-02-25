@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Measure and Extent{% endblock %}</title>
+</head>
+
+<body>
+    <form name="measure_extent_form" method="post" class="dataForm" novalidate="novalidate" action="{{ path('measure_extent', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}">    
+        <div class="row general_information_content">
+            <div class="col-12">
+                <div class="row first_GI">
+                    <div class="col-12 col-lg-3 inputsGI">
+                        <label class="form-label">Height</label>
+                        {{ form_widget(formME.heightMeasurement, {'attr': {'class': 'form-control', 'placeholder': 'Height', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-3 inputsGI"> 
+                        <span>Measure Unit</span>
+                        {{ form_widget(formME.heightMeasureUnit, {'attr': {'class': 'form-select'}}) }} 
+                    </div>
+                    <div class="col-12 col-lg-3 inputsGI">
+                        <label class="form-label">Duration</label>
+                        {{ form_widget(formME.durationExtentValue, {'attr': {'class': 'form-control', 'placeholder': 'Duration', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-3 inputsGI">
+                        <span>Measure Unit</span>
+                        {{ form_widget(formME.durationExtentUnit, {'attr': {'class': 'form-select'}}) }}
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 col-lg-3 inputsGI">
+                        <label class="form-label">Width</label>
+                        {{ form_widget(formME.widthMeasurement, {'attr': {'class': 'form-control', 'placeholder': 'Width', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-3 inputsGI">
+                        <span>Measure Unit</span>
+                        {{ form_widget(formME.widthMeasureUnit, {'attr': {'class': 'form-select'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-3 inputsGI">
+                        <label class="form-label">File Size</label>
+                        {{ form_widget(formME.fileSizeExtentValue, {'attr': {'class': 'form-control', 'placeholder': 'File Size', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-3 inputsGI">
+                        <span>Measure Unit</span>
+                        {{ form_widget(formME.fileSizeExtentUnit, {'attr': {'class': 'form-select'}}) }}
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 col-lg-3 inputsGI">
+                        <label class="form-label">Thickness</label>
+                        {{ form_widget(formME.thicknessMeasurement, {'attr': {'class': 'form-control', 'placeholder': 'Thickness', 'type':'text'}}) }} 
+                    </div>
+                    <div class="col-12 col-lg-3 inputsGI">
+                        <span>Measure Unit</span> 
+                        {{ form_widget(formME.thicknessMeasureUnit, {'attr': {'class': 'form-select'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-3 column_hidden_before_md"></div>
+                    <div class="col-12 col-lg-3 column_hidden_before_md"></div>
+                </div>
+                <div class="row last_GI">
+                    <div class="col-12 col-lg-3 inputsGI">
+                        <label class="form-label">Weight</label>
+                        {{ form_widget(formME.weightMeasurement, {'attr': {'class': 'form-control', 'placeholder': 'Weight', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-3 inputsGI">
+                        <span>Measure Unit</span>
+                        {{ form_widget(formME.weightMeasureUnit, {'attr': {'class': 'form-select'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-3 column_hidden_before_md"></div>
+                    <div class="col-12 col-lg-3 column_hidden_before_md"></div>
+                </div>
+            </div>
+        </div>
+        {{ form_rest(formME) }}
+
+        {% include 'updateAddTemplates/bottomButtons.html.twig' %}
+    </form>
+</body>
+</html>

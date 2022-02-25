@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div style="margin-top: 120px; margin-left: 320px; width:350px;">
+
+{{ form_start(form) }}
+
+    <div class="form-group">
+      {{ form_label(form.files) }}
+      {{ form_widget(form.files) }}
+    </div>
+
+    <button class="btn btn-primary" type="submit">{{ button_label|default('Upload') }}</button>
+
+{{ form_end(form) }}
+
+</div>
+
+
+{% endblock %}

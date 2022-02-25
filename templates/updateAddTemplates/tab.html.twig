@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Tabs{% endblock %}</title>
+</head>
+
+<body>
+    <div class="row tab">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="general_information-tab" data-bs-toggle="tab" data-bs-target="#general_information" type="button" role="tab" aria-controls="general_information" aria-selected="true">Informacion general</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="imprint-tab" data-bs-toggle="tab" data-bs-target="#imprint" type="button" role="tab" aria-controls="imprint" aria-selected="false">Sello</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="contributors-tab" data-bs-toggle="tab" data-bs-target="#contributors" type="button" role="tab" aria-controls="contributors" aria-selected="false">Colaboradores</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="text-tab" data-bs-toggle="tab" data-bs-target="#text" type="button" role="tab" aria-controls="text" aria-selected="false">Texto</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="supply_detail-tab" data-bs-toggle="tab" data-bs-target="#supply_detail" role="tab" aria-controls="supply_detail" aria-selected="false">Detalle de suministro</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="subject_audience-tab" data-bs-toggle="tab" data-bs-target="#subject_audience" type="button" role="tab" aria-controls="subject_audience" aria-selected="false">Tema y audiencia</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="measure_extent-tab" data-bs-toggle="tab" data-bs-target="#measure_extent" type="button" role="tab" aria-controls="measure_extent" aria-selected="false">Medida y extensión</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="ilustrated-tab" data-bs-toggle="tab" data-bs-target="#ilustrated" type="button" role="tab" aria-controls="ilustrated" aria-selected="false">Ilustración</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="related_work-tab" data-bs-toggle="tab" data-bs-target="#related_work" type="button" role="tab" aria-controls="related_work" aria-selected="false">Related Work</button>
+            </li> 
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="related_product-tab" data-bs-toggle="tab" data-bs-target="#related_product" type="button" role="tab" aria-controls="related_product" aria-selected="false">Related Product</button>
+            </li> 
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="website-tab" data-bs-toggle="tab" data-bs-target="#website" type="button" role="tab" aria-controls="website" aria-selected="false">Sitio web</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="prize-tab" data-bs-toggle="tab" data-bs-target="#prize" type="button" role="tab" aria-controls="prize" aria-selected="false">Premio y promoción</button>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade show active general_information" id="general_information" role="tabpanel" aria-labelledby="general_information-tab">
+                <!--General information content-->
+                    {{ render(path('general_information', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
+                <!---->
+            </div>
+            <div class="tab-pane fade" id="imprint" role="tabpanel" aria-labelledby="imprint-tab">
+                <!--Imprint content-->
+                    {{ render(path('imprint', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
+                <!---->
+            </div>
+            <div class="tab-pane fade" id="text" role="tabpanel" aria-labelledby="text-tab">
+                <!--Text content-->
+                    {{ render(path('text', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
+                <!---->
+            </div>
+            <div class="tab-pane fade" id="supply_detail" role="tabpanel" aria-labelledby="supply_detail-tab">
+                <!--Supply content-->
+                    {{ render(path('supply_detail', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
+                <!---->
+            </div>
+            <div class="tab-pane fade subject_audience" id="subject_audience" role="tabpanel" aria-labelledby="subject_audience-tab">
+                <!--Subject and audience content-->
+                    {{ render(path('subject_audience', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
+                <!---->
+            </div>
+            <div class="tab-pane fade" id="measure_extent" role="tabpanel" aria-labelledby="measure_extent-tab">
+                <!--Measure and extent content-->
+                    {{ render(path('measure_extent', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
+                <!---->
+            </div>
+            <div class="tab-pane fade" id="ilustrated" role="tabpanel" aria-labelledby="ilustrated-tab">
+                <!--Illustration content-->
+                    {{ render(path('illustration', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
+                <!---->
+            </div>
+            <div class="tab-pane fade" id="related_work" role="tabpanel" aria-labelledby="related_work-tab">
+                <!--Related work content-->
+                    {{ render(path('related_work', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
+                <!---->
+            </div>
+            <div class="tab-pane fade" id="related_product" role="tabpanel" aria-labelledby="related_product-tab">
+                <!--Related product content-->
+                    {{ render(path('related_product', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
+                <!---->
+            </div>
+            <div class="tab-pane fade" id="contributors" role="tabpanel" aria-labelledby="contributors-tab">
+                <!--Contributors content-->
+                    {{ render(path('contributor', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
+                <!---->
+            </div>
+            <div class="tab-pane fade" id="website" role="tabpanel" aria-labelledby="website-tab">...</div>
+            <div class="tab-pane fade" id="prize" role="tabpanel" aria-labelledby="prize-tab">
+                <!--Promotion and prize content-->
+                    {{ render(path('promotion', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
+                <!---->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

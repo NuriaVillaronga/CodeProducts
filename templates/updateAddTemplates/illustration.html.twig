@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Illustration{% endblock %}</title>
+</head>
+
+<body>
+    <form name="illustration_form" method="post" class="dataForm" novalidate="novalidate" action="{{ path('illustration', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}">  
+        <div class="row general_information_content">
+            <div class="col-12">
+                <div class="row first_GI">
+                    <div class="col-12 col-lg-6 inputsGI">
+                        <span>Type</span>
+                        {{ form_widget(formI.typeILL, {'attr': {'class': 'form-select'}}) }} 
+                    </div>
+                    <div class="col-12 col-lg-6 inputsGI">
+                        <label class="form-label">Number</label>
+                        {{ form_widget(formI.numberILL, {'attr': {'class': 'form-control', 'placeholder': 'Number', 'type':'text'}}) }}
+                    </div>
+                </div>
+                <div class="row last_GI">
+                    <div class="col-12 inputsGI">
+                        <label class="form-label">Description</label>
+                        {{ form_widget(formI.descriptionILL, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ form_rest(formI) }}
+        
+        {% include 'updateAddTemplates/bottomButtons.html.twig' %}
+        
+    </form>
+</body>
+</html>

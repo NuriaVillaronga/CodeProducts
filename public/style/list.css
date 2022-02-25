@@ -1,0 +1,549 @@
+/*------------------------------*/
+/*-----------Searchs------------*/
+/*------------------------------*/
+form {
+  padding: 20px;
+  padding-bottom: none !important;
+}
+
+form .select_searchs select {
+  border-bottom: 1px solid #b9b9b9 !important;
+  font-size: 14px;
+}
+
+form .select_searchs select:hover {
+  cursor: pointer;
+}
+
+form .select_searchs span {
+  font-size: 13px;
+  color: rgba(96, 96, 102, 0.938);
+}
+
+form .select_searchs .input_search {
+  margin-top: 22px;
+}
+
+form .select_searchs .input_search .form-control {
+  font-size: 15px;
+  border: none;
+  border-bottom: 1px solid #b9b9b9;
+  padding-bottom: 4.5px !important;
+  padding-left: 0px;
+}
+
+form .select_searchs .select_behavoir {
+  margin-top: 23px;
+}
+
+form .button_searchs {
+  padding: 0px !important;
+}
+
+form .button_searchs .visibleButtons {
+  padding-top: 18px;
+  text-align: right;
+}
+
+form .button_searchs .visibleButtons div {
+  padding-top: 12px;
+}
+
+form .button_searchs .visibleButtons div div {
+  text-align: right;
+  padding-top: 10px;
+  padding-right: 0px;
+}
+
+form .button_searchs .visibleButtons button {
+  color: #4c89a5;
+  font-size: 15px;
+  height: 35px;
+  border: 1px solid #e4e4e4;
+  border-radius: 4px;
+  margin-right: 3px;
+}
+
+form .button_searchs .visibleButtons button:hover {
+  background-color: rgba(230, 227, 227, 0.644);
+  color: #376479;
+}
+
+form .button_searchs .visibleButtons .btn_reload {
+  width: 60px;
+  padding-top: 5px;
+}
+
+form .button_searchs .visibleButtons .btn_reload i {
+  font-size: 17px;
+  color: #4c89a5;
+}
+
+form .button_searchs .visibleButtons .btn_order {
+  width: 90px;
+  padding-top: 5px;
+}
+
+form .button_searchs .visibleButtons .btn_order i {
+  padding-right: 6px;
+  font-size: 16px;
+  color: #4c89a5;
+}
+
+form .button_searchs .visibleButtons .btn_order span {
+  display: inline;
+}
+
+form .button_searchs .visibleButtons .btn_new {
+  padding-top: 5px;
+  width: 200px;
+}
+
+form .button_searchs .visibleButtons .btn_new i {
+  padding-right: 5px;
+  font-size: 15px;
+  color: #4c89a5;
+  display: inline;
+}
+
+form .button_searchs .visibleButtons .btn_search {
+  padding-top: 5px;
+  width: 200px;
+}
+
+form .button_searchs .visibleButtons .btn_search i {
+  padding-right: 10px;
+  font-size: 14px;
+  color: #4c89a5;
+}
+
+form .button_searchs .visibleButtons .btn_search span {
+  display: inline;
+}
+
+form .button_searchs .hiddenParagraphs {
+  display: none;
+}
+
+/*------------------------------*/
+/*------------List--------------*/
+/*------------------------------*/
+.productsList {
+  padding-top: 25px;
+  margin: 0px !important;
+  padding-left: 7px !important;
+  padding-right: 7px !important;
+}
+
+.productsList .hiddenTable {
+  display: none;
+}
+
+.productsList .visibleTable table {
+  font-size: 13px;
+  border: 1px solid #e6e6e6;
+}
+
+.productsList .visibleTable table tr td, .productsList .visibleTable table tr th {
+  color: #9b9a9a;
+  border: 1px solid #e6e6e6;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 5px;
+}
+
+.productsList .visibleTable table tr td input:hover, .productsList .visibleTable table tr th input:hover {
+  cursor: pointer;
+}
+
+.productsList .visibleTable table tr td i, .productsList .visibleTable table tr th i {
+  font-size: 15px;
+  color: #868686;
+}
+
+.productsList .visibleTable table tr td .arrowIcon, .productsList .visibleTable table tr th .arrowIcon {
+  font-size: 15px;
+  color: #2e2d2d;
+}
+
+.productsList .visibleTable table tr td .arrowIcon:hover, .productsList .visibleTable table tr th .arrowIcon:hover {
+  color: #4c89a5;
+  cursor: pointer;
+}
+
+.productsList .visibleTable table tr .center_items {
+  text-align: center;
+}
+
+/*------------------------------*/
+/*---------Pagination-----------*/
+/*------------------------------*/
+footer {
+  padding-top: 30px;
+}
+
+footer .title_pagination {
+  text-align: right;
+  padding-top: 4px;
+}
+
+footer .title_pagination span {
+  color: #868686;
+  font-size: 13px;
+}
+
+footer select {
+  border-bottom: 1px solid #b9b9b9 !important;
+  font-size: 13px !important;
+}
+
+footer select:hover {
+  cursor: pointer;
+}
+
+footer .icons_pagination {
+  padding-left: 15px;
+  padding-top: 2px;
+  font-size: 14px !important;
+}
+
+/*------------------------------*/
+/*---------Responsive-----------*/
+/*------------------------------*/
+@media (max-width: 1837px) {
+  .button_searchs button {
+    color: #4c89a5;
+    font-size: 14px !important;
+    height: 35px;
+    border: 1px solid #e4e4e4;
+    border-radius: 4px;
+    margin-right: 3px;
+  }
+  .button_searchs button:hover {
+    background-color: rgba(230, 227, 227, 0.644);
+    color: #376479;
+  }
+  .button_searchs .btn_reload {
+    width: 43px !important;
+    padding-top: 5px;
+  }
+  .button_searchs .btn_reload i {
+    font-size: 17px;
+    color: #4c89a5;
+  }
+  .button_searchs .btn_order {
+    width: 43px !important;
+    padding-top: 5px;
+  }
+  .button_searchs .btn_order i {
+    padding-right: 0px !important;
+    font-size: 18px !important;
+    color: #4c89a5;
+  }
+  .button_searchs .btn_order span {
+    display: none !important;
+  }
+  .button_searchs .btn_new {
+    padding-top: 5px;
+    width: 163px !important;
+  }
+  .button_searchs .btn_new i {
+    padding-right: 5px;
+    font-size: 14px !important;
+    color: #4c89a5;
+    display: none !important;
+  }
+  .button_searchs .btn_search {
+    padding-top: 5px;
+    width: 175px !important;
+  }
+  .button_searchs .btn_search i {
+    padding-right: 10px;
+    font-size: 13px !important;
+    color: #4c89a5;
+  }
+  .button_searchs .btn_search span {
+    display: inline !important;
+  }
+}
+
+@media (max-width: 1430px) {
+  .button_searchs .btn_search {
+    padding-top: 5px;
+    width: 120px !important;
+  }
+  .button_searchs .btn_search i {
+    padding-right: 10px;
+    font-size: 13px !important;
+    color: #4c89a5;
+  }
+  .button_searchs .btn_search span {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1399px) {
+  .select_behavoir {
+    margin-top: 15px;
+  }
+  .button_searchs .visibleButtons {
+    margin-left: 6px;
+    margin-right: 6px;
+    padding-top: 45px !important;
+    text-align: center !important;
+  }
+  .button_searchs .visibleButtons div {
+    padding-top: 12px;
+  }
+  .button_searchs .visibleButtons div div {
+    text-align: center !important;
+    padding-top: 33px !important;
+    padding-right: 10px !important;
+  }
+  .button_searchs .visibleButtons button {
+    color: #4c89a5;
+    font-size: 15px !important;
+    height: 35px;
+    border: 1px solid #e4e4e4;
+    border-radius: 4px;
+    margin-right: 3px;
+  }
+  .button_searchs .visibleButtons button:hover {
+    background-color: rgba(230, 227, 227, 0.644);
+    color: #376479;
+  }
+  .button_searchs .visibleButtons .btn_reload {
+    width: 60px !important;
+    padding-top: 5px;
+  }
+  .button_searchs .visibleButtons .btn_reload i {
+    font-size: 17px;
+    color: #4c89a5;
+  }
+  .button_searchs .visibleButtons .btn_order {
+    width: 90px !important;
+    padding-top: 5px;
+  }
+  .button_searchs .visibleButtons .btn_order i {
+    padding-right: 6px !important;
+    font-size: 16px !important;
+    color: #4c89a5;
+  }
+  .button_searchs .visibleButtons .btn_order span {
+    display: inline !important;
+  }
+  .button_searchs .visibleButtons .btn_new {
+    padding-top: 5px;
+    width: 200px !important;
+  }
+  .button_searchs .visibleButtons .btn_new i {
+    padding-right: 5px;
+    font-size: 15px !important;
+    color: #4c89a5;
+    display: inline !important;
+  }
+  .button_searchs .visibleButtons .btn_search {
+    padding-top: 5px;
+    width: 200px !important;
+  }
+  .button_searchs .visibleButtons .btn_search i {
+    padding-right: 10px;
+    font-size: 14px !important;
+    color: #4c89a5;
+  }
+  .button_searchs .visibleButtons .btn_search span {
+    display: inline !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .input_search {
+    margin-top: 15px;
+  }
+  .productsList .visibleTable {
+    display: none;
+  }
+  .productsList .hiddenTable {
+    display: block;
+  }
+  .productsList .hiddenTable table {
+    font-size: 13px;
+    border: 1px solid #e6e6e6;
+  }
+  .productsList .hiddenTable table tr {
+    text-align: center;
+  }
+  .productsList .hiddenTable table tr td, .productsList .hiddenTable table tr th {
+    color: #9b9a9a;
+    border: 1px solid #e6e6e6;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-left: 0px !important;
+  }
+  .productsList .hiddenTable table tr td input:hover, .productsList .hiddenTable table tr th input:hover {
+    cursor: pointer;
+  }
+  .productsList .hiddenTable table tr td i, .productsList .hiddenTable table tr th i {
+    font-size: 15px;
+    color: #868686;
+  }
+  .productsList .hiddenTable table tr td .arrowIcon, .productsList .hiddenTable table tr th .arrowIcon {
+    font-size: 15px;
+    color: #2e2d2d;
+  }
+  .productsList .hiddenTable table tr td .arrowIcon:hover, .productsList .hiddenTable table tr th .arrowIcon:hover {
+    color: #4c89a5;
+    cursor: pointer;
+  }
+  .productsList .hiddenTable table tr th {
+    background-color: rgba(240, 239, 239, 0.562);
+  }
+}
+
+@media (max-width: 639px) {
+  .button_searchs .visibleButtons button {
+    color: #4c89a5;
+    font-size: 14px !important;
+    height: 35px;
+    border: 1px solid #e4e4e4;
+    border-radius: 4px;
+    margin-right: 3px;
+  }
+  .button_searchs .visibleButtons button:hover {
+    background-color: rgba(230, 227, 227, 0.644);
+    color: #376479;
+  }
+  .button_searchs .visibleButtons .btn_reload {
+    width: 43px !important;
+    padding-top: 5px;
+  }
+  .button_searchs .visibleButtons .btn_reload i {
+    font-size: 17px;
+    color: #4c89a5;
+  }
+  .button_searchs .visibleButtons .btn_order {
+    width: 43px !important;
+    padding-top: 5px;
+  }
+  .button_searchs .visibleButtons .btn_order i {
+    padding-right: 0px !important;
+    font-size: 18px !important;
+    color: #4c89a5;
+  }
+  .button_searchs .visibleButtons .btn_order span {
+    display: none !important;
+  }
+  .button_searchs .visibleButtons .btn_new {
+    padding-top: 5px;
+    width: 163px !important;
+  }
+  .button_searchs .visibleButtons .btn_new i {
+    padding-right: 5px;
+    font-size: 14px !important;
+    color: #4c89a5;
+    display: none !important;
+  }
+  .button_searchs .visibleButtons .btn_search {
+    padding-top: 5px;
+    width: 175px !important;
+  }
+  .button_searchs .visibleButtons .btn_search i {
+    padding-right: 10px;
+    font-size: 13px !important;
+    color: #4c89a5;
+  }
+  .button_searchs .visibleButtons .btn_search span {
+    display: inline !important;
+  }
+}
+
+@media (max-width: 576px) {
+  footer .title_pagination {
+    text-align: left;
+    padding-bottom: 10px;
+  }
+  footer .icons_pagination {
+    padding-left: 0px;
+  }
+}
+
+@media (max-width: 521px) {
+  .button_searchs {
+    margin-top: 40px !important;
+  }
+  .button_searchs .visibleButtons {
+    display: none;
+  }
+  .button_searchs .hiddenParagraphs {
+    margin-left: 6px;
+    margin-right: 6px;
+    text-align: center;
+    display: block !important;
+  }
+  .button_searchs .hiddenParagraphs div {
+    padding-top: 12px;
+  }
+  .button_searchs .hiddenParagraphs div div {
+    text-align: center !important;
+    padding-top: 33px !important;
+    padding-right: 10px !important;
+  }
+  .button_searchs .hiddenParagraphs button {
+    color: #4c89a5;
+    font-size: 15px !important;
+    height: 35px;
+    border: 1px solid #e4e4e4;
+    border-radius: 4px;
+    margin-right: 3px;
+  }
+  .button_searchs .hiddenParagraphs button:hover {
+    background-color: rgba(230, 227, 227, 0.644);
+    color: #376479;
+  }
+  .button_searchs .hiddenParagraphs .btn_reload {
+    width: 60px !important;
+    padding-top: 5px;
+  }
+  .button_searchs .hiddenParagraphs .btn_reload i {
+    font-size: 17px;
+    color: #4c89a5;
+  }
+  .button_searchs .hiddenParagraphs .btn_order {
+    width: 90px !important;
+    padding-top: 5px;
+  }
+  .button_searchs .hiddenParagraphs .btn_order i {
+    padding-right: 6px !important;
+    font-size: 16px !important;
+    color: #4c89a5;
+  }
+  .button_searchs .hiddenParagraphs .btn_order span {
+    display: inline !important;
+  }
+  .button_searchs .hiddenParagraphs .btn_new {
+    padding-top: 5px;
+    width: 200px !important;
+  }
+  .button_searchs .hiddenParagraphs .btn_new i {
+    padding-right: 5px;
+    font-size: 15px !important;
+    color: #4c89a5;
+    display: inline !important;
+  }
+  .button_searchs .hiddenParagraphs .btn_search {
+    padding-top: 5px;
+    width: 200px !important;
+  }
+  .button_searchs .hiddenParagraphs .btn_search i {
+    padding-right: 10px;
+    font-size: 14px !important;
+    color: #4c89a5;
+  }
+  .button_searchs .hiddenParagraphs .btn_search span {
+    display: inline !important;
+  }
+  .productsList {
+    padding-top: 4px !important;
+  }
+}
+/*# sourceMappingURL=list.css.map */

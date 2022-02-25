@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Tab contributor{% endblock %}</title>
+</head>
+
+<body>
+    <div class="row tab">
+        <ul class="nav nav-tabs" role="tablist">
+            {% set contador = 0 %}
+            {% for contributor in contributors %}
+                {% set contador = contador + 1 %}
+                {% if contador == 1 %}
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="contributor{{contador}}-tab" data-bs-toggle="tab" data-bs-target="#contributor{{contador}}" type="button" role="tab" aria-controls="contributor{{contador}}" aria-selected="true">Contributor{{contador}}</button>
+                    </li>
+                {% else %}
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="contributor{{contador}}-tab" data-bs-toggle="tab" data-bs-target="#contributor{{contador}}" type="button" role="tab" aria-controls="contributor{{contador}}" aria-selected="false">Contributor{{contador}}</button>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            <li class="nav-item li-add-object" role="presentation">
+                <a class="btn btn-add-object" href="{{ path('new_contributor', {'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id}) }}">Add new Contributor</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            {% set contador = 0 %}
+            {% for contributor in contributors %} 
+                {% set contador = contador + 1 %}
+                <div class="tab-pane fade" id="contributor{{contador}}" role="tabpanel" aria-labelledby="contributor{{contador}}-tab">
+                    {{ render(path('tab_contributor', { 'id_product': product.id, 'id_contributor': contributor.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

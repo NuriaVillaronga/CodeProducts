@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Supply{% endblock %}</title>
+</head>
+
+{% block body %}
+    <form name="supplier_form" method="post" class="dataForm" novalidate="novalidate" action="{{ path('tab_supplier', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id, 'id_supplier':supplier.id}) }}">   
+        <div class="row general_information_content">
+            <div class="col-12">
+                <div class="row first_GI">
+                    <div class="col-12 inputsGI">
+                        <label class="form-label">Supplier name</label>
+                        {{ form_widget(formSupplier.supplierName, {'attr': {'class': 'form-control', 'placeholder': 'Supplier name', 'type':'text'}}) }}
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 col-lg-6 inputsGI">
+                        <span>Supplier Role</span>
+                        {{ form_widget(formSupplier.supplierRole, {'attr': {'class': 'form-select'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-6 inputsGI">
+                        <span>Product availability</span>
+                        {{ form_widget(formSupplier.productAvailability, {'attr': {'class': 'form-select'}}) }} 
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 col-lg-6 inputsGI">
+                        <label class="form-label">Pack quantity</label>
+                        {{ form_widget(formSupplier.packQuantity, {'attr': {'class': 'form-control', 'placeholder': 'Pack quantity', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-6 column_hidden_before_md"></div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 col-lg-6 inputsGI">
+                        <label class="form-label">On sale date (YYYYMMDD)</label>
+                        <input class="form-control" type="text">
+                        {# {{ form_widget(formSupplier.supplierName, {'attr': {'class': 'form-control', 'placeholder': 'On sale date (YYYYMMDD)', 'type':'text'}}) }} #}
+                    </div>
+                    <div class="col-12 col-lg-6 inputsGI">
+                        <label class="form-label">Expected ship date date (YYYYMMDD)</label>
+                        <input class="form-control" type="text">
+                        {# {{ form_widget(formSupplier.supplierName, {'attr': {'class': 'form-control', 'placeholder': 'Expected ship date date (YYYYMMDD)', 'type':'text'}}) }} #}
+                    </div>
+                </div>
+                <div class="row last_GI">
+                    <div class="col-12 col-lg-6 inputsGI">
+                        <span>Returns type</span>
+                        {{ form_widget(formSupplier.returnsCodeType, {'attr': {'class': 'form-select'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-6 inputsGI">
+                        <span>Returns code</span>
+                        {{ form_widget(formSupplier.returnsCode, {'attr': {'class': 'form-select'}}) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12 col-lg-3">Price type</div> 
+                    <div class="col-12 col-lg-2">Price</div>
+                    <div class="col-12 col-lg-2">Currency</div>
+                    <div class="col-12 col-lg-2">Countries</div>
+                    <div class="col-12 col-lg-3"><a class="btn btn-light" href="{{ path('new_price', {'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id, 'id_supplier': supplier.id}) }}">Add</a></div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="accordion accordion-flush">
+                    {% set contadorPrice = 0 %} 
+                    {% for price in formSupplier.prices %}
+                        {% set contadorPrice = contadorPrice + 1 %}
+                            <div class="accordion-item" id="accordion{{contadorPrice}}">
+                                <div class="row border accordion-button col-12 container-fluid" type="button" data-bs-toggle="collapse" data-bs-target="#option{{contadorPrice}}" aria-expanded="false" aria-controls="option{{contadorPrice}}">
+                                    <div class="col-12 col-lg-3">------</div>
+                                    <div class="col-12 col-lg-2">----</div>
+                                    <div class="col-12 col-lg-2">------</div>
+                                    <div class="col-12 col-lg-2">-------</div>
+                                    <div class="col-12 col-lg-3">-------</div>
+                                </div>
+                                <div id="option{{contadorPrice}}" class="accordion-collapse collapse" aria-labelledby="heading{{contadorPrice}}" data-bs-parent="#accordion{{contadorPrice}}">
+                                    <div class="accordion-body">
+                                        <div class="row general_information_content" id="ginfo_price">
+                                            <div class="col-12">
+                                                <div class="row first_GI">
+                                                    <div class="col-12 col-lg-3 inputsGI">
+                                                        <label class="form-label">Price type</label>
+                                                        {{ form_widget(price.priceType, {'attr': {'class': 'form-select'}}) }}
+                                                    </div>
+                                                    <div class="col-12 col-lg-3 inputsGI">
+                                                        <label class="form-label">Price</label>
+                                                        <input class="form-control" type="text">
+                                                        {# {{ form_widget(formformPrice.keyNames, {'attr': {'class': 'form-control', 'placeholder': 'Name (key)', 'type':'text'}}) }} #}
+                                                    </div>
+                                                    <div class="col-12 col-lg-3 inputsGI">
+                                                        <label class="form-label">Currency</label>
+                                                        {{ form_widget(price.currencyCode, {'attr': {'class': 'form-select'}}) }}
+                                                    </div>
+                                                    <div class="col-12 col-lg-3 inputsGI">
+                                                        <label class="form-label">Countries</label>
+                                                        {{ form_widget(price.countriesIncluded, {'attr': {'class': 'form-select'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="row GI">
+                                                    <div class="col-12 col-lg-4 inputsGI"> 
+                                                        <label class="form-label">Discount type</label>
+                                                        {{ form_widget(price.discountCodeType, {'attr': {'class': 'form-select'}}) }}
+                                                    </div>
+                                                    <div class="col-12 col-lg-4 inputsGI">
+                                                        <label class="form-label">Discount code</label>
+                                                        {{ form_widget(price.discountCode, {'attr': {'class': 'form-control', 'placeholder': 'Discount code', 'type':'text'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="row GI">
+                                                    <div class="col-12 col-lg-4 inputsGI"> 
+                                                        <label class="form-label">Tax rate</label>
+                                                        {{ form_widget(price.taxRateCode, {'attr': {'class': 'form-select'}}) }} 
+                                                    </div>
+                                                    <div class="col-12 col-lg-4 inputsGI">
+                                                        <label class="form-label">Taxable</label>
+                                                        {{ form_widget(price.taxableAmount, {'attr': {'class': 'form-control', 'placeholder': 'Taxable', 'type':'text'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="row last_GI">
+                                                    <div class="col-12 col-lg-4 inputsGI"> 
+                                                        <label class="form-label">Tax amount</label>
+                                                        {{ form_widget(price.taxAmount, {'attr': {'class': 'form-control', 'placeholder': 'Tax amount', 'type':'text'}}) }}
+                                                    </div>
+                                                    <div class="col-12 col-lg-4 inputsGI">
+                                                        <label class="form-label">Tax %</label>
+                                                        {{ form_widget(price.taxRatePercent, {'attr': {'class': 'form-control', 'placeholder': 'Tax %', 'type':'text'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    {% endfor %}
+                    <!--............................................................................................-->
+                    {# {{ render(path('price', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id, 'id_supplier': supplier.id } )) }} #}
+                    <!--............................................................................................-->
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12 col-lg-2 col-remove-object">
+                        <a class="btn btn-remove-object" href="{{ path('delete_supplier', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id, 'id_supplier': supplier.id }) }}">Delete supplier</a>
+                    </div>
+                    <div class="col-12 col-lg-10 column_hidden_before_md"></div>
+                </div>
+            </div>
+        </div>
+        {{ form_rest(formSupplier) }}
+
+        {% include 'updateAddTemplates/bottomButtons.html.twig' %}
+    </form>
+{% endblock %}
+</html>
+
+<script>
+var items = document.querySelectorAll('.accordion-item');
+    //gi = document.getElementById('ginfo_price');
+    items.forEach((item) => {
+        removeFormButton = document.createElement('button');
+        removeFormButton.innerText = 'Delete';
+        
+        item.append(removeFormButton);
+        removeFormButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            item.remove();
+        });
+    });
+</script>

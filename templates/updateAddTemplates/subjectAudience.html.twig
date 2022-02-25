@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Subject and Audience{% endblock %}</title>
+</head>
+
+<body>
+    <form name="subject_audience_form" method="post" class="dataForm" novalidate="novalidate" action="{{ path('subject_audience', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}">  
+        <div class="row general_information_content"> 
+            <div class="col-12">
+                <div class="row first_GI">
+                    <div class="col-12 inputsGI">
+                        <label class="form-label">BISAC Subject</label>
+                        {{ form_widget(formSA.bisacSubject, {'attr': {'class': 'form-control', 'placeholder': 'BISAC Subject', 'type':'text'}}) }}
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">BISAC Region</label>
+                        <input type="text" class="form-control" placeholder="BISAC Region"><!---->
+                    </div>
+                    <div class="col-12 col-lg-8 inputsGI">
+                        <label class="form-label">.</label><!---->
+                        <input type="text" class="form-control"><!---->
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 col-lg-9 inputsGI">
+                        <label class="form-label">BIC Subject</label>
+                        {{ form_widget(formSA.subjectCode, {'attr': {'class': 'form-control', 'placeholder': 'BIC Subject', 'type':'text'}}) }} 
+                    </div>
+                    <div class="col-12 col-lg-3 inputsGI">
+                        <label class="form-label">BIC Version</label>
+                        {{ form_widget(formSA.subjectSchemaVersion, {'attr': {'class': 'form-control', 'placeholder': 'BIC Version', 'type':'text'}}) }}
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">Thema subject</label>
+                        {{ form_widget(formSA.themaSubject, {'attr': {'class': 'form-control', 'placeholder': 'Thema subject', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-8 inputsGI">
+                        <label class="form-label">.</label><!---->
+                        <input type="text" class="form-control"><!---->
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 inputsGI">
+                        <label class="form-label">CLIL Subject</label>
+                        <input type="text" class="form-control" placeholder="CLIL Subject"><!---->
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">Themes Electre</label>
+                        {{ form_widget(formSA.themesElectre, {'attr': {'class': 'form-control', 'placeholder': 'Themes Electre', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-8 inputsGI">
+                        <label class="form-label">Keywords</label>
+                        {{ form_widget(formSA.subjectHeadingText, {'attr': {'class': 'form-control', 'placeholder': 'Keywords', 'type':'text'}}) }}
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <span>Audience Code</span>
+                        {{ form_widget(formSA.audienceCode, {'attr': {'class': 'js-example-basic-multiple'}}) }}  
+                    </div>
+                    <div class="col-12 col-lg-4 column_hidden_before_md"></div>
+                    <div class="col-12 col-lg-4 column_hidden_before_md"></div>
+                </div>
+                <div class="row last_GI">
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <span>Audience Range</span>
+                        {{ form_widget(formSA.audienceRangeQualifier, {'attr': {'class': 'form-select'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">From</label>
+                        {{ form_widget(formSA.audienceFrom, {'attr': {'class': 'form-control', 'placeholder': 'From', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">To</label>
+                        {{ form_widget(formSA.audienceTo, {'attr': {'class': 'form-control', 'placeholder': 'To', 'type':'text'}}) }}
+                    </div>
+                </div>
+            </div>
+        </div> 
+        {{ form_rest(formSA) }}
+
+        {% include 'updateAddTemplates/bottomButtons.html.twig' %}
+    </form>
+</body>
+</html>

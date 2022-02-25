@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table products</title>
+</head>
+
+<body>
+    <div class="row container-fluid productsList">
+      {% if user.products|length > 0 %}
+        <div class="visibleTable">
+            <table class="table tableList">
+                <tr>
+                    <th class="center_items"></th>
+                    <th class="center_items">
+                        <i class="bi bi-image-fill"></i>
+                    </th>
+                    <th>Árbitro</th>
+                    <th>Título <i class="bi bi-arrow-up arrowIcon"></i></th>
+                    <th>ISBN13/EAN</th>
+                    <th>Forma del producto</th>
+                    <th>Autores</th>
+                    <th>Asignaturas</th>
+                    <th>ONIX</th>
+                    <th></th>
+                </tr>
+                {% for product in pagination %}
+                  <tr>
+                      <td><input type="checkbox"></td>
+                      <td>________</td>
+                      <td>{{ product.recordReference }}</td>
+                      <td>{{ product.titleText }}</td>
+                      <td>___________</td>
+                      <td>{{ product.productForm }}</td>
+                      <td>____________</td>
+                      <td>{{ product.subjectHeadingText }}</td>
+                      <td>_____</td>
+                      <td>
+                        <a href="{{ path('update_product', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}" class="btn btn-sm btn-primary">update</a>
+                        <a class="btn btn-sm btn-secondary">duplicate</a> {#href="{{ path('duplicate_product', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}"#}
+                        <a href="{{ path('delete_product', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}" class="btn btn-sm btn-danger">delete</a>
+                      </td>
+                  </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="hiddenTable">
+            <table class="table tableList">
+                <tr><th>Título <i class="bi bi-arrow-up arrowIcon"></i></th></tr>
+                {% for product in pagination %}
+                  <tr>
+                      <td><input type="checkbox">{{ product.titleText }}</td>
+                  </tr>
+                {% endfor %}
+                <tr><th>Árbitro</th></tr>
+                {% for product in pagination %}
+                  <tr>
+                      <td>{{ product.recordReference }}</td>
+                  </tr>
+                {% endfor %}
+                <tr><th>ISBN13/EAN</th></tr>
+                {% for product in pagination %}
+                  <tr>
+                      <td>___________</td>
+                  </tr>
+                {% endfor %}
+                <tr><th>Forma del producto</th></tr>
+                {% for product in pagination %}
+                  <tr>
+                      <td>{{ product.productForm }}</td>
+                  </tr>
+                {% endfor %}
+                <tr><th>Autores</th></tr>
+                {% for contributor in pagination %}
+                  <tr>
+                      <td>___________</td>
+                  </tr>
+                {% endfor %}
+                <tr><th>Asignaturas</th></tr>
+                {% for product in pagination %}
+                  <tr>
+                      <td>{{ product.subjectHeadingText }}</td>
+                  </tr>
+                {% endfor %}
+                <tr><th><i class="bi bi-image-fill"></i></th></tr>
+                {% for product in pagination %}
+                  <tr>
+                      <td>________</td>
+                  </tr>
+                {% endfor %}
+                <tr><th>ONIX</th></tr>
+                {% for product in pagination %}
+                  <tr>
+                      <td>______</td>
+                  </tr>
+                {% endfor %}
+                <tr><th></th></tr>
+                {% for product in pagination %}
+                  <tr>
+                      <td>
+                        <a href="{{ path('update_product', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}" class="btn btn-sm btn-primary">edit</a>
+                        <a class="btn btn-sm btn-danger">duplicate</a> 
+                        <a href="{{ path('delete_product', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}" class="btn btn-sm btn-danger">delete</a>
+                      </td>
+                  </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <!--Pagination-->
+            {% include 'listTemplates/pagination.html.twig' %}
+        <!---->
+      {% else %}
+        <div>No products loaded yet</div>
+      {% endif %}
+    </div>
+</body>
+</html>

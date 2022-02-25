@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Searchs bar list products{% endblock %}</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <form class="row searchs">
+            <div class="col-12 col-xxl-8 select_searchs">
+                <div class="row">
+                    <div class="col-12 col-md-5 col-xxl-3">
+                        <span>Vista</span>
+                        <select class="form-select">
+                            <option value="1" selected>Defecto</option>
+                            <option value="2">Defecto 2</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-7 col-xxl-4 input_search">
+                        <input type="text" id="search" class="form-control" placeholder="Busqueda de texto completo en productos">
+                    </div>
+                    <div class="col-12 col-xxl-5 select_behavoir">
+                        <select class="form-select">
+                            <option value="1" selected disabled>Comportamiento</option>
+                            <option value="2">Comportamiento 1</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-xxl-4 button_searchs"> 
+                <div class="row">
+                    <div class="col-12">
+                        <div class="visibleButtons">
+                            <button class="shadow-sm btn changeOnGrey btn_search" onclick="width()" type="button"><i class="bi bi-search"></i>Búsqueda <span>avanzada</span></button>
+                            <button class="shadow-sm btn changeOnGrey btn_new" type="button"><i class="bi bi-plus"></i>Agregar nuevo título</button>
+                            <button class="shadow-sm btn changeOnGrey btn_reload" type="button" onclick="refresh()"><i class="bi bi-arrow-clockwise"></i></button>
+                            <button class="shadow-sm btn changeOnGrey btn_order" type="button"><i class="bi bi-filter"></i><span>A-Z</span></button>
+                        </div>
+                        <p class="hiddenParagraphs">
+                            <button class="shadow-sm btn changeOnGrey btn_search" type="button"><i class="bi bi-search"></i>Búsqueda <span>avanzada</span></button>
+                        </p>
+                        <p class="hiddenParagraphs">
+                            <button class="shadow-sm btn changeOnGrey btn_new" type="button"><i class="bi bi-plus"></i>Agregar nuevo título</button>
+                        </p>
+                        <p class="hiddenParagraphs">
+                            <button class="shadow-sm btn changeOnGrey btn_reload" type="button" onclick="refresh()"><i class="bi bi-arrow-clockwise"></i></button>
+                            <button class="shadow-sm btn changeOnGrey btn_order" type="button"><i class="bi bi-filter"></i><span>A-Z</span></button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

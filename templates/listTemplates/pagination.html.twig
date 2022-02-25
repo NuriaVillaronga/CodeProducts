@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination</title>
+</head>
+
+<body>
+    <footer class="container-fluid">
+        <div class="row">
+            <div class="col-1 col-sm-2 col-md-3 col-xl-4"></div>
+            <div class="col-10 col-sm-8 col-md-6 col-xl-4">
+                <form class="row formSelectPage" action="{{ path('view_product', {'id_user': user.id, 'id_catalog': catalog.id, 'pageNumber': firstPage, 'productsPerPage': productsPerPage}) }}" method="get">
+                    <div class="col-12 col-sm-5 title_pagination">
+                        <span>Productos por página</span>
+                    </div>
+                    <div class="col-6 col-sm-2">
+                        <select name="productsPerPage" class="form-select selectPages">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                        </select>
+                    </div>
+                    <div class="col-6 col-sm-5 icons_pagination">
+                        <nav>
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    {% if previous >= 1 %}
+                                        <a class="page-link" href="{{ path('view_product', {'id_user': user.id, 'id_catalog': catalog.id, 'pageNumber': previous, 'productsPerPage': productsPerPage }) }}">
+                                            <i class="bi bi-chevron-left"></i>
+                                        </a>
+                                    {% endif %}
+                                </li>
+                                <li class="page-item">
+                                    {% if next < user.products|length / productsPerPage + 1 %}
+                                        <a class="page-link" href="{{ path('view_product', {'id_user': user.id, 'id_catalog': catalog.id, 'pageNumber': next, 'productsPerPage': productsPerPage }) }}">
+                                            <i class="bi bi-chevron-right"></i>
+                                        </a>
+                                    {% endif %}
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </form>
+            </div>
+            <div class="col-1 col-sm-2 col-md-3 col-xl-4"></div>
+        </div>
+    </footer>
+</body>
+</html>

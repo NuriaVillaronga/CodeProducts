@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Menu{% endblock %}</title>
+</head>
+
+<body>
+    <div class="navigation_bar">
+        <nav class="navbar navbar-expand-lg">
+            <div class="row menu_select_SM">
+                <div class="col-1"></div>
+                <div class="col-3 select_title">Catálogo:</div>
+                <div class="col-7 select_content">
+                    <select class="form-select">
+                        <option value="1">Ejemplo catalogo 1</option>
+                        <option value="2">Ejemplo catalogo 2</option>
+                    </select>
+                </div>
+                <div class="col-1"></div>
+            </div>
+            <div class="row menu_select_XS">
+                <div class="col-4 select_title">Catálogo:</div>
+                <div class="col-8 select_content">
+                    <select class="form-select">
+                        <option value="1">Ejemplo catalogo 1</option>
+                        <option value="2">Ejemplo catalogo 2</option>
+                    </select>
+                </div>
+            </div>
+            <div class="navbar-toggler hamburguerIcon changeOnMenu" data-bs-toggle="collapse" data-bs-target="#menuItems">
+                <i class="bi bi-list"></i>
+            </div>
+            <div id="menuItems" class="collapse navbar-collapse">  
+                <ul class="navbar-nav ms-5 ul-menuItems">
+                    <li class="nav-item dropdown">
+                        <div class="changeOnMenu">
+                            <a class="nav-link" href="#" id="settingsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                <i class="bi bi-gear-fill"></i>
+                                <span>Settings</span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="settingsDropdown">
+                                <li><a class="dropdown-item" href="#">Shopify settings</a></li>
+                                <li><a class="dropdown-item" href="#">Change my password</a></li>
+                            </ul>
+                        <div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="changeOnMenu commentsItem">
+                            <a>
+                                <i class="bi bi-chat-right-text-fill"></i>
+                                <span>Añadir comentarios</span>  
+                            </a>
+                        </div>
+                    </li>
+                    <span class="separator_icon">|</span>
+                    <li class="nav-item">
+                        <div class="changeOnMenu">
+                            <a class="nav-link" href="#" id="informationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                <i class="bi bi-clipboard-minus"></i>
+                                <span>Information</span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="informationDropdown"> 
+                                <li><a class="dropdown-item" href="#">Go to documentation</a></li>
+                                <li><a class="dropdown-item" href="#"><input type="checkbox">Show help fields</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="changeOnMenu">
+                            <a>
+                                <i class="bi bi-question-circle"></i>
+                                <span>Ayuda</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="changeOnMenu">
+                            <a>
+                                <i class="bi bi-globe"></i>
+                                <span>Idioma</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item last_item_hamburguer">
+                        <div class="changeOnMenu exitItem">
+                            <a href="{{ path('app_logout') }}">
+                                <i class="bi bi-box-arrow-in-right"></i>
+                                <span>Salir</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</body>
+</html>

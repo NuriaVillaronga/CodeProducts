@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Related Product Form{% endblock %}</title>
+</head>
+
+<body>
+    <form name="related_product_form" method="post" class="dataForm" novalidate="novalidate" action="{{ path('card_related_product', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id, 'id_rp':relatedProduct.id}) }}">
+        <span>Product Relation Code</span>  
+        {{ form_widget(formRP.productRelationCode, {'attr': {'class': 'js-example-basic-multiple'}}) }}
+                            
+        <label class="form-label">ISBN13/EAN</label>
+        {{ form_widget(formRP.relatedProductISBN, {'attr': {'class': 'form-control', 'placeholder': 'ISBN13/EAN', 'type':'text'}}) }}
+
+        <span>Product Form</span>
+        {{ form_widget(formRP.productFormRP, {'attr': {'class': 'form-select'}}) }}
+
+        <span>Product Form Detail</span>
+        {{ form_widget(formRP.productFormDetailRP, {'attr': {'class': 'js-example-basic-multiple'}}) }}
+
+        {{ form_rest(formRP) }}
+        {% include 'updateAddTemplates/bottomButtons.html.twig' %}
+    </form>
+</body>
+</html>

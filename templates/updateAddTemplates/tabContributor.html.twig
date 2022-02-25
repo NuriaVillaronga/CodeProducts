@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Contributor Form{% endblock %}</title>
+</head>
+
+<body>
+    <form name="contributor_form" method="post" class="dataForm" novalidate="novalidate" action="{{ path('tab_contributor', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id, 'id_contributor':contributor.id}) }}"> 
+        <div class="row general_information_content"> 
+            <div class="col-12">
+                <div class="row first_GI">
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">First name (bef.key)</label>
+                        {{ form_widget(formContributor.namesBeforeKey, {'attr': {'class': 'form-control', 'placeholder': 'First name (bef.key)', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">Name (key)</label>
+                        {{ form_widget(formContributor.keyNames, {'attr': {'class': 'form-control', 'placeholder': 'Name (key)', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">Person name</label>
+                        {{ form_widget(formContributor.personName, {'attr': {'class': 'form-control', 'placeholder': 'Person name', 'type':'text'}}) }}
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 col-lg-4 inputsGI"> 
+                        <label class="form-label">Person name inverted</label>
+                        {{ form_widget(formContributor.personNameInverted, {'attr': {'class': 'form-control', 'placeholder': 'Person name inverted', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">Corporate name</label>
+                        {{ form_widget(formContributor.corporateName, {'attr': {'class': 'form-control', 'placeholder': 'Corporate name', 'type':'text'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <span>Role</span>
+                        {{ form_widget(formContributor.contributorRole, {'attr': {'class': 'js-example-basic-multiple'}}) }}
+                    </div>
+                </div>
+                <div class="row last_GI">
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <span>Country</span>
+                        {{ form_widget(formContributor.countryCode, {'attr': {'class': 'form-select'}}) }} 
+                    </div>
+                    <div class="col-12 col-lg-4 column_hidden_before_md"></div>
+                    <div class="col-12 col-lg-4 column_hidden_before_md"></div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12 col-lg-2 col-remove-object">
+                        <a class="btn btn-remove-object"  href="{{ path('delete_contributor', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id, 'id_contributor': contributor.id }) }}">Delete contributor</a>
+                    </div>
+                    <div class="col-12 col-lg-10 column_hidden_before_md"></div>
+                </div>
+            </div>
+        </div>
+        {{ form_rest(formContributor) }}
+
+        {% include 'updateAddTemplates/bottomButtons.html.twig' %}
+    </form>
+</body>
+</html>

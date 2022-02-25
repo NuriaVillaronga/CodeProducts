@@ -1,0 +1,25 @@
+$nav-tabs-link-active-bg: rgb(212, 211, 211);
+$nav-tabs-link-active-color: rgb(255, 71, 71);
+$input-focus-box-shadow: none !important;
+$form-feedback-icon-invalid: none;
+$form-feedback-icon-valid: none;
+$form-feedback-valid-color: rgb(185, 185, 185);
+$form-select-focus-border-color: transparent;
+$form-select-focus-box-shadow: none !important;
+$form-select-border-width: 0px;
+$form-select-border-radius: 0px;
+$form-select-padding-x: 0px;
+$form-select-indicator: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='rgb(185, 185, 185)' class='bi bi-caret-down-fill' viewBox='0 0 16 16'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>");
+$input-group-addon-padding-x: 0px;
+$input-group-addon-bg: white;
+$input-border-radius: 0%;
+$pagination-focus-box-shadow: none !important;
+$pagination-focus-bg: transparent !important;
+$pagination-hover-bg: rgba(212, 211, 211, 0.24) !important;
+$pagination-border-width: 0px;
+$pagination-border-radius: 20px;
+$pagination-color: rgb(138, 136, 136);
+$pagination-hover-color: rgb(88, 88, 88);
+
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+

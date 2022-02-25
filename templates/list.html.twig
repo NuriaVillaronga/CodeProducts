@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+{% block title %}Dashboard admin{% endblock %}
+{% block body %}
+
+{% for message in app.flashes('messageCreate') %}
+    <div class="alert alert-success" role="alert" style="width:50%; text-align:center; margin-left:23.5%; margin-top:1.5%;">
+        {{ message }}
+    </div>
+{% endfor %}
+{% for message in app.flashes('messageUpdate') %}
+    <div class="alert alert-success" role="alert" style="width:50%; text-align:center; margin-left:23.5%; margin-top:1.5%;">
+        {{ message }}
+    </div>
+{% endfor %}
+{% for message in app.flashes('messageCatalog') %}
+    <div class="alert alert-success" role="alert" style="width:50%; text-align:center; margin-left:23.5%; margin-top:1.5%;">
+        {{ message }}
+    </div>
+{% endfor %}
+
+<div class="container" style="margin-top:60px">
+  <table class="table table-striped table-hover">
+    <tr class="table-dark">
+        <th>Id</th> 
+        <th>Email</th>
+        <th>Catalog</th>
+    </tr>
+      {% if is_granted('ROLE_ADMIN') %}
+        {% for user in pagination %}
+          <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              <a href="{{ path('create_catalog', {'id': user.id}) }}" class="btn btn-sm btn-success">create</a>
+              <a href="{{ path('view_catalog', {'user_id': user.id}) }}" class="btn btn-sm btn-info">view</a>
+            </td>
+          </tr>
+        {% endfor %}
+      {% else %}
+        <tr>
+          <td>{{ app.user.id }}</td>
+          <td>{{ app.user.email }}</td>
+          <td>
+            <a href="{{ path('create_catalog', {'id': user.id}) }}" class="btn btn-sm btn-success">create</a>
+            <a href="{{ path('view_catalog', {'id': user.id}) }}" class="btn btn-sm btn-info">view</a>
+          </td>
+        </tr>
+      {% endif %}
+
+  </table>
+
+  {% if is_granted('ROLE_ADMIN') %}
+    <div class="navigation">
+      {{ knp_pagination_render(pagination) }}
+    </div>
+  {% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Promotion Form{% endblock %}</title>
+</head>
+
+<body>
+    <form name="promotion_form" method="post" class="dataForm" novalidate="novalidate" action="{{ path('promotion', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}">   
+        <div class="row general_information_content">
+            <div class="col-12">
+                <div class="row first_GI">
+                    <div class="col-12">
+                        <label class="form-label">Promotion campaign</label>
+                        {{ form_widget(formP.promotionCampaign, {'attr': {'class': 'form-control', 'placeholder': 'Promotion campaign'}}) }}
+                    </div>
+                </div>
+                <div class="row tab last_GI">
+                    {{ render(path('prize', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
+                    <div class="tab-content">
+                        {% set contadorPrize = 0 %}
+                        {% for prize in formP.prizes %}
+                            {% set contadorPrize = contadorPrize + 1 %}
+                            <div class="tab-pane fade tab-content-item" id="prize{{contadorPrize}}" role="tabpanel" aria-labelledby="prize{{contadorPrize}}-tab">
+                                <div class="row general_information_content">
+                                    <div class="col-12">
+                                        <div class="row first_GI">
+                                            <div class="col-12 col-lg-3 inputsGI">
+                                                <label class="form-label">Name</label> 
+                                                {{ form_widget(prize.prizeName, {'attr': {'class': 'form-control', 'placeholder': 'Name', 'type':'text'}}) }}
+                                            </div>
+                                            <div class="col-12 col-lg-3 inputsGI">
+                                                <label class="form-label">Year</label>
+                                                {{ form_widget(prize.prizeYear, {'attr': {'class': 'form-control', 'placeholder': 'Year', 'type':'text'}}) }}
+                                            </div>
+                                            <div class="col-12 col-lg-3 inputsGI">
+                                                <span>Country</span>
+                                                {{ form_widget(prize.prizeCountry, {'attr': {'class': 'form-select'}}) }}
+                                            </div>
+                                            <div class="col-12 col-lg-3 inputsGI">
+                                                <span>Code</span>
+                                                {{ form_widget(prize.prizeCode, {'attr': {'class': 'form-select'}}) }}
+                                            </div>
+                                        </div>
+                                        <div class="row last_GI">
+                                            <div class="col-12 inputsGI"> 
+                                                <label class="form-label">Jury</label>
+                                                {{ form_widget(prize.prizeJury, {'attr': {'class': 'form-control', 'placeholder': 'Jury'}}) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>         
+                </div>
+            </div>
+        </div>
+        {{ form_rest(formP) }}
+
+        {% include 'updateAddTemplates/bottomButtons.html.twig' %}
+    </form>
+</body>
+</html>

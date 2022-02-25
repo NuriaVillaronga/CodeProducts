@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Text{% endblock %}</title>
+</head>
+
+<body>
+    <form name="text_form" method="post" class="dataForm" novalidate="novalidate" action="{{ path('text', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}"> 
+        <div class="row general_information_content"> 
+            <div class="col-12">
+                <div class="row first_GI">
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">Main description</label>
+                        {{ form_widget(formT.mainDescription, {'attr': {'class': 'form-control', 'placeholder': 'Main description'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">Table of content</label>
+                        {{ form_widget(formT.tableContent, {'attr': {'class': 'form-control', 'placeholder': 'Table of content'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">Back cover copy</label>
+                        {{ form_widget(formT.backCoverCopy, {'attr': {'class': 'form-control', 'placeholder': 'Back cover copy'}}) }}
+                    </div>
+                </div>
+                <div class="row GI">
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">Biographical note</label>
+                        {{ form_widget(formT.biographicalNoteCD, {'attr': {'class': 'form-control', 'placeholder': 'Biographical note'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">Excerpt from book</label>
+                        {{ form_widget(formT.excerptBook, {'attr': {'class': 'form-control', 'placeholder': 'Excerpt from book'}}) }}
+                    </div>
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <label class="form-label">Review quote</label>
+                        {{ form_widget(formT.reviewQuote, {'attr': {'class': 'form-control', 'placeholder': 'Review quote'}}) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ form_rest(formT) }}
+
+        {% include 'updateAddTemplates/bottomButtons.html.twig' %}
+    </form>
+</body>
+</html>

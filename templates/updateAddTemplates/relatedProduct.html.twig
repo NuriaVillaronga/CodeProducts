@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Related Product Card{% endblock %}</title>
+</head>
+
+<body>
+
+    <div class="row general_information_content">
+        <div class="col-12">
+            {% set contadorRP = 0 %} 
+            <div class="row GI">
+            {% for relatedProduct in relatedProducts %}
+                {% set contadorRP = contadorRP + 1 %}
+                <div class="col-12 col-lg-4 inputsGI"> 
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Related product {{contadorRP}}</h5>
+                            {{ render(path('card_related_product', { 'id_product': product.id, 'id_rp': relatedProduct.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

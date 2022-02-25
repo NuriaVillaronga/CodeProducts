@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dropzone images{% endblock %}</title>
+</head>
+
+<body>
+    <form name="dropzone_form" method="post" class="dataForm" enctype="multipart/form-data" novalidate="novalidate" action="{{ path('dropzone', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}">     
+        {{ form_widget(formDZ.image) }}
+        <button href="{{ path('update_product', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}" class="shadow-sm btn btn-primary" type="submit">Upload</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Searchs bar update/add products{% endblock %}</title>
+</head>
+
+<body>
+    <div class="row form_bar">
+        <div class="col-12 col-md-5 col-lg-3 form_bar_select">
+            <select class="form-select" name="form-type">
+                <option value="simpleForm" selected>
+                    Simplified Form
+                </option>
+                <option value="advancedForm">
+                    Advanced Form
+                </option>
+            </select>
+        </div>
+        <div class="col-12 col-md-7 col-lg-6 form_bar_err">
+            <center>
+                <div role="alert" class="errMessage">
+                    <i class="bi bi-exclamation-octagon-fill"></i>
+                    ¡Este producto no es válido! (<a href="#">Resumen de errores</a>)
+                </div>
+            </center>
+        </div>
+        <div class="col-12 col-lg-3 form_bar_buttons">
+            <button class="shadow-sm btn changeOnGrey btn_code" type="button">
+                <i class="bi bi-code"></i>
+            </button>
+            <button class="shadow-sm btn changeOnGrey btn_justify" type="button">
+                <i class="bi bi-justify-left"></i>
+            </button>
+            <button class="shadow-sm btn changeOnBlue btn_save" type="submit">
+                <i class="bi bi-save-fill"></i>
+            </button>
+            <button class="shadow-sm btn changeOnRed btn_close" type="reset">
+                <i class="bi bi-x-square"></i>
+            </button>
+        </div>
+    </div>
+</body>
+</html>
