@@ -405,6 +405,11 @@ class Product
      */
     private $images;
 
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $imprintName;
+
 
     public function __construct()
     {
@@ -1431,6 +1436,18 @@ class Product
                 $image->setIdProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImprintName(): ?string
+    {
+        return $this->imprintName;
+    }
+
+    public function setImprintName(?string $imprintName): self
+    {
+        $this->imprintName = $imprintName;
 
         return $this;
     }

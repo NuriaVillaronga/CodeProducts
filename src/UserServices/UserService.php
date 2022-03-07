@@ -642,7 +642,7 @@ class UserService extends CheckCredentials
         }
     }
 
-    public function publisherNameValue ($product, $productXML) {
+    public function publisherNameValue($product, $productXML) {
         if ($productXML->publishingDetail->publisherList != null) {
             foreach ($productXML->publishingDetail->publisherList->arrayPublisher as $publisher) {
                 if ($publisher->publisherName != null) {
@@ -653,7 +653,7 @@ class UserService extends CheckCredentials
         }
     }
 
-    public function cityOfPublicationValue ($product, $productXML) {
+    public function cityOfPublicationValue($product, $productXML) {
         if ($productXML->publishingDetail->cityOfPublicationList != null) {
             foreach ($productXML->publishingDetail->cityOfPublicationList->arrayCityOfPublication as $cityOfPublication) {
                 $product->setCityOfPublication($cityOfPublication->contents); 
@@ -674,7 +674,25 @@ class UserService extends CheckCredentials
         }
     }
 
-    /*******************************************REVISAR SUBJECT AUDIENCE***********************************************************/
+    public function imprintValue($product, $productXML) {
+        if ($productXML->publishingDetail->imprintList != null) {
+            foreach ($productXML->publishingDetail->imprintList->arrayImprint as $imprint) {
+                if ($imprint->imprintName != null) {
+                    $product->setImprintName($imprint->imprintName->contents);
+                }
+                if ($imprint->imprintIdentifierList != null) {
+                    foreach ($imprint->imprintIdentifierList->arrayImprintIdentifier as $imprintIdentifier) {
+                        $product->setNameCode($imprintIdentifier->imprintIDType->contents); 
+                        $product->setNameCodeValue($imprintIdentifier->idValue->contents);
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+    }
+
+    /*******************************************REVISAR SUBJECT AUDIENCE***********************************************************
     public function audienceFromValue($audienceRange, $product) {
         if ($audienceRange->audienceRangePrecision->contents == "03") {
             $product->setAudienceFrom($audienceRange->audienceRangePrecision->contents); //From es de tipo 03
@@ -711,7 +729,7 @@ class UserService extends CheckCredentials
             $product->setSubjectHeadingText($sht); 
         }
     }
-    /*****************************************************************************************/
+    *****************************************************************************************/
 
     public function productLoadService(User $user, File $file, Catalog $catalog, string $onixFile_directory, EntityManagerInterface $em)
     {
@@ -745,9 +763,6 @@ class UserService extends CheckCredentials
                 $this->extentListValue($product, $productXML);
                 $this->illustrationValue($product, $productXML);
                 $this->contributorValue($product, $productXML);
-
-                $this->audienceValue($product, $productXML); 
-                $this->subjectHeadingTextValue($product, $productXML); 
             }
 
             if ($productXML->collateralDetail != null) {
@@ -770,6 +785,7 @@ class UserService extends CheckCredentials
             
             if ($productXML->publishingDetail != null) {
 
+                $this->imprintValue($product, $productXML);
                 $this->publisherNameValue($product, $productXML);
                 $this->copyrightYearValue($product, $productXML);
                 $this->cityOfPublicationValue($product, $productXML); 
@@ -777,10 +793,7 @@ class UserService extends CheckCredentials
                 $this->publishingStatusValue($product, $productXML);
 
                 if ($productXML->publishingDetail->publishingDateList != null) {
-                    $arrayPublishingDate = $productXML->publishingDetail->publishingDateList->arrayPublishingDate;
-                
-                    foreach ($arrayPublishingDate as $publishingDate) 
-                    {
+                    foreach ($productXML->publishingDetail->publishingDateList->arrayPublishingDate as $publishingDate) {
                         if ($publishingDate->publishingDateRole->contents == "01") {
                             $product->setpublishingDate($publishingDate->date->valor); //se establece $publishingDate
                             $product->setYearPublishingDate(date_format($publishingDate->date->valor, "Y")); //se establece $yearOfPublication  
@@ -790,7 +803,7 @@ class UserService extends CheckCredentials
                 }
             }
 
-            /****************************************REVISAR SUBJECT Y AUDIENCE**************************************************/
+            /****************************************REVISAR SUBJECT Y AUDIENCE**************************************************
             if ($productXML->descriptiveDetail != null) {
                 if ($productXML->descriptiveDetail->subjectList != null) {
                     $arraySubject = $productXML->descriptiveDetail->subjectList->arraySubject;
@@ -838,7 +851,7 @@ class UserService extends CheckCredentials
                     $product->setAudienceCode($audienceCode);
                 }
             }
-            /********************************************************************************************************************/
+            ********************************************************************************************************************/
 
             //Le añado los productos al fichero y al catalogo
             $file->addProduct($product);
