@@ -203,31 +203,6 @@ class Product
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
      */
-    private $bisacSubject;
-
-    /**
-     * @ORM\Column(type="string", length=100, nullable=true)
-     */
-    private $themaSubject;
-
-    /**
-     * @ORM\Column(type="string", length=100, nullable=true)
-     */
-    private $themesElectre;
-
-    /**
-     * @ORM\Column(type="string", length=100, nullable=true)
-     */
-    private $subjectSchemaVersion;
-
-    /**
-     * @ORM\Column(type="string", length=100, nullable=true)
-     */
-    private $subjectCode;
-
-    /**
-     * @ORM\Column(type="string", length=100, nullable=true)
-     */
     private $audienceRangeQualifier;
 
     /**
@@ -409,6 +384,36 @@ class Product
      * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $imprintName;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $BISACregion;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $BICsubject;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $BICversion;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $BISACsubject;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $themaSubject; 
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $themesElectra; 
 
 
     public function __construct()
@@ -854,66 +859,6 @@ class Product
     public function setUser(?User $user): self
     {
         $this->user = $user;
-
-        return $this;
-    }
-
-    public function getBisacSubject(): ?string
-    {
-        return $this->bisacSubject;
-    }
-
-    public function setBisacSubject(?string $bisacSubject): self
-    {
-        $this->bisacSubject = $bisacSubject;
-
-        return $this;
-    }
-
-    public function getThemaSubject(): ?string
-    {
-        return $this->themaSubject;
-    }
-
-    public function setThemaSubject(?string $themaSubject): self
-    {
-        $this->themaSubject = $themaSubject;
-
-        return $this;
-    }
-
-    public function getThemesElectre(): ?string
-    {
-        return $this->themesElectre;
-    }
-
-    public function setThemesElectre(?string $themesElectre): self
-    {
-        $this->themesElectre = $themesElectre;
-
-        return $this;
-    }
-
-    public function getSubjectSchemaVersion(): ?string
-    {
-        return $this->subjectSchemaVersion;
-    }
-
-    public function setSubjectSchemaVersion(?string $subjectSchemaVersion): self
-    {
-        $this->subjectSchemaVersion = $subjectSchemaVersion;
-
-        return $this;
-    }
-
-    public function getSubjectCode(): ?string
-    {
-        return $this->subjectCode;
-    }
-
-    public function setSubjectCode(?string $subjectCode): self
-    {
-        $this->subjectCode = $subjectCode;
 
         return $this;
     }
@@ -1448,6 +1393,78 @@ class Product
     public function setImprintName(?string $imprintName): self
     {
         $this->imprintName = $imprintName;
+
+        return $this;
+    }
+
+    public function getBISACregion(): ?string
+    {
+        return $this->BISACregion;
+    }
+
+    public function setBISACregion(?string $BISACregion): self
+    {
+        $this->BISACregion = $BISACregion;
+
+        return $this;
+    }
+
+    public function getBICsubject(): ?string
+    {
+        return $this->BICsubject;
+    }
+
+    public function setBICsubject(?string $BICsubject): self
+    {
+        $this->BICsubject = $BICsubject;
+
+        return $this;
+    }
+
+    public function getBICversion(): ?string
+    {
+        return $this->BICversion;
+    }
+
+    public function setBICversion(?string $BICversion): self
+    {
+        $this->BICversion = $BICversion;
+
+        return $this;
+    }
+
+    public function getBISACsubject(): ?string
+    {
+        return $this->BISACsubject;
+    }
+
+    public function setBISACsubject(?string $BISACsubject): self
+    {
+        $this->BISACsubject = $BISACsubject;
+
+        return $this;
+    }
+
+    public function getThemaSubject(): ?string
+    {
+        return $this->themaSubject;
+    }
+
+    public function setThemaSubject(?string $themaSubject): self
+    {
+        $this->themaSubject = $themaSubject;
+
+        return $this;
+    }
+
+    public function getThemesElectra(): ?string
+    {
+        return $this->themesElectra;
+    }
+
+    public function setThemesElectra(?string $themesElectra): self
+    {
+        $this->themesElectra = $themesElectra;
 
         return $this;
     }

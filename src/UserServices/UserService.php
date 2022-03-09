@@ -692,44 +692,74 @@ class UserService extends CheckCredentials
         }
     }
 
-    /*******************************************REVISAR SUBJECT AUDIENCE***********************************************************
-    public function audienceFromValue($audienceRange, $product) {
-        if ($audienceRange->audienceRangePrecision->contents == "03") {
-            $product->setAudienceFrom($audienceRange->audienceRangePrecision->contents); //From es de tipo 03
-        }
-    }
-
-    public function audienceToValue($audienceRange, $product) {
-        if ($audienceRange->audienceRangePrecision->contents == "04") {
-            $product->setAudienceTo($audienceRange->audienceRangePrecision->contents); //To es de tipo 04
-        }
-    }
-
-    public function audienceValue($product, $productXML) {
-        if ($productXML->descriptiveDetail->audienceRangeList != null) {
-            foreach ($productXML->descriptiveDetail->audienceRangeList->arrayAudienceRange as $audienceRange) {
-                $product->setAudienceRangeQualifier($audienceRange->audienceRangeQualifier->contents);
-                $this->audienceFromValue($audienceRange, $product);
-                $this->audienceToValue($audienceRange, $product);
+    public function subjectValue($product, $productXML) {
+        if ($productXML->descriptiveDetail->subjectList != null) {
+            foreach ($productXML->descriptiveDetail->subjectList->arraySubject as $subject) {
+                if ($subject->subjectSchemeIdentifier->contents == "10") {
+                    if ($subject->subjectCode->contents != null) {
+                        $product->setBISACsubject($subject->subjectCode->contents); //El BISAC Subject es de tipo 10
+                    }
+                }
+                else if ($subject->subjectSchemeIdentifier->contents == "11") {
+                    if ($subject->subjectCode->contents != null) {
+                        $product->setBISACregion($subject->subjectCode->contents); //El BISAC Region es de tipo 11
+                    }
+                }
+                else if ($subject->subjectSchemeIdentifier->contents == "12") {
+                    if ($subject->subjectCode->contents != null) {
+                        $product->setBICsubject($subject->subjectCode->contents); //El BIC Subject es de tipo 12
+                    }
+                    if ($subject->subjectSchemeVersion->contents != null) {
+                        $product->setBICversion($subject->subjectSchemeVersion->contents); //Si es del tipo BIC y tiene versión, se le establece
+                    }
+                }
+                else if ($subject->subjectSchemeIdentifier->contents == "93") {
+                    if ($subject->subjectCode->contents != null) {
+                        $product->setThemaSubject($subject->subjectCode->contents); //Thema Subject es de tipo 93
+                    }
+                }
+                else if ($subject->subjectSchemeIdentifier->contents == "28") {
+                    if ($subject->subjectCode->contents != null) {
+                        $product->setThemesElectra($subject->subjectCode->contents); //Themes Electra es de tipo 28
+                    }
+                }
                 break;
             }
         }
     }
 
-    public function subjectHeadingTextValue($product, $productXML) {
-        if ($productXML->descriptiveDetail->subjectList != null) {
-            $sht = null;
-            foreach ($productXML->descriptiveDetail->subjectList->arraySubject as $subject) {
-                if ($subject->subjectHeadingTextList != null) {
-                    foreach ($subject->subjectHeadingTextList->arraySubjectHeadingText as $subjectHeadingText) {
-                        $sht = $sht . " " . $subjectHeadingText->contents;
-                    }
-                }
+    public function audienceCodeValue($product, $productXML) {
+        if ($productXML->descriptiveDetail->audienceCodeList != null) {
+            $audienceCode = [];
+            foreach ($productXML->descriptiveDetail->audienceCodeList->arrayAudienceCode as $ca) {
+                $audienceCode[] = $ca->contents; 
             }
-            $product->setSubjectHeadingText($sht); 
+            $product->setAudienceCode($audienceCode);
         }
     }
-    *****************************************************************************************/
+
+    public function audienceRangeQualifierValue($product, $productXML) {
+        if ($productXML->descriptiveDetail->audienceRangeList != null) {
+            foreach ($productXML->descriptiveDetail->audienceRangeList->arrayAudienceRange as $ar) {
+                $product->setAudienceRangeQualifier($ar->audienceRangeQualifier->contents);
+                break;
+            }
+        }
+    }
+
+    public function toFromValue($product, $productXML) {
+        if ($productXML->descriptiveDetail->audienceRangeList != null) {
+            foreach ($productXML->descriptiveDetail->audienceRangeList->arrayAudienceRange as $audienceRange) {
+                if ($audienceRange->audienceRangePrecision->contents == "03") {
+                    $product->setAudienceFrom($audienceRange->audienceRangePrecision->contents); //From es de tipo 03
+                }
+                else if ($audienceRange->audienceRangePrecision->contents == "04") {
+                    $product->setAudienceTo($audienceRange->audienceRangePrecision->contents); //To es de tipo 04
+                }
+                break;
+            }
+        }
+    }
 
     public function productLoadService(User $user, File $file, Catalog $catalog, string $onixFile_directory, EntityManagerInterface $em)
     {
@@ -763,6 +793,10 @@ class UserService extends CheckCredentials
                 $this->extentListValue($product, $productXML);
                 $this->illustrationValue($product, $productXML);
                 $this->contributorValue($product, $productXML);
+                $this->subjectValue($product, $productXML);
+                $this->audienceCodeValue($product, $productXML);
+                $this->audienceRangeQualifierValue($product, $productXML);
+                $this->toFromValue($product, $productXML);
             }
 
             if ($productXML->collateralDetail != null) {
@@ -802,56 +836,6 @@ class UserService extends CheckCredentials
                     }
                 }
             }
-
-            /****************************************REVISAR SUBJECT Y AUDIENCE**************************************************
-            if ($productXML->descriptiveDetail != null) {
-                if ($productXML->descriptiveDetail->subjectList != null) {
-                    $arraySubject = $productXML->descriptiveDetail->subjectList->arraySubject;
-
-                    foreach ($arraySubject as $subject) 
-                    {
-                        if ($subject->subjectSchemeIdentifier->contents == "10") //El BISAC Subject es de tipo 10
-                        {
-                            $product->setBisacSubject($subject->subjectSchemeIdentifier->contents); 
-                        }
-                        else if ($subject->subjectSchemeIdentifier->contents == "93") //El ThemaSubject es de tipo 93
-                        {
-                            $product->setThemaSubject($subject->subjectSchemeIdentifier->contents); 
-                        }
-                        else if ($subject->subjectSchemeIdentifier->contents == "20") //El ThemesElectre es de tipo 20
-                        {
-                            $product->setThemesElectre($subject->subjectSchemeIdentifier->contents);
-                        }
-
-                        if ($subject->subjectSchemeVersion != null) {
-                            $product->setSubjectSchemaVersion($subject->subjectSchemeVersion->contents);
-                        }
-
-                        if ($subject->subjectCode != null) {
-                            $product->setSubjectCode($subject->subjectCode->contents);
-                        }
-
-                        if ($subject->subjectHeadingTextList != null) {
-                            $arraySHT = $subject->subjectHeadingTextList->arraySubjectHeadingText;
-
-                            $keywords = null;
-                            foreach ($arraySHT as $subjectHeadingText) {
-                                $keywords = $keywords . "; " . $subjectHeadingText->contents;
-                            }
-                            $product->setSubjectHeadingText($keywords);
-                        }
-                    }
-                }
-
-                if ($productXML->descriptiveDetail->audienceCodeList != null) {
-                    $audienceCode = [];
-                    foreach ($productXML->descriptiveDetail->audienceCodeList->arrayAudienceCode as $codeAudience) {
-                        $audienceCode[] = $codeAudience->contents;
-                    }
-                    $product->setAudienceCode($audienceCode);
-                }
-            }
-            ********************************************************************************************************************/
 
             //Le añado los productos al fichero y al catalogo
             $file->addProduct($product);

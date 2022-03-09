@@ -21,15 +21,26 @@ class SubjectAudienceFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        /*CLIL SUBJECT*/
         $builder
-            ->add('bisacSubject', TextType::class, ['required' => false])
-            //BISAC REGION
-            ->add('subjectCode', TextType::class, ['required' => false])
-            ->add('subjectSchemaVersion', TextType::class, ['required' => false])
-            ->add('themaSubject', TextType::class, ['required' => false])
-            //CLIL SUBJECT
-            ->add('themesElectre', TextType::class, ['required' => false])
-            ->add('subjectHeadingText', TextType::class, ['required' => false])
+            ->add('BISACsubject', ChoiceType::class, [
+                'choices' => $this->codeListRepository->getKV($this->codeListRepository->findByTag('BISACsubject')),
+                'required' => false 
+            ])
+            ->add('BISACregion', ChoiceType::class, [
+                'choices' => $this->codeListRepository->getKV($this->codeListRepository->findByTag('BISACregion')),
+                'required' => false 
+            ])
+            ->add('BICsubject', ChoiceType::class, [
+                'choices' => $this->codeListRepository->getKV($this->codeListRepository->findByTag('BICsubject')),
+                'required' => false 
+            ])
+            ->add('BICversion', TextType::class, ['required' => false])
+            ->add('themaSubject', ChoiceType::class, [
+                'choices' => $this->codeListRepository->getKV($this->codeListRepository->findByTag('themaSubject')),
+                'required' => false 
+            ])
+            ->add('themesElectra', TextType::class, ['required' => false])
             ->add('audienceCode', ChoiceType::class, [
                 'choices' => $this->codeListRepository->getKV($this->codeListRepository->findByTag('audienceCode')),
                 'multiple' => true,

@@ -14,54 +14,54 @@
             <div class="col-12">
                 <div class="row first_GI">
                     <div class="col-12 inputsGI">
-                        <label class="form-label">BISAC Subject</label>
-                        {{ form_widget(formSA.bisacSubject, {'attr': {'class': 'form-control', 'placeholder': 'BISAC Subject', 'type':'text'}}) }}
+                        <span>BISAC Subject</span>
+                        {{ form_widget(formSA.BISACsubject, {'attr': {'class': 'form-select'}}) }}
                     </div>
                 </div>
                 <div class="row GI">
                     <div class="col-12 col-lg-4 inputsGI">
-                        <label class="form-label">BISAC Region</label>
-                        <input type="text" class="form-control" placeholder="BISAC Region"><!---->
+                        <span>BISAC Region</span>
+                        {{ form_widget(formSA.BISACregion, {'attr': {'class': 'form-select'}}) }}
                     </div>
                     <div class="col-12 col-lg-8 inputsGI">
-                        <label class="form-label">.</label><!---->
+                        <label class="form-label">____</label><!---->
                         <input type="text" class="form-control"><!---->
                     </div>
                 </div>
                 <div class="row GI">
                     <div class="col-12 col-lg-9 inputsGI">
-                        <label class="form-label">BIC Subject</label>
-                        {{ form_widget(formSA.subjectCode, {'attr': {'class': 'form-control', 'placeholder': 'BIC Subject', 'type':'text'}}) }} 
+                        <span>BIC Subject</span>
+                        {{ form_widget(formSA.BICsubject, {'attr': {'class': 'form-select'}}) }}
                     </div>
                     <div class="col-12 col-lg-3 inputsGI">
                         <label class="form-label">BIC Version</label>
-                        {{ form_widget(formSA.subjectSchemaVersion, {'attr': {'class': 'form-control', 'placeholder': 'BIC Version', 'type':'text'}}) }}
+                        {{ form_widget(formSA.BICversion, {'attr': {'class': 'form-control', 'placeholder': 'BIC Version', 'type':'text'}}) }}
                     </div>
                 </div>
                 <div class="row GI">
                     <div class="col-12 col-lg-4 inputsGI">
-                        <label class="form-label">Thema subject</label>
-                        {{ form_widget(formSA.themaSubject, {'attr': {'class': 'form-control', 'placeholder': 'Thema subject', 'type':'text'}}) }}
+                        <span>Thema Subject</span>
+                        {{ form_widget(formSA.themaSubject, {'attr': {'class': 'form-select'}}) }}
                     </div>
                     <div class="col-12 col-lg-8 inputsGI">
-                        <label class="form-label">.</label><!---->
+                        <label class="form-label">____</label><!---->
                         <input type="text" class="form-control"><!---->
                     </div>
                 </div>
                 <div class="row GI">
                     <div class="col-12 inputsGI">
-                        <label class="form-label">CLIL Subject</label>
+                        <label class="form-label">CLIL Subject</label><!---->
                         <input type="text" class="form-control" placeholder="CLIL Subject"><!---->
                     </div>
                 </div>
                 <div class="row GI">
                     <div class="col-12 col-lg-4 inputsGI">
-                        <label class="form-label">Themes Electre</label>
-                        {{ form_widget(formSA.themesElectre, {'attr': {'class': 'form-control', 'placeholder': 'Themes Electre', 'type':'text'}}) }}
+                        <label class="form-label">Themes Electra</label>
+                        {{ form_widget(formSA.themesElectra, {'attr': {'class': 'form-control', 'placeholder': 'Themes Electre', 'type':'text'}}) }}
                     </div>
                     <div class="col-12 col-lg-8 inputsGI">
-                        <label class="form-label">Keywords</label>
-                        {{ form_widget(formSA.subjectHeadingText, {'attr': {'class': 'form-control', 'placeholder': 'Keywords', 'type':'text'}}) }}
+                        <label class="form-label">Keywords</label><!---->
+                        <input type="text" class="form-control"><!---->
                     </div>
                 </div>
                 <div class="row GI">
