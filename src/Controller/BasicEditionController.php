@@ -29,7 +29,8 @@ class BasicEditionController extends AbstractController
         
         $form->handleRequest($request);  
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        //$form->isValid() --> si se añade, no envia correctamente !!
+        if ($form->isSubmitted()) {
             $em->persist($product);
             $em->flush();
 

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form name="basic_edition_form" id="basic_edition" class="dataForm" novalidate="novalidate" method="post" action="{{ path('basic_edition', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}">
+    <form name="basic_edition_form" id="basic_edition_form_pretab" class="dataForm" novalidate="novalidate" method="post" action="{{ path('basic_edition', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}">
         {% include 'updateAddTemplates/searchs.html.twig' %}
         <div class="row basic_edition">
             <div class="col-12 col-lg-3 dropZone">
@@ -54,9 +54,9 @@
                 </div>
             </div>
         </div>
-        <!--Tab-->
-            {% include 'updateAddTemplates/tab.html.twig' %}
-        <!---->
     </form>
+    <!--Tab-->
+        {% include 'updateAddTemplates/tab.html.twig' %}
+    <!---->
 </body>
 </html>

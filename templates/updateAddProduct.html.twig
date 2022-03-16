@@ -20,7 +20,7 @@
         <script src="{{ asset('vendor/jquery-validation/dist/additional-methods.js') }}"></script>
 
         <script src="{{ asset('js/hamburguerMenu.js') }}"></script>
-        <script src="{{ asset('js/validation.js') }}?v=120"></script>
+        <script src="{{ asset('js/validation.js') }}?v=122"></script>
         <script src="{{ asset('js/showLabelsInputs.js') }}"></script>
         <script src="{{ asset('js/hamburguerMenu.js') }}"></script>
         <script src="{{ asset('js/changeButtonsClick.js') }}"></script>
@@ -36,9 +36,6 @@
     <div class="container-fluid"> 
             <!--Basic edition-->
                 {{ render(path('basic_edition', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
-            <!---->
-            <!--Tab-->
-                {# {% include 'updateAddTemplates/tab.html.twig' %} #}
             <!---->
     </div>
 </body>

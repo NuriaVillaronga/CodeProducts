@@ -31,7 +31,7 @@ $(function() {
     }, "EAN must contain <u>13 digits</u>");
 
 
-    $("#basic_edition").validate({
+    $("#basic_edition_form_pretab").validate({
         rules: {
             "basic_edition_form[recordReference]": {
                 required : true
@@ -73,6 +73,12 @@ $(function() {
     });
     
 
+    //Corregir expresion regular para que admita más de un valor
+    $.validator.addMethod("cityPublicationOption", function( value, element ) {
+        return this.optional( element ) || 
+        /^[a-zA-Z\s]$/.test( value );
+    }, "City of Publication must contain letters");
+
     $('#general_information_form_tab').validate({
         ignore: '.select2-search__field, input[type=hidden]',
         rules: {
@@ -84,6 +90,9 @@ $(function() {
             },
             "general_information_form[numberOfPages]": {
                 digits: true
+            },
+            "general_information_form[cityOfPublication]": {
+                cityPublicationOption: true
             }
         },
         messages: {
