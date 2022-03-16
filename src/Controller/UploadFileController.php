@@ -13,8 +13,6 @@ use App\Service\FileUploader;
 use App\UserServices\UserService;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\String\Slugger\SluggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 

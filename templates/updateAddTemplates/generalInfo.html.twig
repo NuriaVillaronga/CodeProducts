@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form name="general_information_form" id="general_information" class="dataForm" novalidate="novalidate" method="post" action="{{ path('general_information', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}">  
+    <form name="general_information_form" id="general_information_form_tab" class="dataForm" novalidate="novalidate" method="post" action="{{ path('general_information', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}">  
         <div class="row general_information_content">
             <div class="col-12">
                 <div class="row first_GI">
@@ -114,7 +114,7 @@
                     </div>
                     <div class="col-12 col-lg-4 inputsGI">
                         <label class="form-label">Número de edición</label>
-                        {{ form_widget(formGI.editionNumber, {'attr': {'class': 'form-control', 'placeholder': 'Número de edición', 'type':'text'}}) }}
+                        {{ form_widget(formGI.editionNumber, {'attr': {'class': 'form-control', 'id':'editionNumber', 'placeholder': 'Número de edición', 'type':'text'}}) }}
                     </div>
                     <div class="col-12 col-lg-4 inputsGI" id="sellRights">
                         <label class="form-label">A la venta con derechos exclusivos</label>
@@ -144,7 +144,7 @@
                 </div>
             </div>
         </div>
-        {# {{ form_rest(formGI) }} #}
+        {{ form_rest(formGI) }}
         {% include 'updateAddTemplates/bottomButtons.html.twig' %}
     </form> 
 </body>

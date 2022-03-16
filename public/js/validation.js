@@ -1,55 +1,19 @@
-$.validator.setDefaults({
-    debug: true, 
-    errorClass: 'text-danger',
-    highlight: function(element) {
-      $(element)
-        .closest('.requiredInputs')
-        .addBack().css( "border-color", "red" );
-    },
-    unhighlight: function(element) {
-      $(element)
-        .closest('.requiredInput')
-        .addBack().css( "border-color", "rgb(185, 185, 185)" ); //Cambiar al color necesario
-    }
-});
-
-
 $(function() {
-    /*
-    $.validator.addMethod("publishingDateFormat", function( value, element ) {
-        return this.optional( element ) || 
-            /^(?:(0{2,3}[1-9]|0{1,2}[1-9]\d|0[1-9]\d{2}|[1-9]\d{3})(?:(0[1-9]|1[0-2])(0[1-9]|1\d|2[0-8])|(0[13-9]|1[0-2])(29|30)|(0[13578]|1[02])(31))|(\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[13579][26]|[2468][048])00)(0?2)(29))$/.test( value );
-    }, "Introduce una fecha válida en formato AAAAMMDD");
-    */
 
-    $('#general_information').validate({
-        ignore: '.select2-search__field, input[type=hidden]',
-        rules: {
-            "general_information_form[publishingDate]": {
-                required : true
-            },
-            "general_information_form[editionNumber]": {
-                digits: true
-            },
-            "general_information_form[numberOfPages]": {
-                digits: true
-            }
+    $.validator.setDefaults({
+        debug: true, 
+        errorClass: 'text-danger',
+        highlight: function(element) {
+          $(element)
+            .closest('.requiredInput')
+            .addBack().css( "border-color", "red" );
         },
-        messages: {
-            "general_information_form[publishingDate]": {
-                required : 'Fecha de publicación es obligatorio'
-            },
-            "general_information_form[numberOfPages]": {
-                digits: 'Introduce un número de páginas válido'
-            },
-            "general_information_form[numberOfPages]": {
-                digits: 'Introduce un número de edición válido'
-            }
-        },
+        unhighlight: function(element) {
+          $(element)
+            .closest('.requiredInput')
+            .addBack().css( "border-color", "rgb(185, 185, 185)" ); //Cambiar al color necesario
+        }
     });
-});
-
-$(function() {
 
     $.validator.addMethod("isbn13Option", function( value, element ) {
         return this.optional( element ) || 
@@ -65,6 +29,7 @@ $(function() {
         return this.optional( element ) || 
         /^(?=[0-9X]{13}$)[0-9]?[0-9]+[]?[0-9X]$/.test( value );
     }, "EAN must contain <u>13 digits</u>");
+
 
     $("#basic_edition").validate({
         rules: {
@@ -105,5 +70,32 @@ $(function() {
                 required : "Title must contain a TitleText or TitleWithoutPrefix"
             }
         }
+    });
+    
+
+    $('#general_information_form_tab').validate({
+        ignore: '.select2-search__field, input[type=hidden]',
+        rules: {
+            "general_information_form[publishingDate]": {
+                required : true
+            },
+            "general_information_form[editionNumber]": {
+                digits: true
+            },
+            "general_information_form[numberOfPages]": {
+                digits: true
+            }
+        },
+        messages: {
+            "general_information_form[publishingDate]": {
+                required : 'Fecha de publicación es obligatorio'
+            },
+            "general_information_form[numberOfPages]": {
+                digits: 'Introduce un número de páginas válido'
+            },
+            "general_information_form[editionNumber]": {
+                digits: 'Introduce un número de edición válido'
+            }
+        },
     });
 });

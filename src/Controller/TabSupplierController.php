@@ -32,8 +32,7 @@ class TabSupplierController extends AbstractController
         
         $form->handleRequest($request);
 
-        //con $form->isValid() nunca entra en el if
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($supplier);
             $em->flush();
 
