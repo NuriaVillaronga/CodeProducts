@@ -46,9 +46,9 @@ class TabSupplierController extends AbstractController
             'product' => $product,
             'catalog' => $catalog,
             'user' => $user,
-            'arrayReturnsCode04' => $codeListRepository->getKV($codeListRepository->findByTag('returnsCode04')),
-            'arrayReturnsCode02' => $codeListRepository->getKV($codeListRepository->findByTag('returnsCode02')),
-            'arrayReturnsCode03' => $codeListRepository->getKV($codeListRepository->findByTag('BICsubject'))
+            'arrayReturnsCode04' => $codeListRepository->getKVE($codeListRepository->findByTag('returnsCode04')), 
+            'arrayReturnsCode02' => $codeListRepository->getKVE($codeListRepository->findByTag('returnsCode02')),
+            'arrayReturnsCode03' => $codeListRepository->getKVE($codeListRepository->findByTag('BICsubject'))
         ]);
     }
 }

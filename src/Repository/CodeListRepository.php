@@ -20,12 +20,22 @@ class CodeListRepository extends ServiceEntityRepository
 
     }
 
-    //Obtener pares clave valor de los componentes.
+    //Obtener pares clave valor de los componentes leidos desde controladores
+    public function getKVE($resultSelectQuery) {
+        $array = $resultSelectQuery;
+
+        foreach ($array as $elementoArray) {
+            $nuevoArray[$elementoArray['value']] = $elementoArray['value']." - ".$elementoArray['definition'];
+        }
+        return $nuevoArray;
+    }
+
+    //Obtener pares clave valor de los componentes leidos desde FormTypes
     public function getKV($resultSelectQuery) {
         $array = $resultSelectQuery;
 
         foreach ($array as $elementoArray) {
-            $nuevoArray[$elementoArray['definition']] = $elementoArray['value'];
+            $nuevoArray[$elementoArray['value']." - ".$elementoArray['definition']] = $elementoArray['value'];
         }
         return $nuevoArray;
     }
@@ -33,7 +43,7 @@ class CodeListRepository extends ServiceEntityRepository
     public function findByTag(string $tag)
     {
         return $this->createQueryBuilder('codeList')
-            ->select('codeList.value','codeList.definition')
+            ->select('codeList.value','codeList.definition','codeList.tag')
             ->andWhere('codeList.tag = :tagCode')
             ->setParameter('tagCode', $tag) 
             ->orderBy('codeList.value', 'ASC')

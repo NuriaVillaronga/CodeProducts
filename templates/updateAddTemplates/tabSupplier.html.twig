@@ -50,17 +50,37 @@
                 <div class="row last_GI">
                     <div class="col-12 col-lg-6 inputsGI">
                         <span>Returns type</span>
-                        {{ form_widget(formSupplier.returnsCodeType, {'attr': {'class' : 'form-select', 'id' : 'returnsCodeType' }}) }}
+                        {{ form_widget(formSupplier.returnsCodeType, {'attr': {'class' : 'form-select returnsCodeType_item_form' }}) }}
                     </div>
                     <div class="col-12 col-lg-6 inputsGI">
-                        <span>Returns code</span>
-                        {#
-                        {% for code in arrayReturnsCode04 %}
-                            <h6>{{code}}</h6>
-                        {% endfor %} --> LOS CODIGOS SE PASAN BIEN
-                        #}
+                        <span>Returns code {{ formSupplier.vars.value.returnsCodeType }}</span> {#Valor que tiene returnsCodeType#}
 
-                        {{ form_widget(formSupplier.returnsCode, {'attr': {'class' : 'form-select', 'choices' : 'arrayReturnsCode04' }}) }}
+                        {% if formSupplier.vars.value.returnsCodeType == 00 %}
+                            <input class="form-control">
+                        {% elseif formSupplier.vars.value.returnsCodeType == 01 %}
+                        {% elseif formSupplier.vars.value.returnsCodeType == 02 %}
+                            <select class="form-select">
+                                {% for code in arrayReturnsCode04 %}
+                                    <option value='{{code}}'>{{code}}</option>
+                                {% endfor %} 
+                            </select>
+                        {% elseif formSupplier.vars.value.returnsCodeType == "03" %}
+                            <select class="form-select">
+                                {% for code in arrayReturnsCode03 %}
+                                    <option value='{{code}}'>{{code}}</option>
+                                {% endfor %} 
+                            </select>
+                        {% elseif formSupplier.vars.value.returnsCodeType == "04" %}
+                            <select class="form-select">
+                                {% for code in arrayReturnsCode04 %}
+                                    <option value='{{code}}'>{{code}}</option>
+                                {% endfor %} 
+                            </select>
+                        {% endif %}
+
+                        {#Lo que yo quiero hacer es poder cambiar en este form_widget el tipo de campo, estableciendolo primero a tipo hidden, despues a tipo select y despues a tipo text segun corresponda (por javascript)#}
+                        {#{{ form_widget(formSupplier.returnsCode, {'attr': {'class' : 'form-select', 'choices' : 'arrayReturnsCode04'}}) }}#}
+                        {{ form_widget(formSupplier.returnsCode) }}
                     </div>
                 </div>
             </div>
@@ -170,3 +190,21 @@
     </form>
 {% endblock %}
 </html>
+
+<script>
+
+/*
+var arrayReturnsCodeType = document.querySelectorAll('.form-select returnsCodeType_item_form');
+
+    arrayReturnsCodeType.forEach((returnsCodeType) => {
+        returnsCodeType.addEventListener('onchange',
+            () => {
+               console.log("Prueba"); 
+            });
+    });
+*/
+
+var arrayReturnsCodeType = document.querySelector('.form-select returnsCodeType_item_form');
+//console.log("Holaaa");
+
+</script>

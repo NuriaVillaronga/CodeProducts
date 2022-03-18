@@ -31,13 +31,7 @@ class SupplierFormType extends AbstractType
             'choices' => $this->codeListRepository->getKV($this->codeListRepository->findByTag('returnsCodeType')),
             'required' => false 
         ])
-        /*
-        ->add('returnsCode', ChoiceType::class, [
-            'choices' => $this->codeListRepository->getKV($this->codeListRepository->findByTag('returnsCode')),
-            'required' => false
-        ])
-        */
-        ->add('returnsCode', ChoiceType::class, ['required' => false]) //Tiene que ser tipo hidden, esto son pruebas
+        ->add('returnsCode', HiddenType::class, ['required' => false]) //<-----------------
 
         ->add('productAvailability', ChoiceType::class, [
             'choices' => $this->codeListRepository->getKV($this->codeListRepository->findByTag('productAvailability')),
