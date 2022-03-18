@@ -12,7 +12,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class SupplyDetailController extends AbstractController
 {
-
     /**
      * @Route("user/{id_user}/catalog/{id_catalog}/update/product/{id_product}/supply_detail", name="supply_detail", methods={"GET","POST"})
      * 
@@ -28,7 +27,7 @@ class SupplyDetailController extends AbstractController
             'suppliers' => $suppliers,
             'product' => $product,
             'catalog' => $catalog,
-            'user' => $user
+            'user' => $user,
         ]);
     }
 }

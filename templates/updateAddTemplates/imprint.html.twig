@@ -9,7 +9,7 @@
 </head>
 
 <body>   
-    <form name="imprint_form" method="post" class="dataForm" novalidate="novalidate" action="{{ path('imprint', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}">  
+    <form id="imprint-form" method="post" action="{{ path('imprint', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}">  
         <div class="row general_information_content">
             <div class="col-12">
                 <div class="row first_GI">
@@ -27,7 +27,7 @@
                 <div class="row last_GI">
                     <div class="col-12 inputsGI">
                         <label class="form-label">Name</label>
-                        <input type="text" class="form-control" placeholder="Name"><!---->
+                        {{ form_widget(formIm.imprintName, {'attr': {'class': 'form-control', 'placeholder': 'Name', 'type':'text'}}) }} 
                     </div>
                 </div>
             </div>

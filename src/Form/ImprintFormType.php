@@ -27,6 +27,7 @@ class ImprintFormType extends AbstractType
                 'required' => false 
             ])
             ->add('nameCodeValue', TextType::class, ['required' => false])
+            ->add('imprintName', TextType::class, ['required' => false])
         ;
     }
 

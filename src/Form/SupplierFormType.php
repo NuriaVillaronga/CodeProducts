@@ -9,6 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 
@@ -30,10 +31,14 @@ class SupplierFormType extends AbstractType
             'choices' => $this->codeListRepository->getKV($this->codeListRepository->findByTag('returnsCodeType')),
             'required' => false 
         ])
+        /*
         ->add('returnsCode', ChoiceType::class, [
             'choices' => $this->codeListRepository->getKV($this->codeListRepository->findByTag('returnsCode')),
-            'required' => false 
+            'required' => false
         ])
+        */
+        ->add('returnsCode', ChoiceType::class, ['required' => false]) //Tiene que ser tipo hidden, esto son pruebas
+
         ->add('productAvailability', ChoiceType::class, [
             'choices' => $this->codeListRepository->getKV($this->codeListRepository->findByTag('productAvailability')),
             'required' => false 

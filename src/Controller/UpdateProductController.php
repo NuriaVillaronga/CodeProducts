@@ -13,7 +13,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 
-
 class UpdateProductController extends UserService
 {
     /**
@@ -30,7 +29,7 @@ class UpdateProductController extends UserService
         return $this->render('updateAddProduct.html.twig', [
             'product' => $product, 
             'catalog' => $catalog,
-            'user' => $user
+            'user' => $user,
         ]);
     }
 }
