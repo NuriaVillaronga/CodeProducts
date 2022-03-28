@@ -50,39 +50,10 @@
                 <div class="row last_GI">
                     <div class="col-12 col-lg-6 inputsGI">
                         <span>Returns type</span>
-                        {{ form_widget(formSupplier.returnsCodeType, {'attr': {'class' : 'form-select returnsCodeType_item_form' }}) }}
+                        {{ form_widget(formSupplier.returnsCodeType, {'attr': {'class' : 'form-select'}}) }}
                     </div>
-                    <div class="col-12 col-lg-6 inputsGI">
-                        <span>Returns code {{ formSupplier.vars.value.returnsCodeType }}</span> {#Valor que tiene returnsCodeType#}
-
-                        {% if formSupplier.vars.value.returnsCodeType == 00 %}
-                            <input class="form-control">
-                            {# {{ form_widget(formSupplier.returnsCode, {'attr': {'class': 'form-control', 'placeholder': 'Returns code', 'type':'text'}}) }} #}
-                        {% elseif formSupplier.vars.value.returnsCodeType == 01 %}
-                            {# No se pone nada porque no tienen los returnsCodeType #}
-                        {% elseif formSupplier.vars.value.returnsCodeType == 02 %}
-                            <select class="form-select">
-                                {% for code in arrayReturnsCode02 %}
-                                    <option value='{{code}}'>{{code}}</option>
-                                {% endfor %} 
-                            </select>
-                            {#{{ form_widget(formSupplier.returnsCode, {'attr': {'class' : 'form-select', 'choices' : 'arrayReturnsCode02'}}) }}#}
-                        {% elseif formSupplier.vars.value.returnsCodeType == 03 %}
-                            <select class="form-select">
-                                {% for code in arrayReturnsCode03 %}
-                                    <option value='{{code}}'>{{code}}</option>
-                                {% endfor %} 
-                            </select>
-                            {#{{ form_widget(formSupplier.returnsCode, {'attr': {'class' : 'form-select', 'choices' : 'arrayReturnsCode03'}}) }}#}
-                        {% elseif formSupplier.vars.value.returnsCodeType == 04 %}
-                            <select class="form-select">
-                                {% for code in arrayReturnsCode04 %}
-                                    <option value='{{code}}'>{{code}}</option>
-                                {% endfor %} 
-                            </select>
-                            {#{{ form_widget(formSupplier.returnsCode, {'attr': {'class' : 'form-select', 'choices' : 'arrayReturnsCode04'}}) }}#}
-                        {% endif %}
-
+                    <div class="col-12 col-lg-6 inputsGI" id="returnsCodeGrid">
+                        <span>Returns code</span>
                         {{ form_widget(formSupplier.returnsCode) }}
                     </div>
                 </div>
@@ -194,20 +165,3 @@
 {% endblock %}
 </html>
 
-<script>
-
-/*
-var arrayReturnsCodeType = document.querySelectorAll('.form-select returnsCodeType_item_form');
-
-    arrayReturnsCodeType.forEach((returnsCodeType) => {
-        returnsCodeType.addEventListener('onchange',
-            () => {
-               console.log("Prueba"); 
-            });
-    });
-*/
-
-var arrayReturnsCodeType = document.querySelector('.form-select returnsCodeType_item_form');
-//console.log("Holaaa");
-
-</script>

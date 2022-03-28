@@ -7,7 +7,6 @@ use App\Entity\Product;
 use App\Entity\Supplier;
 use App\Entity\User;
 use App\Form\SupplierFormType;
-use App\Repository\CodeListRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,7 +25,7 @@ class TabSupplierController extends AbstractController
      * @ParamConverter("product", options={"id" = "id_product"})
      * @ParamConverter("supplier", options={"id" = "id_supplier"})
      */
-    public function dataSupply(Product $product, Supplier $supplier, Catalog $catalog, User $user, EntityManagerInterface $em, Request $request, CodeListRepository $codeListRepository): Response
+    public function dataSupply(Product $product, Supplier $supplier, Catalog $catalog, User $user, EntityManagerInterface $em, Request $request): Response
     {
         $form = $this->createForm(SupplierFormType::class, $supplier);
         
@@ -39,16 +38,12 @@ class TabSupplierController extends AbstractController
             return $this->redirectToRoute('update_product', ['id_product' => $product->getId(), 'id_catalog' => $catalog->getId(), 'id_user' => $user->getId()]);
         }
 
-
         return $this->renderForm('updateAddTemplates/tabSupplier.html.twig', [
             'formSupplier' => $form,
             'supplier' => $supplier,
             'product' => $product,
             'catalog' => $catalog,
-            'user' => $user,
-            'arrayReturnsCode04' => $codeListRepository->getKVE($codeListRepository->findByTag('returnsCode04')), 
-            'arrayReturnsCode02' => $codeListRepository->getKVE($codeListRepository->findByTag('returnsCode02')),
-            'arrayReturnsCode03' => $codeListRepository->getKVE($codeListRepository->findByTag('BICsubject'))
+            'user' => $user
         ]);
     }
 }
