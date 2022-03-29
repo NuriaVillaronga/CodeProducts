@@ -4,19 +4,30 @@ document.addEventListener("DOMContentLoaded", function (event) {
     var URL_RC03 = window.location.origin.concat("/api/codelist/BICsubject");
     var URL_RC02 = window.location.origin.concat("/api/codelist/returnsCode02");
 
-    //var selectsRCT = document.querySelectorAll('.returns_code_type_supplier');
+    /*
+    var selectsRCT = document.querySelectorAll('.returns_code_type_supplier');
 
-    //selectsRCT.forEach((selectRCT) => {
+    selectsRCT.forEach((selectRCT) => {
+        
+            console.log(selectRCT.options[selectRCT.selectedIndex].value);
+
+            optionsRCTselected.call(this.optionsRCTselected, selectRCT.options[selectRCT.selectedIndex].value);
+
+            selectRCT.addEventListener('change',
+            () => {
+                    showValuesReturnsCodeChange.call(this.showValuesReturnsCodeChange, selectRCT.options[selectRCT.selectedIndex].value);
+                }
+        );
+    });
+    */
 
         var selectRCT = document.getElementById('supplier_form_returnsCodeType');
-        var selectedOptionRCT = selectRCT.options[selectRCT.selectedIndex].value;
 
-        optionsRCTselected.call(this.optionsRCTselected, selectedOptionRCT);
+        optionsRCTselected.call(this.optionsRCTselected, selectRCT.options[selectRCT.selectedIndex].value);
 
         selectRCT.addEventListener('change',
             () => {
-                    var selectedOption = selectRCT.options[selectRCT.selectedIndex].value; //Se actualiza cada vez que cambia la opcion del select
-                    showValuesReturnsCodeChange.call(this.showValuesReturnsCodeChange, selectedOption);
+                    showValuesReturnsCodeChange.call(this.showValuesReturnsCodeChange, selectRCT.options[selectRCT.selectedIndex].value);
                 }
         );
         
@@ -62,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             }
         }
 
+
         function showValuesReturnsCodeChange(selectedOptionRCT) {
             var input00 = document.getElementById('input00');
             var input01 = document.getElementById('input01'); 
@@ -91,6 +103,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             }
         }
 
+
         function getArrayReturnsCodeData(returnsCodeGrid, selectID, URL, selectedOptionRCT) {
             var arrayDataRC = []; 
 
@@ -112,6 +125,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 }
             };
         }
+
 
         function optionsRCTselected(selectedOptionRCT) {
 
@@ -198,7 +212,5 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 selectY.setAttribute("style","display:none;");
             }
         }
-
-    //});
     
 });
