@@ -1,7 +1,8 @@
 $(function() {
 
     $.validator.setDefaults({
-        debug: true, 
+        debug: false, //if ( validator.settings.debug ) {event.preventDefault();}} --> si está activada la depuración para
+        success: "valid",
         errorClass: 'text-danger',
         highlight: function(element) {
           $(element)
@@ -14,6 +15,7 @@ $(function() {
             .addBack().css( "border-color", "rgb(185, 185, 185)" ); //Cambiar al color necesario
         }
     });
+
 
     $.validator.addMethod("isbn13Option", function( value, element ) {
         return this.optional( element ) || 
@@ -30,7 +32,6 @@ $(function() {
         /^(?=[0-9X]{13}$)[0-9]?[0-9]+[]?[0-9X]$/.test( value );
     }, "EAN must contain <u>13 digits</u>");
 
-
     $("#basic_edition_form_pretab").validate({
         rules: {
             "basic_edition_form[recordReference]": {
@@ -41,7 +42,8 @@ $(function() {
                 isbn13Option : true
             },
             "basic_edition_form[EAN]": {
-                required : true
+                required : true,
+                eanOption : true
             },
             "basic_edition_form[ISBN10]": {
                 isbn10Option : true
@@ -73,13 +75,13 @@ $(function() {
     });
     
 
-    //Corregir expresion regular para que admita más de un valor
     $.validator.addMethod("cityPublicationOption", function( value, element ) {
         return this.optional( element ) || 
-        /^[a-zA-Z\s]$/.test( value );
-    }, "City of Publication must contain letters");
+        /^[a-zA-ZÀ-ÿ]+$/.test( value );
+    }, "City of Publication must contain only letters");
 
     $('#general_information_form_tab').validate({
+        
         ignore: '.select2-search__field, input[type=hidden]',
         rules: {
             "general_information_form[publishingDate]": {
@@ -97,14 +99,73 @@ $(function() {
         },
         messages: {
             "general_information_form[publishingDate]": {
-                required : 'Fecha de publicación es obligatorio'
+                required : 'PublishingDate is required'
             },
             "general_information_form[numberOfPages]": {
-                digits: 'Introduce un número de páginas válido'
+                digits: 'Insert a valid NumberOfPages (only integer numbers)'
             },
             "general_information_form[editionNumber]": {
-                digits: 'Introduce un número de edición válido'
+                digits: 'Insert a valid EditionNumber (only integer numbers)'
             }
         },
     });
+
+
+    /*
+    $( "#supplier_form_tab" ).each(function( s_form ) {
+        $(s_form).validate({
+            rules: {
+                "s_form[packQuantity]": {
+                    digits: true
+                }
+            },
+            messages: {
+                "s_form[packQuantity]": {
+                    digits: 'Insert a valid PackQuantity (only integer numbers)'
+                }
+            },
+        });
+    });
+    */
+
+    $("#supplier_form_tab").validate({
+        rules: {
+            "supplier_form_tab[packQuantity]": {
+                digits: true
+            },
+            "supplier_form_tab[supplierRole]": {
+                required: true 
+            },
+            "supplier_form_tab[productAvailability]": {
+                required: true
+            }
+        },
+        messages: {
+            "supplier_form_tab[packQuantity]": {
+                digits: 'Insert a valid PackQuantity (only integer numbers)'
+            },
+            "supplier_form_tab[supplierRole]": {
+                required: 'SupplierRole is required'
+            },
+            "supplier_form_tab[productAvailability]": {
+                required: 'ProductAvailability is required'
+            }
+        },
+    });
+
+
+    $("#contributor_form_tab").validate({
+        rules: {
+            "contributor_form_tab[contributorRole]": {
+                required: true 
+            }
+        },
+        messages: {
+            "contributor_form_tab[contributorRole]": {
+                required: 'ContributorRole is required'
+            }
+        },
+    });
+
+
 });

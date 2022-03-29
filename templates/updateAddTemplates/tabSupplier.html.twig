@@ -9,7 +9,7 @@
 </head>
 
 {% block body %}
-    <form name="supplier_form" method="post" class="dataForm supplier_tab_form" novalidate="novalidate" action="{{ path('tab_supplier', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id, 'id_supplier':supplier.id}) }}">   
+    <form name="supplier_form" method="post" class="dataForm" id="supplier_form_tab" novalidate="novalidate" action="{{ path('tab_supplier', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id, 'id_supplier':supplier.id}) }}">   
         <div class="row general_information_content">
             <div class="col-12">
                 <div class="row first_GI">
@@ -21,11 +21,11 @@
                 <div class="row GI">
                     <div class="col-12 col-lg-6 inputsGI">
                         <span>Supplier Role</span>
-                        {{ form_widget(formSupplier.supplierRole, {'attr': {'class': 'form-select'}}) }}
+                        {{ form_widget(formSupplier.supplierRole, {'attr': {'class': 'form-select requiredInput'}}) }}
                     </div>
                     <div class="col-12 col-lg-6 inputsGI">
                         <span>Product availability</span>
-                        {{ form_widget(formSupplier.productAvailability, {'attr': {'class': 'form-select'}}) }} 
+                        {{ form_widget(formSupplier.productAvailability, {'attr': {'class': 'form-select requiredInput'}}) }} 
                     </div>
                 </div>
                 <div class="row GI">
@@ -42,7 +42,7 @@
                         {# {{ form_widget(formSupplier.supplierName, {'attr': {'class': 'form-control', 'placeholder': 'On sale date (YYYYMMDD)', 'type':'text'}}) }} #}
                     </div>
                     <div class="col-12 col-lg-6 inputsGI">
-                        <label class="form-label">Expected ship date date (YYYYMMDD)</label>
+                        <label class="form-label">Expected ship date (YYYYMMDD)</label>
                         <input class="form-control" type="text">
                         {# {{ form_widget(formSupplier.supplierName, {'attr': {'class': 'form-control', 'placeholder': 'Expected ship date date (YYYYMMDD)', 'type':'text'}}) }} #}
                     </div>
@@ -82,7 +82,7 @@
                                 </div>
                                 <div id="option{{contadorPrice}}" class="accordion-collapse collapse" aria-labelledby="heading{{contadorPrice}}" data-bs-parent="#accordion{{contadorPrice}}">
                                     <div class="accordion-body">
-                                        <div class="row general_information_content" id="ginfo_price">
+                                        <div class="row general_information_content">
                                             <div class="col-12">
                                                 <div class="row first_GI">
                                                     <div class="col-12 col-lg-3 inputsGI">

@@ -126,15 +126,33 @@ class UserService extends CheckCredentials
         }
     }
 
+
     public function personNameValue($contributorONIX, $contributor) {
         if ($contributorONIX->personName != null) {
             $contributor->setPersonName($contributorONIX->personName->contents);
+        }
+        else if ($contributorONIX->personName == null && $contributorONIX->namesBeforeKey != null && $contributorONIX->keyNames != null && $contributorONIX->personNameInverted == null) {
+            $contributor->setPersonName($contributorONIX->namesBeforeKey->contents." ".$contributorONIX->keyNames->contents);
+        }
+        else if ($contributorONIX->personNameInverted != null && $contributorONIX->personName != null) {
+            $personN = str_replace($contributorONIX->personNameInverted->contents, " ,", " ");
+            $contributor->setPersonName(trim($personN));
         }
     }
 
     public function keyNamesValue($contributorONIX, $contributor) {
         if ($contributorONIX->keyNames != null) {
-            $contributor->setNamesBeforeKey($contributorONIX->keyNames->contents);
+            $contributor->setKeyNames($contributorONIX->keyNames->contents);
+        }
+        else if ($contributorONIX->personName != null && $contributorONIX->keyNames == null && $contributorONIX->personNameInverted == null) {
+            $posicion = strpos($contributorONIX->personName->contents, " ");
+            $nameK = mb_substr($contributorONIX->personName->contents,$posicion);
+            $contributor->setKeyNames(trim($nameK));
+        }
+        else if($contributorONIX->personNameInverted != null && $contributorONIX->keyNames == null && $contributorONIX->personName == null) {
+            $posicion = strpos($contributorONIX->personNameInverted->contents, ",");
+            $nameK = substr($contributorONIX->personNameInverted->contents, 0, $posicion);
+            $contributor->setKeyNames(trim($nameK));
         }
     }
 
@@ -142,11 +160,28 @@ class UserService extends CheckCredentials
         if ($contributorONIX->namesBeforeKey != null) {
             $contributor->setNamesBeforeKey($contributorONIX->namesBeforeKey->contents);
         } 
+        else if ($contributorONIX->personName != null && $contributorONIX->namesBeforeKey == null && $contributorONIX->personNameInverted == null) {
+            $posicion = strpos($contributorONIX->personName->contents, " ");
+            $nameBK = substr($contributorONIX->personName->contents, 0, $posicion);
+            $contributor->setNamesBeforeKey(trim($nameBK));
+        }
+        else if($contributorONIX->personNameInverted != null && $contributorONIX->namesBeforeKey == null && $contributorONIX->personName == null) {
+            $posicion = strpos($contributorONIX->personNameInverted->contents, " ");
+            $nameBK = mb_substr($contributorONIX->personNameInverted->contents,$posicion);
+            $contributor->setNamesBeforeKey(trim($nameBK)); 
+        }
     }
 
     public function personNameInvertedValue($contributorONIX, $contributor) {
         if ($contributorONIX->personNameInverted != null) {
             $contributor->setPersonNameInverted($contributorONIX->personNameInverted->contents);
+        }
+        else if ($contributorONIX->personNameInverted == null && $contributorONIX->namesBeforeKey != null && $contributorONIX->keyNames != null && $contributorONIX->personName == null) {
+            $contributor->setPersonNameInverted($contributorONIX->keyNames->contents.", ".$contributorONIX->namesBeforeKey->contents);
+        }
+        else if ($contributorONIX->personNameInverted == null && $contributorONIX->personName != null) {
+            $personNI = str_replace($contributorONIX->personName->contents, " ", ", ");
+            $contributor->setPersonNameInverted(trim($personNI));
         }
     }
 
