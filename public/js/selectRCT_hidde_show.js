@@ -4,18 +4,55 @@ document.addEventListener("DOMContentLoaded", function (event) {
     var URL_RC03 = window.location.origin.concat("/api/codelist/BICsubject");
     var URL_RC02 = window.location.origin.concat("/api/codelist/returnsCode02");
 
-    optionsRCTselected.call(this.optionsRCTselected);
-
     var selectRCT = document.getElementById('supplier_form_returnsCodeType');
+    var selectedOptionRCT = selectRCT.options[selectRCT.selectedIndex].value;
+
+    optionsRCTselected.call(this.optionsRCTselected, selectedOptionRCT);
 
     selectRCT.addEventListener('change',
         () => {
-            var selectedOptionRCT = selectRCT.options[selectRCT.selectedIndex].value;
-            showValuesReturnsCode.call(this.optionsRCTselected, selectedOptionRCT);
-        }
+                var selectedOption = selectRCT.options[selectRCT.selectedIndex].value; //Se actualiza cada vez que cambia la opcion del select
+                showValuesReturnsCodeChange.call(this.showValuesReturnsCodeChange, selectedOption);
+            }
     );
 
     function showValuesReturnsCode(selectedOptionRCT) {
+        var input00 = document.getElementById('input00');
+        var input01 = document.getElementById('input01'); 
+        var select02 = document.getElementById('select02');
+        var select03 = document.getElementById('select03');
+        var select04 = document.getElementById('select04');
+
+                var returnsCode_hidden = document.getElementById('supplier_form_returnsCode');
+        
+        if(selectedOptionRCT == 00) {
+            hiddeNodes_whileInput.call(this.hiddeNodes_whileInput, select02, select03, select04, input01); 
+            input00.style.display='block';
+            input00.value = returnsCode_hidden.value;
+        }
+        else if(selectedOptionRCT == 01) {
+            hiddeNodes_whileInput.call(this.hiddeNodes_whileInput, select02, select03, select04, input00); 
+            input01.style.display='block';
+            input01.value = returnsCode_hidden.value;
+        }
+        else if(selectedOptionRCT == 02) {
+            hiddeNodes_whileSelect.call(this.hiddeNodes_whileSelect, select03, select04, input00, input01);
+            select02.style.display='block';
+            select02.value = returnsCode_hidden.value;
+        }
+        else if(selectedOptionRCT == 03) {
+            hiddeNodes_whileSelect.call(this.hiddeNodes_whileSelect, select02, select04, input00, input01);
+            select03.style.display='block';
+            select03.value = returnsCode_hidden.value;
+        }
+        else if(selectedOptionRCT == 04) {
+            hiddeNodes_whileSelect.call(this.hiddeNodes_whileSelect, select02, select03, input00, input01);
+            select04.style.display='block'; 
+            select04.value = returnsCode_hidden.value;
+        }
+    }
+
+    function showValuesReturnsCodeChange(selectedOptionRCT) {
         var input00 = document.getElementById('input00');
         var input01 = document.getElementById('input01'); 
         var select02 = document.getElementById('select02');
@@ -40,11 +77,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
         else if(selectedOptionRCT == 04) {
             hiddeNodes_whileSelect.call(this.hiddeNodes_whileSelect, select02, select03, input00, input01);
-            select04.style.display='block';  
+            select04.style.display='block'; 
         }
     }
 
-    function getArrayReturnsCodeData(returnsCodeGrid, selectID, URL) {
+    function getArrayReturnsCodeData(returnsCodeGrid, selectID, URL, selectedOptionRCT) {
         var arrayDataRC = []; 
 
         var xhttp = new XMLHttpRequest();
@@ -61,19 +98,21 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 }
 
                 createSelect.call(this.createSelect, returnsCodeGrid, selectID, arrayDataRC);
+                showValuesReturnsCode.call(this.showValuesReturnsCode, selectedOptionRCT);
             }
         };
     }
 
-    function optionsRCTselected() {
+    function optionsRCTselected(selectedOptionRCT) {
 
         var returnsCodeGrid = document.getElementById('returnsCodeGrid');
 
         createInput.call(this.createInput, returnsCodeGrid, "input00");
         createInput.call(this.createInput, returnsCodeGrid, "input01");
-        getArrayReturnsCodeData.call(this.getArrayReturnsCodeData, returnsCodeGrid, "select02", URL_RC02);
-        getArrayReturnsCodeData.call(this.getArrayReturnsCodeData, returnsCodeGrid, "select03", URL_RC03);
-        getArrayReturnsCodeData.call(this.getArrayReturnsCodeData, returnsCodeGrid, "select04", URL_RC04);
+        getArrayReturnsCodeData.call(this.getArrayReturnsCodeData, returnsCodeGrid, "select02", URL_RC02, selectedOptionRCT);
+        getArrayReturnsCodeData.call(this.getArrayReturnsCodeData, returnsCodeGrid, "select03", URL_RC03, selectedOptionRCT);
+        getArrayReturnsCodeData.call(this.getArrayReturnsCodeData, returnsCodeGrid, "select04", URL_RC04, selectedOptionRCT);
+
     }
 
 

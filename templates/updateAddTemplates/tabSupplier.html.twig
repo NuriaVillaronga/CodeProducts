@@ -9,7 +9,7 @@
 </head>
 
 {% block body %}
-    <form name="supplier_form" method="post" class="dataForm" novalidate="novalidate" action="{{ path('tab_supplier', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id, 'id_supplier':supplier.id}) }}">   
+    <form name="supplier_form" method="post" class="dataForm" id="supplier_form_id" novalidate="novalidate" action="{{ path('tab_supplier', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id, 'id_supplier':supplier.id}) }}">   
         <div class="row general_information_content">
             <div class="col-12">
                 <div class="row first_GI">
