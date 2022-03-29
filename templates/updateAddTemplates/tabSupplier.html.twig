@@ -9,7 +9,7 @@
 </head>
 
 {% block body %}
-    <form name="supplier_form" method="post" class="dataForm" id="supplier_form_id" novalidate="novalidate" action="{{ path('tab_supplier', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id, 'id_supplier':supplier.id}) }}">   
+    <form name="supplier_form" method="post" class="dataForm supplier_tab_form" novalidate="novalidate" action="{{ path('tab_supplier', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id, 'id_supplier':supplier.id}) }}">   
         <div class="row general_information_content">
             <div class="col-12">
                 <div class="row first_GI">
@@ -50,7 +50,7 @@
                 <div class="row last_GI">
                     <div class="col-12 col-lg-6 inputsGI">
                         <span>Returns type</span>
-                        {{ form_widget(formSupplier.returnsCodeType, {'attr': {'class' : 'form-select'}}) }}
+                        {{ form_widget(formSupplier.returnsCodeType, {'attr': {'class' : 'form-select returns_code_type_supplier'}}) }}
                     </div>
                     <div class="col-12 col-lg-6 inputsGI" id="returnsCodeGrid">
                         <span>Returns code</span>
