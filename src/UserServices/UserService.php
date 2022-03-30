@@ -869,19 +869,22 @@ class UserService extends CheckCredentials
 
                 if ($productXML->publishingDetail->publishingDateList != null) {
                     foreach ($productXML->publishingDetail->publishingDateList->arrayPublishingDate as $publishingDate) {
-                        $product->setpublishingDate($publishingDate->date->valor); //se establece $publishingDate
-      
-                        if (isset($publishingDate->date->dateFormat) != false && isset($publishingDate->date->dateformat) == false) {
-                            $product->setPublishingDateFormat($publishingDate->date->dateFormat->contents);
-                        }
-                        if (isset($publishingDate->date->dateFormat) == false && isset($publishingDate->date->dateformat) != false) {
-                            $product->setPublishingDateFormat($publishingDate->date->dateformat->contents);
-                        }
-                        if (isset($publishingDate->date->dateFormat) == false && isset($publishingDate->date->dateformat) == false) {
-                            $product->setPublishingDateFormat($publishingDate->date->dateformat->contents); 
-                        }
 
-                        $product->setYearPublishingDate(date_format($publishingDate->date->valor, "Y")); //se establece $yearOfPublication 
+                        if($publishingDate->publishingDateRole->contents == "01") {
+                            $product->setPublishingDate($publishingDate->date->valor); //se establece $publishingDate
+      
+                            if (isset($publishingDate->date->dateFormat) != false && isset($publishingDate->date->dateformat) == false) {
+                                $product->setPublishingDateFormat($publishingDate->date->dateFormat->contents);
+                            }
+                            if (isset($publishingDate->date->dateFormat) == false && isset($publishingDate->date->dateformat) != false) {
+                                $product->setPublishingDateFormat($publishingDate->date->dateformat->contents);
+                            }
+                            if (isset($publishingDate->date->dateFormat) == false && isset($publishingDate->date->dateformat) == false) {
+                                $product->setPublishingDateFormat($publishingDate->date->dateformat->contents); 
+                            }
+
+                            $product->setYearPublishingDate(date_format($publishingDate->date->valor, "Y")); //se establece $yearOfPublication
+                        } 
 
                         break;
                     }
