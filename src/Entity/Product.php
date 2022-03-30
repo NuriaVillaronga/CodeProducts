@@ -413,7 +413,12 @@ class Product
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
      */
-    private $themesElectra; 
+    private $themesElectra;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $publishingDateFormat; 
 
 
     public function __construct()
@@ -599,6 +604,9 @@ class Product
         return $this;
     }
 
+    /**
+     * ---------------------------------------------------------------------------------------------------
+     */
     public function getPublishingDate(): ?DateTime
     {
         return $this->publishingDate;
@@ -610,6 +618,9 @@ class Product
 
         return $this;
     }
+     /**
+     * ----------------------------------------------------------------------------------------------------
+     */
 
     public function getPublishingStatus(): ?string
     {
@@ -1465,6 +1476,18 @@ class Product
     public function setThemesElectra(?string $themesElectra): self
     {
         $this->themesElectra = $themesElectra;
+
+        return $this;
+    }
+
+    public function getPublishingDateFormat(): ?string
+    {
+        return $this->publishingDateFormat;
+    }
+
+    public function setPublishingDateFormat(?string $publishingDateFormat): self
+    {
+        $this->publishingDateFormat = $publishingDateFormat;
 
         return $this;
     }

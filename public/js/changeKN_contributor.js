@@ -1,10 +1,17 @@
 document.addEventListener("DOMContentLoaded", function (event) {
 
+    /*
+    var contributorsForm = document.querySelectorAll('.contributors_form_tab_comun');
+
+    contributorsForm.forEach((contributor) => {
+        console.log(contributor.childNodes);
+    });
+    */
+
     var personNameInverted = document.getElementById('contributor_form_personNameInverted');
     var personName = document.getElementById('contributor_form_personName');
     var keyNames = document.getElementById('contributor_form_keyNames');
     var namesBeforeKey = document.getElementById('contributor_form_namesBeforeKey'); 
-
 
     namesBeforeKey.addEventListener('keyup', () => { changeValues.call(this.changeValues); });
 
@@ -21,5 +28,5 @@ document.addEventListener("DOMContentLoaded", function (event) {
             personNameInverted.value = keyNames.value+namesBeforeKey.value;
         }
     }
-
+    
 });

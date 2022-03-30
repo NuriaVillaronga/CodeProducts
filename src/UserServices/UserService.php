@@ -863,15 +863,29 @@ class UserService extends CheckCredentials
                 $this->countryOfPublicationValue($product, $productXML);
                 $this->publishingStatusValue($product, $productXML);
 
+                //------------------------------------------------------------------------------------------------------------------------------
+
                 if ($productXML->publishingDetail->publishingDateList != null) {
                     foreach ($productXML->publishingDetail->publishingDateList->arrayPublishingDate as $publishingDate) {
-                        if ($publishingDate->publishingDateRole->contents == "01") {
-                            $product->setpublishingDate($publishingDate->date->valor); //se establece $publishingDate
-                            $product->setYearPublishingDate(date_format($publishingDate->date->valor, "Y")); //se establece $yearOfPublication  
+                        $product->setpublishingDate($publishingDate->date->valor); //se establece $publishingDate
+      
+                        if (isset($publishingDate->date->dateFormat) != false && isset($publishingDate->date->dateformat) == false) {
+                            $product->setPublishingDateFormat($publishingDate->date->dateFormat->contents);
                         }
+                        if (isset($publishingDate->date->dateFormat) == false && isset($publishingDate->date->dateformat) != false) {
+                            $product->setPublishingDateFormat($publishingDate->date->dateformat->contents);
+                        }
+                        if (isset($publishingDate->date->dateFormat) == false && isset($publishingDate->date->dateformat) == false) {
+                            $product->setPublishingDateFormat($publishingDate->date->dateformat->contents); 
+                        }
+
+                        $product->setYearPublishingDate(date_format($publishingDate->date->valor, "Y")); //se establece $yearOfPublication 
+
                         break;
                     }
                 }
+
+                //------------------------------------------------------------------------------------------------------------------------------
             }
 
             //Le añado los productos al fichero y al catalogo

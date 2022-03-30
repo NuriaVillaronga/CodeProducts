@@ -65,10 +65,14 @@ class GeneralInformationFormType extends AbstractType
             ->add('cityOfPublication', TextType::class, ['required' => false])
             ->add('editionNumber', TextType::class, ['required' => false])
             ->add('copyrightYear', TextType::class, ['required' => false])
+
             ->add('publishingDate', DateType::class, [
-                'years' => range(1970,2022),
-                'widget' => 'single_text'
+                'years' => range(1970,date("Y")),
+                'html5' => false,
+                'widget' => 'single_text',
+                'format' => 'yyyyMMdd' //Formato en el que se va a guardar en la base de datos
             ])
+
             ->add('yearPublishingDate', TextType::class, ['required' => false])
             ->add('languageCode', ChoiceType::class, [
                 'choices' => $this->codeListRepository->getKV($this->codeListRepository->findByTag('languageCode')),
@@ -104,3 +108,4 @@ class GeneralInformationFormType extends AbstractType
         ]);
     }
 }
+?>
