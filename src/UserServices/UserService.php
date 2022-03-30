@@ -669,7 +669,11 @@ class UserService extends CheckCredentials
         if ($productXML->publishingDetail->copyrightStatementList != null) {
             foreach ($productXML->publishingDetail->copyrightStatementList->arrayCopyrightStatement as $copyrightStatement) {
                 foreach ($copyrightStatement->copyrightYearList->arrayCopyrightYear as $copyrightYear) {
-                    $product->setCopyrightYear($copyrightYear->contents);
+                    
+                    if($copyrightYear->dateformat->contents == "Y" || $copyrightYear->dateformat->contents == "YY" || $copyrightYear->dateformat == null) {
+                        //Guardo el contenido en formato string, ya que en formato fecha, para el tipo 11, solo se tomaria el último de los años
+                        $product->setCopyrightYear($copyrightYear->contents);
+                    }
                     break;
                 }
                 break;
@@ -863,8 +867,6 @@ class UserService extends CheckCredentials
                 $this->countryOfPublicationValue($product, $productXML);
                 $this->publishingStatusValue($product, $productXML);
 
-                //------------------------------------------------------------------------------------------------------------------------------
-
                 if ($productXML->publishingDetail->publishingDateList != null) {
                     foreach ($productXML->publishingDetail->publishingDateList->arrayPublishingDate as $publishingDate) {
                         $product->setpublishingDate($publishingDate->date->valor); //se establece $publishingDate
@@ -884,8 +886,6 @@ class UserService extends CheckCredentials
                         break;
                     }
                 }
-
-                //------------------------------------------------------------------------------------------------------------------------------
             }
 
             //Le añado los productos al fichero y al catalogo
