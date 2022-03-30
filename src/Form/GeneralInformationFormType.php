@@ -67,7 +67,6 @@ class GeneralInformationFormType extends AbstractType
             ->add('copyrightYear', TextType::class, ['required' => false])
 
             ->add('publishingDate', DateType::class, [
-                'years' => range(1970,date("Y")),
                 'html5' => false,
                 'widget' => 'single_text',
                 'format' => 'yyyyMMdd' //Formato en el que se va a guardar en la base de datos
