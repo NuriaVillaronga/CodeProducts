@@ -637,6 +637,7 @@ class UserService extends CheckCredentials
         }
     }
 
+    //----------------------------------------------------------------
     public function supplierValue($productSupply, $product) {
         foreach ($productSupply->supplyDetailList->arraySupplyDetail as $supplyDetail) {
 
@@ -649,10 +650,53 @@ class UserService extends CheckCredentials
             $supplier->setSupplierRole($supplyDetail->supplier->supplierRole->contents);
             $supplier->setProductAvailability($supplyDetail->productAvailability->contents);
             $this->priceValue($supplyDetail, $supplier);
+            $this->supplyDateValue($supplyDetail,$supplier);
             
             $product->addSupplier($supplier); //Se le pasa al producto cada objeto supplier
+
         }
     }
+
+    public function supplyDateValue($supplyDetail, $supplier) {
+        if ($supplyDetail->supplyDateList != null) {
+                foreach ($supplyDetail->supplyDateList->arraySupplyDate as $supplyDate) {
+                    if($supplyDate->supplyDateRole->contents == "08") {
+                        $supplier->setOnSaleDate($supplyDate->date->valor); 
+                        $this->getOnSaleDateFormat($supplyDate, $supplier);
+                    }
+                    if($supplyDate->supplyDateRole->contents == "34") {
+                        $supplier->setExpectedShipDate($supplyDate->date->valor);
+                        $this->getExpectedShipDateFormat($supplyDate, $supplier);
+                    }
+                    break;
+                } 
+        }
+    }
+
+    public function getOnSaleDateFormat($supplyDate, $supplier) {
+        if (isset($supplyDate->date->dateFormat) != false && isset($supplyDate->date->dateformat) == false) {
+            $supplier->setOnSaleDateFormat($supplyDate->date->dateFormat->contents);
+        }
+        if (isset($supplyDate->date->dateFormat) == false && isset($supplyDate->date->dateformat) != false) {
+            $supplier->setOnSaleDateFormat($supplyDate->date->dateformat->contents);
+        }
+        if (isset($supplyDate->date->dateFormat) == false && isset($supplyDate->date->dateformat) == false) {
+            $supplier->setOnSaleDateFormat($supplyDate->date->dateformat->contents);   
+        }
+    }
+
+    public function getExpectedShipDateFormat($supplyDate, $supplier) {
+        if (isset($supplyDate->date->dateFormat) != false && isset($supplyDate->date->dateformat) == false) {
+            $supplier->setExpectedShipDateFormat($supplyDate->date->dateFormat->contents);
+        }
+        if (isset($supplyDate->date->dateFormat) == false && isset($supplyDate->date->dateformat) != false) {
+            $supplier->setExpectedShipDateFormat($supplyDate->date->dateformat->contents);
+        }
+        if (isset($supplyDate->date->dateFormat) == false && isset($supplyDate->date->dateformat) == false) {
+            $supplier->setExpectedShipDateFormat($supplyDate->date->dateformat->contents);     
+        }
+    }
+    //--------------------------------------------------------------------------------------------------------------------
 
     public function promotionCampaignValue($productSupply, $product) {
         if ($productSupply->marketPublishingDetail != null) {

@@ -3,10 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\SupplierRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
 
 /**
  * @ORM\Entity(repositoryClass=SupplierRepository::class)
@@ -59,6 +59,27 @@ class Supplier
      * @ORM\OneToMany(targetEntity=Price::class, mappedBy="idSupplier", cascade={"all"})
      */
     private $prices;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $onSaleDate;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $expectedShipDate;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $onSaleDateFormat;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $expectedShipDateFormat; 
+
 
     public function __construct()
     {
@@ -187,6 +208,54 @@ class Supplier
                 $price->setIdSupplier(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getOnSaleDate(): ?DateTime
+    {
+        return $this->onSaleDate;
+    }
+
+    public function setOnSaleDate(?DateTime $onSaleDate): self
+    {
+        $this->onSaleDate = $onSaleDate;
+
+        return $this;
+    }
+
+    public function getExpectedShipDate(): ?DateTime
+    {
+        return $this->expectedShipDate;
+    }
+
+    public function setExpectedShipDate(?DateTime $expectedShipDate): self
+    {
+        $this->expectedShipDate = $expectedShipDate; 
+
+        return $this; 
+    }
+
+    public function getOnSaleDateFormat(): ?string
+    {
+        return $this->onSaleDateFormat;
+    }
+
+    public function setOnSaleDateFormat(?string $onSaleDateFormat): self
+    {
+        $this->onSaleDateFormat = $onSaleDateFormat;
+
+        return $this;
+    }
+
+    public function getExpectedShipDateFormat(): ?string
+    {
+        return $this->expectedShipDateFormat;
+    }
+
+    public function setExpectedShipDateFormat(?string $expectedShipDateFormat): self
+    {
+        $this->expectedShipDateFormat = $expectedShipDateFormat;
 
         return $this;
     }

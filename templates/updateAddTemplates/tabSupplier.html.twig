@@ -38,13 +38,11 @@
                 <div class="row GI">
                     <div class="col-12 col-lg-6 inputsGI">
                         <label class="form-label">On sale date (YYYYMMDD)</label>
-                        <input class="form-control" type="text">
-                        {# {{ form_widget(formSupplier.supplierName, {'attr': {'class': 'form-control', 'placeholder': 'On sale date (YYYYMMDD)', 'type':'text'}}) }} #}
+                        {{ form_widget(formSupplier.onSaleDate, {'attr': {'class': 'form-control requiredInput js-datepicker'}}) }}
                     </div>
                     <div class="col-12 col-lg-6 inputsGI">
                         <label class="form-label">Expected ship date (YYYYMMDD)</label>
-                        <input class="form-control" type="text">
-                        {# {{ form_widget(formSupplier.supplierName, {'attr': {'class': 'form-control', 'placeholder': 'Expected ship date date (YYYYMMDD)', 'type':'text'}}) }} #}
+                        {{ form_widget(formSupplier.expectedShipDate, {'attr': {'class': 'form-control requiredInput js-datepicker'}}) }}
                     </div>
                 </div>
                 <div class="row last_GI">
@@ -92,7 +90,6 @@
                                                     <div class="col-12 col-lg-3 inputsGI">
                                                         <label class="form-label">Price</label>
                                                         <input class="form-control" type="text">
-                                                        {##}
                                                     </div>
                                                     <div class="col-12 col-lg-3 inputsGI">
                                                         <label class="form-label">Currency</label>
@@ -158,7 +155,6 @@
                 </div>
             </div>
         </div>
-        {{ form_rest(formSupplier) }}
 
         {% include 'updateAddTemplates/bottomButtons.html.twig' %}
     </form>

@@ -416,9 +416,9 @@ class Product
     private $themesElectra;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
-    private $publishingDateFormat; 
+    private $publishingDateFormat;
 
 
     public function __construct()
@@ -604,9 +604,6 @@ class Product
         return $this;
     }
 
-    /**
-     * ---------------------------------------------------------------------------------------------------
-     */
     public function getPublishingDate(): ?DateTime
     {
         return $this->publishingDate;
@@ -618,9 +615,6 @@ class Product
 
         return $this;
     }
-     /**
-     * ----------------------------------------------------------------------------------------------------
-     */
 
     public function getPublishingStatus(): ?string
     {

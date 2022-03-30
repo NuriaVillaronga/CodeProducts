@@ -9,6 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
@@ -33,6 +34,18 @@ class SupplierFormType extends AbstractType
         ])
 
         ->add('returnsCode', HiddenType::class, ['required' => false])
+
+        ->add('onSaleDate', DateType::class, [
+            'html5' => false,
+            'widget' => 'single_text',
+            'format' => 'yyyyMMdd'
+        ])
+
+        ->add('expectedShipDate', DateType::class, [
+            'html5' => false,
+            'widget' => 'single_text',
+            'format' => 'yyyyMMdd' 
+        ])
 
         ->add('productAvailability', ChoiceType::class, [
             'choices' => $this->codeListRepository->getKV($this->codeListRepository->findByTag('productAvailability')),
