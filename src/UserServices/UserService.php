@@ -206,6 +206,20 @@ class UserService extends CheckCredentials
         }
     }
 
+    public function priceAmountValue($price, $priceONIX) {
+        if ($priceONIX->priceAmount != null) {
+            $price->setPriceAmount($priceONIX->priceAmount->contents);
+        } 
+    }
+
+    public function countriesIncludedValue($price, $priceONIX) {
+        if ($priceONIX->territory != null) {
+            if ($priceONIX->territory->countriesIncluded != null) { 
+                $price->setCountriesIncluded($priceONIX->territory->countriesIncluded->contents);
+            }
+        } 
+    }
+
     public function currencyCodeValue($price, $priceONIX) {
         if ($priceONIX->currencyCode != null) {
             $price->setCurrencyCode($priceONIX->currencyCode->contents);
@@ -614,12 +628,8 @@ class UserService extends CheckCredentials
 
                 $this->priceTypeValue($price, $priceOnix);
                 $this->currencyCodeValue($price, $priceOnix);
-
-                if ($priceOnix->territory != null) {
-                    if ($priceOnix->territory->countriesIncluded != null) { 
-                        $price->setCountriesIncluded($priceOnix->territory->countriesIncluded->contents);
-                    }
-                } 
+                $this->countriesIncludedValue($price, $priceOnix);
+                $this->priceAmountValue($price, $priceOnix);
                 $this->discountCodeValue($price, $priceOnix);
                 $this->discountCodeTypeValue($price, $priceOnix);
                 

@@ -23,6 +23,7 @@ class PriceFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('priceAmount', TextType::class, ['required' => false])
             ->add('taxRatePercent', TextType::class, ['required' => false])
             ->add('taxAmount', TextType::class, ['required' => false])
             ->add('taxableAmount', TextType::class, ['required' => false])

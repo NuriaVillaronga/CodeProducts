@@ -38,11 +38,11 @@
                 <div class="row GI">
                     <div class="col-12 col-lg-6 inputsGI">
                         <label class="form-label">On sale date (YYYYMMDD)</label>
-                        {{ form_widget(formSupplier.onSaleDate, {'attr': {'class': 'form-control requiredInput js-datepicker'}}) }}
+                        {{ form_widget(formSupplier.onSaleDate, {'attr': {'class': 'form-control js-datepicker'}}) }}
                     </div>
                     <div class="col-12 col-lg-6 inputsGI">
                         <label class="form-label">Expected ship date (YYYYMMDD)</label>
-                        {{ form_widget(formSupplier.expectedShipDate, {'attr': {'class': 'form-control requiredInput js-datepicker'}}) }}
+                        {{ form_widget(formSupplier.expectedShipDate, {'attr': {'class': 'form-control js-datepicker'}}) }}
                     </div>
                 </div>
                 <div class="row last_GI">
@@ -73,7 +73,7 @@
                             <div class="accordion-item" id="accordion{{contadorPrice}}">
                                 <div class="row border accordion-button col-12 container-fluid" type="button" data-bs-toggle="collapse" data-bs-target="#option{{contadorPrice}}" aria-expanded="false" aria-controls="option{{contadorPrice}}">
                                     <div class="col-12 col-lg-3">------</div>
-                                    <div class="col-12 col-lg-2">----</div>
+                                    <div class="col-12 col-lg-2">------</div>
                                     <div class="col-12 col-lg-2">------</div>
                                     <div class="col-12 col-lg-2">-------</div>
                                     <div class="col-12 col-lg-3">-------</div>
@@ -89,7 +89,7 @@
                                                     </div>
                                                     <div class="col-12 col-lg-3 inputsGI">
                                                         <label class="form-label">Price</label>
-                                                        <input class="form-control" type="text">
+                                                        {{ form_widget(price.priceAmount, {'attr': {'class': 'form-control', 'placeholder': 'Price', 'type':'text'}}) }}
                                                     </div>
                                                     <div class="col-12 col-lg-3 inputsGI">
                                                         <label class="form-label">Currency</label>

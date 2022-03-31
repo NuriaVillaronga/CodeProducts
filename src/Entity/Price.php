@@ -67,6 +67,11 @@ class Price
     */
     private $taxRatePercent;
 
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $priceAmount;
+
     public function setId(?int $id): self
     {
         $this->id = $id;
@@ -195,6 +200,18 @@ class Price
     public function setDiscountCode(?string $discountCode): self
     {
         $this->discountCode = $discountCode;
+
+        return $this;
+    }
+
+    public function getPriceAmount(): ?string
+    {
+        return $this->priceAmount;
+    }
+
+    public function setPriceAmount(?string $priceAmount): self
+    {
+        $this->priceAmount = $priceAmount;
 
         return $this;
     }
