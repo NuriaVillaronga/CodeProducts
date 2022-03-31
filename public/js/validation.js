@@ -51,6 +51,9 @@ $(function() {
             "basic_edition_form[titleWithoutPrefix]": {
                 required : true
             },
+            "basic_edition_form[titlePrefix]": {
+                required : true
+            },
             "basic_edition_form[titleText]": {
                 required : true
             }
@@ -66,10 +69,13 @@ $(function() {
                 required : 'You must add at least one ISBN13 or one EAN'
             },
             "basic_edition_form[titleWithoutPrefix]": {
-                required : "Title must contain a TitleText or TitleWithoutPrefix"
+                required : "Title must contain a TitleWithoutPrefix and a TitleText"
+            },
+            "basic_edition_form[titlePrefix]": {
+                required : "Title must contain a TitleWithoutPrefix and a TitleText"
             },
             "basic_edition_form[titleText]": {
-                required : "Title must contain a TitleText or TitleWithoutPrefix"
+                required : "Title must contain a TitleText"
             }
         }
     });

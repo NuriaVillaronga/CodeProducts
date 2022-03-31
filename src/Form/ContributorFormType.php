@@ -22,10 +22,14 @@ class ContributorFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('personName', TextType::class, ['required' => false])
+            ->add('personName', TextType::class, [
+                'required' => false
+            ])
             ->add('namesBeforeKey', TextType::class, ['required' => false])
             ->add('keyNames', TextType::class, ['required' => false])
-            ->add('personNameInverted', TextType::class, ['required' => false])
+            ->add('personNameInverted', TextType::class, [
+                'required' => false
+            ])
             ->add('corporateName', TextType::class, ['required' => false])
             ->add('contributorRole', ChoiceType::class, [
                 'choices' => $this->codeListRepository->getKV($this->codeListRepository->findByTag('contributorRole')),

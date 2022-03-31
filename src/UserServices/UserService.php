@@ -103,14 +103,20 @@ class UserService extends CheckCredentials
     }
 
     public function titleTextValue($titleElement, $product) {
-        if ($titleElement->titleText != null) {
+        if ($titleElement->titleText != null && $titleElement->titlePrefix == null && $titleElement->titleWithoutPrefix == null) {
             $product->setTitleText($titleElement->titleText->contents);
         }
     }
 
     public function titlePrefixValue($titleElement, $product) {
-        if ($titleElement->titlePrefix != null) {
+        if ($titleElement->titlePrefix != null && $titleElement->titleWithoutPrefix != null) {
             $product->setTitlePrefix($titleElement->titlePrefix->contents); 
+        }
+    }
+
+    public function titleWithoutPrefixValue($titleElement, $product) {
+        if ($titleElement->titleWithoutPrefix != null && $titleElement->titlePrefix != null) {
+            $product->setTitleWithoutPrefix($titleElement->titleWithoutPrefix->contents);
         }
     }
 
@@ -119,13 +125,6 @@ class UserService extends CheckCredentials
             $product->setSubtitle($titleElement->subtitle->contents);
         }
     }
-
-    public function titleWithoutPrefixValue($titleElement, $product) {
-        if ($titleElement->titleWithoutPrefix != null) {
-            $product->setTitleWithoutPrefix($titleElement->titleWithoutPrefix->contents);
-        }
-    }
-
 
     public function personNameValue($contributorONIX, $contributor) {
         if ($contributorONIX->personName != null) {
