@@ -44,7 +44,7 @@ class SupplierFormType extends AbstractType
         ->add('expectedShipDate', DateType::class, [
             'html5' => false,
             'widget' => 'single_text',
-            'format' => 'yyyyMMdd' 
+            'format' => 'yyyyMMdd'
         ])
 
         ->add('productAvailability', ChoiceType::class, [

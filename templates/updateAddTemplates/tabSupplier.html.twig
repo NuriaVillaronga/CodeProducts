@@ -31,7 +31,7 @@
                 <div class="row GI">
                     <div class="col-12 col-lg-6 inputsGI">
                         <label class="form-label">Pack quantity</label>
-                        {{ form_widget(formSupplier.packQuantity, {'attr': {'class': 'form-control', 'placeholder': 'Pack quantity', 'type':'text'}}) }}
+                        {{ form_widget(formSupplier.packQuantity, {'attr': {'class': 'form-control', 'placeholder': 'Pack quantity'}}) }}
                     </div>
                     <div class="col-12 col-lg-6 column_hidden_before_md"></div>
                 </div>
@@ -155,6 +155,7 @@
                 </div>
             </div>
         </div>
+        {{ form_row(formSupplier._token) }}
 
         {% include 'updateAddTemplates/bottomButtons.html.twig' %}
     </form>
