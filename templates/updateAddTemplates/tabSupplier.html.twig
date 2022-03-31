@@ -10,8 +10,8 @@
 
 {% block body %}
     <form name="supplier_form" method="post" class="dataForm" id="supplier_form_tab" novalidate="novalidate" action="{{ path('tab_supplier', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id, 'id_supplier':supplier.id}) }}">   
-        <div class="row general_information_content">
-            <div class="col-12">
+        <div class="row general_information_content" id="container_1">
+            <div class="col-12" id="container_2">
                 <div class="row first_GI">
                     <div class="col-12 inputsGI">
                         <label class="form-label">Supplier name</label>
@@ -45,7 +45,7 @@
                         {{ form_widget(formSupplier.expectedShipDate, {'attr': {'class': 'form-control js-datepicker'}}) }}
                     </div>
                 </div>
-                <div class="row last_GI">
+                <div class="row last_GI" id="container_3">
                     <div class="col-12 col-lg-6 inputsGI">
                         <span>Returns type</span>
                         {{ form_widget(formSupplier.returnsCodeType, {'attr': {'class' : 'form-select returns_code_type_supplier'}}) }}

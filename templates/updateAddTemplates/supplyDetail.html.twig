@@ -32,7 +32,7 @@
             {% set contador = 0 %}
             {% for supplier in suppliers %}
                 {% set contador = contador + 1 %}
-                <div class="tab-pane fade" id="supplier{{contador}}" role="tabpanel" aria-labelledby="supplier{{contador}}-tab">
+                <div class="tab-pane fade supplier_own_tab" id="supplier{{contador}}" role="tabpanel" aria-labelledby="supplier{{contador}}-tab">
                     {{ render(path('tab_supplier', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id, 'id_supplier': supplier.id} )) }}
                 </div>
             {% endfor %}

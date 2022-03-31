@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 var namesBeforeKey; 
 
                 for (let i = 0; i < tabChildren.length; i++) {
-                    console.log(tabChildren[i].id);
                     if(tabChildren[i].id == "contributor_form_personNameInverted") {
                         personNameInverted = tabChildren[i];
                     }
@@ -46,5 +45,5 @@ document.addEventListener("DOMContentLoaded", function (event) {
             }
         });
     });
-    
+
 });
