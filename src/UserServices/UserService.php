@@ -437,7 +437,6 @@ class UserService extends CheckCredentials
         }
     }
 
-    //-------------------------------------------
     public function illustrationValue($product, $productXML) {
         if ($productXML->descriptiveDetail->ancillaryContentList != null) {
             foreach ($productXML->descriptiveDetail->ancillaryContentList->arrayAncillaryContent as $ac) {
@@ -575,6 +574,7 @@ class UserService extends CheckCredentials
         }
     }
 
+
     public function relatedProductValue($product, $productXML) {
         if ($productXML->relatedMaterial->relatedProductList != null) {
             $countRelatedProduct = 0;
@@ -614,10 +614,10 @@ class UserService extends CheckCredentials
                 else {
                     break;
                 }
-                
             }
         }
     }
+
 
     public function priceValue($supplyDetail, $supplier) {
         if ($supplyDetail->priceList != null) {
@@ -647,7 +647,7 @@ class UserService extends CheckCredentials
         }
     }
 
-    //----------------------------------------------------------------
+
     public function supplierValue($productSupply, $product) {
         foreach ($productSupply->supplyDetailList->arraySupplyDetail as $supplyDetail) {
 
@@ -706,7 +706,6 @@ class UserService extends CheckCredentials
             $supplier->setExpectedShipDateFormat($supplyDate->date->dateformat->contents);     
         }
     }
-    //--------------------------------------------------------------------------------------------------------------------
 
     public function promotionCampaignValue($productSupply, $product) {
         if ($productSupply->marketPublishingDetail != null) {
@@ -934,7 +933,6 @@ class UserService extends CheckCredentials
                             if (isset($publishingDate->date->dateFormat) == false && isset($publishingDate->date->dateformat) == false) {
                                 $product->setPublishingDateFormat($publishingDate->date->dateformat->contents); 
                             }
-
                             $product->setYearPublishingDate(date_format($publishingDate->date->valor, "Y")); //se establece $yearOfPublication
                         } 
 
