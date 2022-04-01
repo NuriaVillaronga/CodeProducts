@@ -28,7 +28,7 @@ class SubjectAudienceFormType extends AbstractType
                 'required' => false 
             ])
             ->add('BISACregion', ChoiceType::class, [
-                'choices' => $this->codeListRepository->getKV($this->codeListRepository->findByTag('BISACregion')),
+                'choices' => $this->codeListRepository->getKV_Subject($this->codeListRepository->findByTag('BISACregion')),
                 'required' => false 
             ])
             ->add('BICsubject', ChoiceType::class, [
@@ -37,7 +37,7 @@ class SubjectAudienceFormType extends AbstractType
             ])
             ->add('BICversion', TextType::class, ['required' => false])
             ->add('themaSubject', ChoiceType::class, [
-                'choices' => $this->codeListRepository->getKV($this->codeListRepository->findByTag('themaSubject')),
+                'choices' => $this->codeListRepository->getKV_Subject($this->codeListRepository->findByTag('themaSubject')),
                 'required' => false 
             ])
             ->add('themesElectra', TextType::class, ['required' => false])

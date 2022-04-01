@@ -20,8 +20,18 @@ class CodeListRepository extends ServiceEntityRepository
 
     }
 
+    //Obtener pares clave valor de los componentes leidos desde FormTypes
+    public function getKV($resultSelectQuery) {
+        $array = $resultSelectQuery;
+
+        foreach ($array as $elementoArray) {
+            $nuevoArray[$elementoArray['value']." - ".$elementoArray['definition']] = $elementoArray['value'];
+        }
+        return $nuevoArray;
+    }
+
     //Obtener pares clave valor de los componentes leidos desde controladores
-    public function getKVE($resultSelectQuery) {
+    public function getKVC($resultSelectQuery) {
         $array = $resultSelectQuery;
 
         foreach ($array as $elementoArray) {
@@ -30,12 +40,12 @@ class CodeListRepository extends ServiceEntityRepository
         return $nuevoArray;
     }
 
-    //Obtener pares clave valor de los componentes leidos desde FormTypes
-    public function getKV($resultSelectQuery) {
+    //Obtener pares clave valor desde FormTypes para Thema Subject y Bisac Region (Tab Subject) 
+    public function getKV_Subject($resultSelectQuery) {
         $array = $resultSelectQuery;
 
         foreach ($array as $elementoArray) {
-            $nuevoArray[$elementoArray['value']." - ".$elementoArray['definition']] = $elementoArray['value'];
+            $nuevoArray[$elementoArray['value']] = $elementoArray['value']." - ".$elementoArray['definition'];
         }
         return $nuevoArray;
     }

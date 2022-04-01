@@ -17,7 +17,7 @@ class ApiCodelistController extends AbstractController
      */
     public function index(CodeListRepository $codeListRepository, string $tag): Response
     {
-        $arrayRC = $codeListRepository->getKVE($codeListRepository->findByTag($tag));
+        $arrayRC = $codeListRepository->getKVC($codeListRepository->findByTag($tag));
         return new JsonResponse($arrayRC);
     }
 

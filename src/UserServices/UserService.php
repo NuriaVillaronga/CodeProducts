@@ -801,11 +801,9 @@ class UserService extends CheckCredentials
                     if ($subject->subjectCode->contents != null) {
                         $product->setBICsubject($subject->subjectCode->contents); //El BIC Subject es de tipo 12
                     }
-                    /*
-                    if ($subject->subjectSchemeVersion->contents != null) {
-                        //$product->setBICversion($subject->subjectSchemeVersion->contents); //Si es del tipo BIC y tiene versión, se le establece
+                    if ($subject->subjectSchemeVersion != null) {
+                        $product->setBICversion($subject->subjectSchemeVersion->contents); //Si es del tipo BIC y tiene versión, se le establece
                     }
-                    */
                 }
                 else if ($subject->subjectSchemeIdentifier->contents == "93") {
                     if ($subject->subjectCode->contents != null) {
