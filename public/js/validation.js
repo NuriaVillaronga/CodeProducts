@@ -189,6 +189,20 @@ $(function() {
         },
     });
 
+    $('#illustration_form_tab').validate({
+        ignore: '.select2-search__field, input[type=hidden]',
+        rules: {
+            "illustration_form[numberILL]": {
+                digits: true
+            }
+        },
+        messages: {
+            "illustration_form[numberILL]": {
+                digits: 'Insert a valid Number of illustrations value (only integer numbers)'
+            }
+        },
+    });
+
     /*
     $( "#supplier_form_tab" ).each(function( s_form ) {
         $(s_form).validate({

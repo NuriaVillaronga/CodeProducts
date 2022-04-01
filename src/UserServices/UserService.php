@@ -437,6 +437,7 @@ class UserService extends CheckCredentials
         }
     }
 
+    //-------------------------------------------
     public function illustrationValue($product, $productXML) {
         if ($productXML->descriptiveDetail->ancillaryContentList != null) {
             foreach ($productXML->descriptiveDetail->ancillaryContentList->arrayAncillaryContent as $ac) {
