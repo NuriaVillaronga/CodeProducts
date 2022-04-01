@@ -21,7 +21,6 @@ class SubjectAudienceFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        /*CLIL SUBJECT*/
         $builder
             ->add('BISACsubject', ChoiceType::class, [
                 'choices' => $this->codeListRepository->getKV($this->codeListRepository->findByTag('BISACsubject')),
@@ -33,6 +32,10 @@ class SubjectAudienceFormType extends AbstractType
             ])
             ->add('BICsubject', ChoiceType::class, [
                 'choices' => $this->codeListRepository->getKV($this->codeListRepository->findByTag('BICsubject')),
+                'required' => false 
+            ])
+            ->add('CLILsubject', ChoiceType::class, [
+                'choices' => $this->codeListRepository->getKV($this->codeListRepository->findByTag('CLILsubject')),
                 'required' => false 
             ])
             ->add('BICversion', TextType::class, ['required' => false])

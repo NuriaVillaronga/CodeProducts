@@ -420,6 +420,11 @@ class Product
      */
     private $publishingDateFormat;
 
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $CLILsubject;
+
 
     public function __construct()
     {
@@ -1482,6 +1487,18 @@ class Product
     public function setPublishingDateFormat(?string $publishingDateFormat): self
     {
         $this->publishingDateFormat = $publishingDateFormat;
+
+        return $this;
+    }
+
+    public function getCLILsubject(): ?string
+    {
+        return $this->CLILsubject;
+    }
+
+    public function setCLILsubject(?string $CLILsubject): self
+    {
+        $this->CLILsubject = $CLILsubject;
 
         return $this;
     }

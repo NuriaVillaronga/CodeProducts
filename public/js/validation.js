@@ -32,6 +32,7 @@ $(function() {
         /^(?=[0-9X]{13}$)[0-9]?[0-9]+[]?[0-9X]$/.test( value );
     }, "EAN must contain <u>13 digits</u>");
 
+
     $("#basic_edition_form_pretab").validate({
         rules: {
             "basic_edition_form[recordReference]": {
@@ -86,8 +87,8 @@ $(function() {
         /^[a-zA-ZÀ-ÿ]+$/.test( value );
     }, "City of Publication must contain only letters");
 
+
     $('#general_information_form_tab').validate({
-        
         ignore: '.select2-search__field, input[type=hidden]',
         rules: {
             "general_information_form[publishingDate]": {
@@ -116,6 +117,32 @@ $(function() {
         },
     });
 
+
+    $('#subject_audience_form_tab').validate({
+        ignore: '.select2-search__field, input[type=hidden]',
+        rules: {
+            "subject_audience_form[BICversion]": {
+                number: true
+            },
+            "subject_audience_form[audienceTo]": {
+                number: true
+            },
+            "subject_audience_form[audienceFrom]": {
+                number: true
+            }
+        },
+        messages: {
+            "subject_audience_form[BICversion]": {
+                number: 'Insert a valid BICversion (only numbers)'
+            },
+            "subject_audience_form[audienceTo]": {
+                number: 'Insert a valid To (only numbers)'
+            },
+            "subject_audience_form[audienceFrom]": {
+                number: 'Insert a valid From (only numbers)'
+            }
+        },
+    });
 
     /*
     $( "#supplier_form_tab" ).each(function( s_form ) {
