@@ -144,6 +144,51 @@ $(function() {
         },
     });
 
+
+    $('#measure_extent_form_tab').validate({
+        ignore: '.select2-search__field, input[type=hidden]',
+        rules: {
+            "measure_extent_form[heightMeasurement]": {
+                number: true
+            },
+            "measure_extent_form[widthMeasurement]": {
+                number: true
+            },
+            "measure_extent_form[thicknessMeasurement]": {
+                number: true 
+            },
+            "measure_extent_form[weightMeasurement]": {
+                number: true 
+            },
+            "measure_extent_form[fileSizeExtentValue]": {
+                number: true 
+            },
+            "measure_extent_form[durationExtentValue]": {
+                number: true 
+            }
+        },
+        messages: {
+            "measure_extent_form[heightMeasurement]": {
+                number: 'Insert a valid Height value (only numbers)'
+            },
+            "measure_extent_form[widthMeasurement]": {
+                number: 'Insert a valid Width value (only numbers)'
+            },
+            "measure_extent_form[thicknessMeasurement]": {
+                number: 'Insert a valid Thickness value (only numbers)'
+            },
+            "measure_extent_form[weightMeasurement]": {
+                number: 'Insert a valid Weight value (only numbers)'
+            },
+            "measure_extent_form[fileSizeExtentValue]": {
+                number: 'Insert a valid File size value (only numbers)'
+            },
+            "measure_extent_form[durationExtentValue]": {
+                number: 'Insert a valid Duration value (only numbers)'
+            }
+        },
+    });
+
     /*
     $( "#supplier_form_tab" ).each(function( s_form ) {
         $(s_form).validate({
