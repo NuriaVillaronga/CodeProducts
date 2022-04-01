@@ -1,18 +1,10 @@
-//basic_edition_form_titlePrefix
-//basic_edition_form_titleWithoutPrefix
-//basic_edition_form_titleText
-
 document.addEventListener("DOMContentLoaded", function (event) {
 
-    var basicEditionForm = document.getElementById('basic_edition_form_pretab');
+    var buttonSubmit = document.getElementById('btn_save_BE');
 
     var titleWithoutPrefix = document.getElementById('basic_edition_form_titleWithoutPrefix');
     var titlePrefix = document.getElementById('basic_edition_form_titlePrefix');
     var title = document.getElementById('basic_edition_form_titleText');
-
-    var errorT = document.getElementById('basic_edition_form_titleText-error');
-    var errorTWP = document.getElementById('basic_edition_form_titleWithoutPrefix-error');
-    var errorTP = document.getElementById('basic_edition_form_titlePrefix-error');
 
 
     if(title.value == "" && (titlePrefix.value == "" || titleWithoutPrefix == "")) {
@@ -29,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         title.disabled = true;
     }
 
+    
     title.addEventListener('keyup', () => {
         
         title.setAttribute('value', title.value);
@@ -44,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
 
     });
+
 
     titleWithoutPrefix.addEventListener('keyup', () => {
         
@@ -70,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
     
     });
+    
 
     titlePrefix.addEventListener('keyup', () => {
         
@@ -98,6 +93,123 @@ document.addEventListener("DOMContentLoaded", function (event) {
     });
 
 
-    //formulario --> cuando se envía
+    buttonSubmit.addEventListener('click', () => {
+        
+        if(titlePrefix.value == "" && title.value == "" && titleWithoutPrefix.value == "") {
+
+            title.addEventListener('keyup', () => {
+
+                var errorTWP = document.getElementById('basic_edition_form_titleWithoutPrefix-error');
+                var errorTP = document.getElementById('basic_edition_form_titlePrefix-error');
+                var styleTWP = document.getElementById('basic_edition_form_titleWithoutPrefix');
+                var styleTP = document.getElementById('basic_edition_form_titlePrefix');
+        
+                title.setAttribute('value', title.value);
+                
+                if(title.value == "" && (titlePrefix.value == "" || titleWithoutPrefix == "")) {
+                    errorTP.style.display = "inline";
+                    errorTWP.style.display = "inline";
+                    styleTWP.setAttribute("style","border-color:red");
+                    styleTP.setAttribute("style","border-color:red");
+                }
+                
+                if(title.value != "" && (titlePrefix.value == "" || titleWithoutPrefix == "")) {
+                    errorTP.style.display = "none"; 
+                    errorTWP.style.display = "none";
+                    styleTWP.setAttribute("style","border-color: rgb(185, 185, 185)");
+                    styleTP.setAttribute("style","border-color: rgb(185, 185, 185)");
+                }
+        
+            });
+
+            titlePrefix.addEventListener('keyup', () => {
+
+                var errorT = document.getElementById('basic_edition_form_titleText-error');
+                var errorTWP = document.getElementById('basic_edition_form_titleWithoutPrefix-error');
+                var styleTWP = document.getElementById('basic_edition_form_titleWithoutPrefix');
+                var styleT = document.getElementById('basic_edition_form_titleText');
+        
+                titlePrefix.setAttribute('value', titlePrefix.value);
+                
+                if(titlePrefix.value != "" && titleWithoutPrefix.value == "" && title.value == "") {  
+                    errorTWP.style.display = "inline";
+                    errorT.style.display = "none";  
+                    styleTWP.setAttribute("style","border-color:red");
+                    styleT.setAttribute("style","border-color: rgb(185, 185, 185)"); 
+                }
+                
+                if(titlePrefix.value == "" && titleWithoutPrefix.value != "" && title.value == "") {
+                    errorTWP.style.display = "inline";
+                    errorT.style.display = "none";
+                    styleTWP.setAttribute("style","border-color:red");
+                    styleT.setAttribute("style","border-color: rgb(185, 185, 185)"); 
+                }
+            
+                if(titlePrefix.value == "" && titleWithoutPrefix.value == "" && title.value == "") {
+                    errorTWP.style.display = "inline";
+                    errorT.style.display = "inline";
+                    styleTWP.setAttribute("style","border-color:red");
+                    styleT.setAttribute("style","border-color:red");
+                }
+            
+                if(titlePrefix.value == "" && titleWithoutPrefix.value == "" && title.value != "") {
+                    errorTWP.style.display = "none";
+                    errorT.style.display = "inline";
+                    styleTWP.setAttribute("style","border-color: rgb(185, 185, 185)");
+                    styleT.setAttribute("style","border-color:red");
+                }
+
+                if(titlePrefix.value == "" && titleWithoutPrefix.value != "") {
+                    styleTWP.setAttribute("style","border-color: rgb(185, 185, 185)");
+                }
+            
+            });
+    
+    
+            titleWithoutPrefix.addEventListener('keyup', () => {
+
+                var errorT = document.getElementById('basic_edition_form_titleText-error');
+                var errorTP = document.getElementById('basic_edition_form_titlePrefix-error');
+                var styleTP = document.getElementById('basic_edition_form_titlePrefix');
+                var styleT = document.getElementById('basic_edition_form_titleText');
+            
+                titleWithoutPrefix.setAttribute('value', titleWithoutPrefix.value);
+                
+                if(titleWithoutPrefix.value != "" && titlePrefix.value == "" && title.value == "") {
+                    errorTP.style.display = "inline";
+                    errorT.style.display = "none";
+                    styleTP.setAttribute("style","border-color:red");
+                    styleT.setAttribute("style","border-color: rgb(185, 185, 185)");
+                }
+                
+                if(titleWithoutPrefix.value == "" && titlePrefix.value != "" && title.value == "") {
+                    errorTP.style.display = "inline";
+                    errorT.style.display = "none";
+                    styleTP.setAttribute("style","border-color:red");
+                    styleT.setAttribute("style","border-color: rgb(185, 185, 185)");    
+                }
+            
+                if(titleWithoutPrefix.value == "" && titlePrefix.value == "" && title.value == "") {
+                    errorTP.style.display = "inline";
+                    errorT.style.display = "inline"; 
+                    styleTP.setAttribute("style","border-color:red");
+                    styleT.setAttribute("style","border-color:red");
+                }
+            
+                if(titleWithoutPrefix.value == "" && titlePrefix.value == "" && title.value != "") {
+                    errorTP.style.display = "none"; 
+                    errorT.style.display = "inline";
+                    styleTP.setAttribute("style","border-color: rgb(185, 185, 185)");
+                    styleT.setAttribute("style","border-color:red");
+                }
+
+                if(titleWithoutPrefix.value == "" && titlePrefix.value != "") {
+                    styleTP.setAttribute("style","border-color: rgb(185, 185, 185)");
+                }
+            
+            });
+        }
+
+    });
 
 });
