@@ -9,32 +9,61 @@
 </head>
 
 <body>   
-    <form id="website-form" method="post" action="{{ path('website', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}">  
-    <div>
-    {% set contador = 0 %}
-        {% for contributor in formW.contributors %}
-        {% set contador = contador + 1 %}
-            <span>Contributor {{ contador }}</span> 
-            {{ form_widget(contributor.websiteRole, {'attr': {'class': 'form-select'}}) }}
-            {{ form_widget(contributor.websiteLink, {'attr': {'class': 'form-control', 'placeholder': 'Website link', 'type':'text'}}) }}
-        {% endfor %}
-        
-    </div>
-        <div class="row general_information_content">
-            <div class="col-12">
-                <div class="row first_GI">
-                    <div class="col-12 col-lg-4 inputsGI">
-                        <span>Publisher's website role</span>
-                        {{ form_widget(formW.websiteRole, {'attr': {'class': 'form-select'}}) }} 
+    <form name="website_form" id="website_form_tab" method="post" action="{{ path('website', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}">  
+        {% set contador = 0 %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Contributor website(s)</h5>
+                    <div class="row general_information_content">
+                        <div class="col-12">
+                            <div class="row first_GI">
+                                <div class="col-12 col-lg-4 inputsGI">
+                                    <span>Contributor</span>
+                                </div>
+                                <div class="col-12 col-lg-4 inputsGI">
+                                    <span>Website role</span>
+                                </div>
+                                <div class="col-12 col-lg-4 inputsGI">
+                                    <span>Website</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-12 col-lg-8 inputsGI">
-                        <label class="form-label">Publisher's website link</label>
-                        {{ form_widget(formW.websiteLink, {'attr': {'class': 'form-control', 'placeholder': 'Website link', 'type':'text'}}) }} 
+                    <div class="row general_information_content">
+                        <div class="col-12">
+                            {% for contributor in formW.contributors %}
+                            {% set contador = contador + 1 %}
+                                <div class="row first_GI">
+                                    <div class="col-12 col-lg-4 inputsGI">
+                                        <span>Contributor {{ contador }}</span> 
+                                    </div>
+                                    <div class="col-12 col-lg-4 inputsGI">
+                                        {{ form_widget(contributor.websiteRole, {'attr': {'class': 'form-select'}}) }}
+                                    </div>
+                                    <div class="col-12 col-lg-4 inputsGI">
+                                        {{ form_widget(contributor.websiteLink, {'attr': {'class': 'form-control', 'placeholder': 'Website link', 'type':'text'}}) }}
+                                    </div>
+                                </div>
+                            {% endfor %} 
+                        </div>
+                    </div> 
+            </div>
+        </div>
+            <div class="row general_information_content">
+                <div class="col-12">
+                    <div class="row first_GI">
+                        <div class="col-12 col-lg-4 inputsGI">
+                            <span>Publisher's website role</span>
+                            {{ form_widget(formW.websiteRole, {'attr': {'class': 'form-select'}}) }} 
+                        </div>
+                        <div class="col-12 col-lg-8 inputsGI">
+                            <label class="form-label">Publisher's website link</label>
+                            {{ form_widget(formW.websiteLink, {'attr': {'class': 'form-control', 'placeholder': 'Website link', 'type':'text'}}) }} 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        {{ form_rest(formW) }} 
+            {{ form_rest(formW) }} 
 
         {% include 'updateAddTemplates/bottomButtons.html.twig' %}
     </form>

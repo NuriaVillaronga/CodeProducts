@@ -27,10 +27,31 @@ $(function() {
         /^(?=[0-9X]{10}$)[0-9]?[0-9]+[]?[0-9X]$/.test( value );
     }, "ISBN10 must contain <u>10 digits</u>");
         
-    $.validator.addMethod("eanOption", function( value, element ) {
+    $.validator.addMethod("ean_digits", function( value, element ) {
         return this.optional( element ) || 
         /^(?=[0-9X]{13}$)[0-9]?[0-9]+[]?[0-9X]$/.test( value );
-    }, "EAN must contain <u>13 digits</u>");
+    });
+
+    $.validator.addMethod("letters", function( value, element ) {
+        return this.optional( element ) || 
+        /^[a-zA-ZÀ-ÿ]+$/.test( value );
+    });
+
+    /**
+     * ---------------- Prize (Year) validador -------------------
+     */
+    $.validator.addMethod("year_Option", function( value, element ) {
+        return this.optional( element ) || 
+        /^\d{4}$/.test( value );
+    }, "Insert a valid Year (only numbers in format AAAA)");
+
+    /**
+     * ------ Price Amount/ Taxable Amount validador --------
+     */
+     $.validator.addMethod("number_greater_0_Option", function( value, element ) {
+        return this.optional( element ) || 
+        /^([1-9]\d*(\.\d*)?)|(0\.\d*[1-9][0-9])|(0\.\d*[1-9])$/.test( value );
+    }, "Insert a valid value (only numbers greater than 0)");
 
 
     $("#basic_edition_form_pretab").validate({
@@ -44,7 +65,7 @@ $(function() {
             },
             "basic_edition_form[EAN]": {
                 required : true,
-                eanOption : true
+                ean_digits : true
             },
             "basic_edition_form[ISBN10]": {
                 isbn10Option : true
@@ -67,7 +88,8 @@ $(function() {
                 required : 'You must add at least one ISBN13 or one EAN'
             },
             "basic_edition_form[EAN]": {
-                required : 'You must add at least one ISBN13 or one EAN'
+                required : 'You must add at least one ISBN13 or one EAN',
+                ean_digits : 'EAN must contain <u>13 digits</u>'
             },
             "basic_edition_form[titleWithoutPrefix]": {
                 required : "Title must contain a TitleWithoutPrefix and a TitleText"
@@ -80,13 +102,6 @@ $(function() {
             }
         }
     });
-    
-
-    $.validator.addMethod("cityPublicationOption", function( value, element ) {
-        return this.optional( element ) || 
-        /^[a-zA-ZÀ-ÿ]+$/.test( value );
-    }, "City of Publication must contain only letters");
-
 
     $('#general_information_form_tab').validate({
         ignore: '.select2-search__field, input[type=hidden]',
@@ -101,7 +116,7 @@ $(function() {
                 digits: true
             },
             "general_information_form[cityOfPublication]": {
-                cityPublicationOption: true
+                letters: true
             }
         },
         messages: {
@@ -113,6 +128,9 @@ $(function() {
             },
             "general_information_form[editionNumber]": {
                 digits: 'Insert a valid EditionNumber (only integer numbers)'
+            },
+            "general_information_form[cityOfPublication]": {
+                letters: 'CityOfPublication must contain only letters'
             }
         },
     });
@@ -203,22 +221,25 @@ $(function() {
         },
     });
 
-    /*
-    $( "#supplier_form_tab" ).each(function( s_form ) {
-        $(s_form).validate({
-            rules: {
-                "s_form[packQuantity]": {
-                    digits: true
-                }
-            },
-            messages: {
-                "s_form[packQuantity]": {
-                    digits: 'Insert a valid PackQuantity (only integer numbers)'
-                }
-            },
-        });
+
+    $('#website_form_tab').validate({
+        ignore: '.select2-search__field, input[type=hidden]',
+        rules: {
+            "website_form[websiteLink]": {
+                url: true
+            }
+        },
+        messages: {
+            "website_form[websiteLink]": {
+                url: 'Insert a valid URL'
+            }
+        },
     });
-    */
+    
+
+    /**
+     *  PARA LOS FORMULARIOS DE ABAJO HAY QUE UTILIZAR FOREACH PARA RECORRER TODOS LOS FORMULARIOS QUE APARECEN (se aplique la validacion a todos)
+     */
 
     $("#supplier_form_tab").validate({
         rules: {
@@ -250,14 +271,40 @@ $(function() {
         rules: {
             "contributor_form_tab[contributorRole]": {
                 required: true 
+            },
+            "contributor_form_tab[namesBeforeKey]": {
+                letters: true 
+            },
+            "contributor_form_tab[keyNames]": {
+                letters: true 
             }
         },
         messages: {
             "contributor_form_tab[contributorRole]": {
                 required: 'ContributorRole is required'
+            },
+            "contributor_form_tab[namesBeforeKey]": {
+                letters: 'NamesBeforeKey must contain only letters'
+            },
+            "contributor_form_tab[keyNames]": {
+                letters: 'KeyNames must contain only letters'
             }
         },
     });
 
+
+    $('#related_product_form_card').validate({
+        ignore: '.select2-search__field, input[type=hidden]',
+        rules: {
+            "related_product_form[relatedProductISBN]": {
+                ean_digits: true
+            }
+        },
+        messages: {
+            "related_product_form[relatedProductISBN]": {
+                ean_digits: '<b>ISBN13</b> must contain <u>13 digits</u> and start with <em>978</em> or <em>979</em><br><b>EAN</b> only must contain <u>13 digits</u>'
+            }
+        },
+    });
 
 });

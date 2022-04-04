@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form name="related_product_form" method="post" class="dataForm" novalidate="novalidate" action="{{ path('card_related_product', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id, 'id_rp':relatedProduct.id}) }}">
+    <form name="related_product_form" id="related_product_form_card" method="post" class="dataForm" novalidate="novalidate" action="{{ path('card_related_product', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id, 'id_rp':relatedProduct.id}) }}">
         <span>Product Relation Code</span>  
         {{ form_widget(formRP.productRelationCode, {'attr': {'class': 'js-example-basic-multiple'}}) }}
                             
