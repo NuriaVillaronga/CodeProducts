@@ -882,6 +882,57 @@ class UserService extends CheckCredentials
         }
     }
 
+    public function salesRightsValue($product, $productXML) {
+        if ($productXML->publishingDetail->salesRightsList != null) {
+
+            foreach ($productXML->publishingDetail->salesRightsList->arraySalesRights as $salesRights) {
+
+                if($salesRights->salesRightsType->contents == "01") {
+                    $countriesIncluded = [];
+                    $regionsIncluded = [];
+                    $countriesExcluded = [];
+                    $regionsExcluded = [];
+                    
+                    if($salesRights->territory->countriesIncluded != null){
+                        $countriesIncluded = explode(" ", $salesRights->territory->countriesIncluded->contents);
+                    }
+                    if($salesRights->territory->regionsIncluded != null){
+                        $regionsIncluded = explode(" ", $salesRights->territory->regionsIncluded->contents);
+                    }
+                    if($salesRights->territory->countriesExcluded != null){
+                        $countriesExcluded = explode(" ", $salesRights->territory->countriesExcluded->contents);
+                    }
+                    if($salesRights->territory->regionsExcluded != null){
+                        $regionsExcluded = explode(" ", $salesRights->territory->regionsExcluded->contents);
+                    }
+                    
+                    $allExclusiveRights = array_merge($countriesIncluded, $regionsIncluded, $countriesExcluded, $regionsExcluded);
+
+                    $valorComparar = "";
+                    for ($i = 0; $i < count($allExclusiveRights); $i++) {
+                        $valorComparar = $allExclusiveRights[$i];
+                        
+                        for ($j = $i+1; $j < count($allExclusiveRights); $j++) {
+                            if($valorComparar == $allExclusiveRights[$j]) {
+                                $allExclusiveRights[$j]="";
+                            }
+                        } 
+                    }
+
+                    foreach ($allExclusiveRights as $value) {
+                        if($value != "") { 
+                            $exclusiveRights[] = $value;
+                        }
+                    }
+
+                    $product->setExclusiveRights($exclusiveRights);
+                }
+
+                break;
+            }
+        }
+    }
+
     public function productLoadService(User $user, File $file, Catalog $catalog, string $onixFile_directory, EntityManagerInterface $em)
     {
         $nodoONIX = simplexml_load_file($onixFile_directory."/".$file->getFile());
@@ -946,8 +997,10 @@ class UserService extends CheckCredentials
                 $this->cityOfPublicationValue($product, $productXML); 
                 $this->countryOfPublicationValue($product, $productXML);
                 $this->publishingStatusValue($product, $productXML);
+                $this->salesRightsValue($product, $productXML);
 
                 if ($productXML->publishingDetail->publishingDateList != null) {
+
                     foreach ($productXML->publishingDetail->publishingDateList->arrayPublishingDate as $publishingDate) {
 
                         if($publishingDate->publishingDateRole->contents == "01") {

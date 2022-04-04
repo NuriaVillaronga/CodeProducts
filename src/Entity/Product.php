@@ -435,6 +435,11 @@ class Product
      */
     private $websiteRole;
 
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $exclusiveRights = [];
+
 
     public function __construct()
     {
@@ -1533,6 +1538,18 @@ class Product
     public function setWebsiteRole(?string $websiteRole): self
     {
         $this->websiteRole = $websiteRole;
+
+        return $this;
+    }
+
+    public function getExclusiveRights(): ?array
+    {
+        return $this->exclusiveRights;
+    }
+
+    public function setExclusiveRights(?array $exclusiveRights): self
+    {
+        $this->exclusiveRights = $exclusiveRights;
 
         return $this;
     }

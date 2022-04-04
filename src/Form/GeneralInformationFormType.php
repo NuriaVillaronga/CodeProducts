@@ -97,6 +97,11 @@ class GeneralInformationFormType extends AbstractType
                 'multiple' => true,
                 'required' => false
             ])
+            ->add('exclusiveRights', ChoiceType::class, [
+                'choices' => $this->codeListRepository->getKV($this->codeListRepository->findByTag('exclusiveRights')),
+                'multiple' => true,
+                'required' => false
+            ])
         ;
     }
 
