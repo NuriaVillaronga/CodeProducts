@@ -27,6 +27,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
                     }
                 }
 
+                personNameInverted.readOnly = true;
+                personName.readOnly = true;
+
                 namesBeforeKey.addEventListener('keyup', () => { changeValues.call(this.changeValues); });
 
                 keyNames.addEventListener('keyup', () => { changeValues.call(this.changeValues); });
