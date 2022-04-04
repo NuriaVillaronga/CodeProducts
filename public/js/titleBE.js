@@ -29,26 +29,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
     }
 
-
-    if(title.value == "" && (titlePrefix.value == "" || titleWithoutPrefix == "")) {
-        titleWithoutPrefix.disabled = false;
-        titlePrefix.disabled = false;
-    }
-    
-    if(title.value != "" && (titlePrefix.value == "" || titleWithoutPrefix == "")) {
-        titleWithoutPrefix.disabled = true;
-        titlePrefix.disabled = true;
-    }
-
-    if(title.value == "" && (titlePrefix.value != "" || titleWithoutPrefix != "")) {
-        title.disabled = true;
-    }
-
-    
-    title.addEventListener('keyup', () => {
-        
-        title.setAttribute('value', title.value);
-        
+    function disable_enable_T(title, titlePrefix, titleWithoutPrefix) {
         if(title.value == "" && (titlePrefix.value == "" || titleWithoutPrefix == "")) {
             titleWithoutPrefix.disabled = false;
             titlePrefix.disabled = false;
@@ -58,26 +39,42 @@ document.addEventListener("DOMContentLoaded", function (event) {
             titleWithoutPrefix.disabled = true;
             titlePrefix.disabled = true;
         }
+    }
 
+    /**
+     * Se establece la situacion inicial de los campos (activado / desactivado)
+     */
+    disable_enable_T.call(this.disable_enable_T, title, titlePrefix, titleWithoutPrefix);
+
+    if(title.value == "" && (titlePrefix.value != "" || titleWithoutPrefix != "")) {
+        title.disabled = true;
+    }
+
+    
+    /**
+     * Se cambios la situacion de los campos según la accion realizada
+     */
+    title.addEventListener('keyup', () => {
+        title.setAttribute('value', title.value);
+        disable_enable_T.call(this.disable_enable_T, title, titlePrefix, titleWithoutPrefix);
     });
 
 
     titleWithoutPrefix.addEventListener('keyup', () => {
-        
         titleWithoutPrefix.setAttribute('value', titleWithoutPrefix.value);
         disable_enable_TTW_TP.call(this.disable_enable_TTW_TP, titleWithoutPrefix, titlePrefix, title);
-    
     });
     
 
     titlePrefix.addEventListener('keyup', () => {
-        
         titlePrefix.setAttribute('value', titlePrefix.value);
         disable_enable_TTW_TP.call(this.disable_enable_TTW_TP, titlePrefix, titleWithoutPrefix, title);
-    
     });
 
 
+    /**
+     * Estilos de validacion segun la accion
+     */
     buttonSubmit.addEventListener('click', () => {
 
         function styling_TWP_TP(option1, option2, errorOption2, styleOption2, title, errorT, styleT) {
@@ -87,28 +84,24 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 styleOption2.setAttribute("style","border-color:red");
                 styleT.setAttribute("style","border-color: rgb(185, 185, 185)");  
             }
-            
             if(option1.value == "" && option2.value != "" && title.value == "") {
                 errorOption2.style.display = "inline";
                 errorT.style.display = "none";
                 styleOption2.setAttribute("style","border-color:red");
                 styleT.setAttribute("style","border-color: rgb(185, 185, 185)"); 
             }
-        
             if(option1.value == "" && option2.value == "" && title.value == "") {
                 errorOption2.style.display = "inline";
                 errorT.style.display = "inline";
                 styleOption2.setAttribute("style","border-color:red");
                 styleT.setAttribute("style","border-color:red");
             }
-        
             if(option1.value == "" && option2.value == "" && title.value != "") {
                 errorOption2.style.display = "none";
                 errorT.style.display = "inline";
                 styleOption2.setAttribute("style","border-color: rgb(185, 185, 185)");
                 styleT.setAttribute("style","border-color:red");
             }
-
             if(option1.value == "" && option2.value != "") {
                 styleOption2.setAttribute("style","border-color: rgb(185, 185, 185)");
             }
@@ -141,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         
             });
 
-            
+
             titlePrefix.addEventListener('keyup', () => {
 
                 var errorT = document.getElementById('basic_edition_form_titleText-error');
