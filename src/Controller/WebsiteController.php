@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Catalog;
 use App\Entity\Product;
 use App\Entity\User;
+use App\Form\ContributorFormType;
 use App\Form\WebsiteFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -24,7 +25,7 @@ class WebsiteController extends AbstractController
      * @ParamConverter("catalog", options={"id" = "id_catalog"})
      * @ParamConverter("product", options={"id" = "id_product"})
      */
-    public function dataGeneralInfo(Product $product, Catalog $catalog, User $user, EntityManagerInterface $em, Request $request): Response
+    public function dataWebsite(Product $product, Catalog $catalog, User $user, EntityManagerInterface $em, Request $request): Response
     {
         $form = $this->createForm(WebsiteFormType::class, $product);
         

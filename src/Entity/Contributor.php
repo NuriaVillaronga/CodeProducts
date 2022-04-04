@@ -55,7 +55,17 @@ class Contributor
     /**
     * @ORM\Column(type="array", nullable=true)
     */
-    private $contributorRole = []; 
+    private $contributorRole = [];
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $websiteRole;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $websiteLink; 
 
     public function setId(?int $id): self
     {
@@ -161,6 +171,30 @@ class Contributor
     public function setPersonName(?string $personName): self
     {
         $this->personName = $personName;
+
+        return $this;
+    }
+
+    public function getWebsiteRole(): ?string
+    {
+        return $this->websiteRole;
+    }
+
+    public function setWebsiteRole(?string $websiteRole): self
+    {
+        $this->websiteRole = $websiteRole;
+
+        return $this;
+    }
+
+    public function getWebsiteLink(): ?string
+    {
+        return $this->websiteLink;
+    }
+
+    public function setWebsiteLink(?string $websiteLink): self
+    {
+        $this->websiteLink = $websiteLink;
 
         return $this;
     }

@@ -61,7 +61,6 @@ class SupplierFormType extends AbstractType
             'entry_type' => PriceFormType::class, 
             'entry_options' => ['label' => false],
             'allow_delete' => true,
-
         ])
         ;
     }

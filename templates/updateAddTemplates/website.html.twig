@@ -10,6 +10,16 @@
 
 <body>   
     <form id="website-form" method="post" action="{{ path('website', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}">  
+    <div>
+    {% set contador = 0 %}
+        {% for contributor in formW.contributors %}
+        {% set contador = contador + 1 %}
+            <span>Contributor {{ contador }}</span> 
+            {{ form_widget(contributor.websiteRole, {'attr': {'class': 'form-select'}}) }}
+            {{ form_widget(contributor.websiteLink, {'attr': {'class': 'form-control', 'placeholder': 'Website link', 'type':'text'}}) }}
+        {% endfor %}
+        
+    </div>
         <div class="row general_information_content">
             <div class="col-12">
                 <div class="row first_GI">

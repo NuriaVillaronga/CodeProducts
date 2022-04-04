@@ -2,19 +2,17 @@
 
 namespace App\Form;
 
-use App\Entity\Product;
+use App\Entity\Contributor;
 use App\Repository\CodeListRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 
-class WebsiteFormType extends AbstractType
+class ContributorWebsiteFormType extends AbstractType
 {
-    
     private $codeListRepository;
 
     public function __construct(CodeListRepository $codeListRepository)
@@ -30,18 +28,13 @@ class WebsiteFormType extends AbstractType
                 'required' => false 
             ])
             ->add('websiteLink', TextType::class, ['required' => false]) 
-            ->add('contributors', CollectionType::class, [
-                'entry_type' => ContributorWebsiteFormType::class, 
-                'entry_options' => ['label' => false],
-                'allow_delete' => true,
-            ])
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Product::class,
+            'data_class' => Contributor::class,
         ]);
     }
 }

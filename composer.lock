@@ -1873,12 +1873,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/NuriaVillaronga/LibraryProducts.git",
-                "reference": "cd7825e44a7fd8c30ea27c95631ac3c595403327"
+                "reference": "083e8fccf85efe7932fbbd2595f56964df7ad9d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NuriaVillaronga/LibraryProducts/zipball/cd7825e44a7fd8c30ea27c95631ac3c595403327",
-                "reference": "cd7825e44a7fd8c30ea27c95631ac3c595403327",
+                "url": "https://api.github.com/repos/NuriaVillaronga/LibraryProducts/zipball/083e8fccf85efe7932fbbd2595f56964df7ad9d7",
+                "reference": "083e8fccf85efe7932fbbd2595f56964df7ad9d7",
                 "shasum": ""
             },
             "require": {
@@ -1912,7 +1912,7 @@
                 "source": "https://github.com/NuriaVillaronga/LibraryProducts/tree/master",
                 "issues": "https://github.com/NuriaVillaronga/LibraryProducts/issues"
             },
-            "time": "2022-04-01T15:14:53+00:00"
+            "time": "2022-04-04T09:13:01+00:00"
         },
         {
             "name": "monolog/monolog",

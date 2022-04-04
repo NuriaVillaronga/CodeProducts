@@ -492,6 +492,7 @@ class UserService extends CheckCredentials
                 $this->namesBeforeKeyValue($contributorONIX, $contributor);
                 $this->corporateNameValue($contributorONIX, $contributor);
                 $this->countryCodeContributorValue($contributorONIX, $contributor);
+                $this->websiteValue($contributorONIX, $contributor);
                 
                 $contributorRole = [];
                 foreach ($contributorONIX->contributorRoleList->arrayContributorRole as $cr) {
@@ -716,14 +717,14 @@ class UserService extends CheckCredentials
         }
     }
 
-    public function websiteValue($publisherRepresentative, $product) {
-        if ($publisherRepresentative->websiteList != null) {
-            foreach ($publisherRepresentative->websiteList->arrayWebsite as $website) {
+    public function websiteValue($publisherRepresentative_contributor, $product_contributor) {
+        if ($publisherRepresentative_contributor->websiteList != null) {
+            foreach ($publisherRepresentative_contributor->websiteList->arrayWebsite as $website) {
                 
                 if($website->websiteRole != null){
-                    $product->setWebsiteRole($website->websiteRole->contents);
+                    $product_contributor->setWebsiteRole($website->websiteRole->contents);
                 }
-                $product->setWebsiteLink($website->websiteLink->contents);
+                $product_contributor->setWebsiteLink($website->websiteLink->contents);
 
                 break;
             } 
