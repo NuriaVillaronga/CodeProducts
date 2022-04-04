@@ -425,6 +425,16 @@ class Product
      */
     private $CLILsubject;
 
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $websiteLink;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $websiteRole;
+
 
     public function __construct()
     {
@@ -1499,6 +1509,30 @@ class Product
     public function setCLILsubject(?string $CLILsubject): self
     {
         $this->CLILsubject = $CLILsubject;
+
+        return $this;
+    }
+
+    public function getWebsiteLink(): ?string
+    {
+        return $this->websiteLink;
+    }
+
+    public function setWebsiteLink(?string $websiteLink): self
+    {
+        $this->websiteLink = $websiteLink;
+
+        return $this;
+    }
+
+    public function getWebsiteRole(): ?string
+    {
+        return $this->websiteRole;
+    }
+
+    public function setWebsiteRole(?string $websiteRole): self
+    {
+        $this->websiteRole = $websiteRole;
 
         return $this;
     }

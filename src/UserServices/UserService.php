@@ -708,13 +708,41 @@ class UserService extends CheckCredentials
     }
 
     public function promotionCampaignValue($productSupply, $product) {
+        if ($productSupply->marketPublishingDetail->promotionCampaignList != null) {
+            foreach ($productSupply->marketPublishingDetail->promotionCampaignList->arrayPromotionCampaign as $promotionCampaign) {
+                $product->setPromotionCampaign($promotionCampaign->contents);
+                break;
+            } 
+        }
+    }
+
+    public function websiteValue($publisherRepresentative, $product) {
+        if ($publisherRepresentative->websiteList != null) {
+            foreach ($publisherRepresentative->websiteList->arrayWebsite as $website) {
+                
+                if($website->websiteRole != null){
+                    $product->setWebsiteRole($website->websiteRole->contents);
+                }
+                $product->setWebsiteLink($website->websiteLink->contents);
+
+                break;
+            } 
+        }
+    }
+
+    public function publisherRepresentativeValue($productSupply, $product) {
+        if ($productSupply->marketPublishingDetail->publisherRepresentativeList != null) {
+            foreach ($productSupply->marketPublishingDetail->publisherRepresentativeList->arrayPublisherRepresentative as $publisherRepresentative) {
+                $this->websiteValue($publisherRepresentative, $product);
+                break;
+            } 
+        }
+    }
+
+    public function marketPublishingDetailValue($productSupply, $product) {
         if ($productSupply->marketPublishingDetail != null) {
-            if ($productSupply->marketPublishingDetail->promotionCampaignList != null) {
-                foreach ($productSupply->marketPublishingDetail->promotionCampaignList->arrayPromotionCampaign as $promotionCampaign) {
-                    $product->setPromotionCampaign($promotionCampaign->contents);
-                    break;
-                } 
-            }
+            $this->promotionCampaignValue($productSupply, $product);
+            $this->publisherRepresentativeValue($productSupply, $product);
         }
     }
 
@@ -903,7 +931,7 @@ class UserService extends CheckCredentials
             
             if ($productXML->productSupplyList != null) {
                 foreach ($productXML->productSupplyList->arrayProductSupply as $productSupply) {
-                    $this->promotionCampaignValue($productSupply, $product);
+                    $this->marketPublishingDetailValue($productSupply, $product);
                     $this->supplierValue($productSupply, $product);
                     break; 
                 }

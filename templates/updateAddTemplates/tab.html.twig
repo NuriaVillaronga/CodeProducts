@@ -99,7 +99,10 @@
                     {{ render(path('contributor', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
                 <!---->
             </div>
-            <div class="tab-pane fade" id="website" role="tabpanel" aria-labelledby="website-tab">...</div>
+            <div class="tab-pane fade" id="website" role="tabpanel" aria-labelledby="website-tab">
+                <!--Website content-->
+                    {{ render(path('website', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
+                <!----></div>
             <div class="tab-pane fade" id="prize" role="tabpanel" aria-labelledby="prize-tab">
                 <!--Promotion and prize content-->
                     {{ render(path('promotion', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}

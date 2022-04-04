@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Website{% endblock %}</title>
+</head>
+
+<body>   
+    <form id="website-form" method="post" action="{{ path('website', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}">  
+        <div class="row general_information_content">
+            <div class="col-12">
+                <div class="row first_GI">
+                    <div class="col-12 col-lg-4 inputsGI">
+                        <span>Publisher's website role</span>
+                        {{ form_widget(formW.websiteRole, {'attr': {'class': 'form-select'}}) }} 
+                    </div>
+                    <div class="col-12 col-lg-8 inputsGI">
+                        <label class="form-label">Publisher's website link</label>
+                        {{ form_widget(formW.websiteLink, {'attr': {'class': 'form-control', 'placeholder': 'Website link', 'type':'text'}}) }} 
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ form_rest(formW) }} 
+
+        {% include 'updateAddTemplates/bottomButtons.html.twig' %}
+    </form>
+</body>
+</html>
