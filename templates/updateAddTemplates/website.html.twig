@@ -33,7 +33,7 @@
                         <div class="col-12">
                             {% for contributor in formW.contributors %}
                             {% set contador = contador + 1 %}
-                                <div class="row first_GI">
+                                <div class="row first_GI content_contributor_website">
                                     <div class="col-12 col-lg-4 inputsGI">
                                         <span>Contributor {{ contador }}</span> 
                                     </div>
@@ -41,7 +41,7 @@
                                         {{ form_widget(contributor.websiteRole, {'attr': {'class': 'form-select'}}) }}
                                     </div>
                                     <div class="col-12 col-lg-4 inputsGI">
-                                        {{ form_widget(contributor.websiteLink, {'attr': {'class': 'form-control', 'placeholder': 'Website link', 'type':'text'}}) }}
+                                        {{ form_widget(contributor.websiteLink, {'attr': {'class': 'form-control link_contributor', 'placeholder': 'Website link', 'type':'text'}}) }}
                                     </div>
                                 </div>
                             {% endfor %} 
@@ -58,7 +58,7 @@
                         </div>
                         <div class="col-12 col-lg-8 inputsGI">
                             <label class="form-label">Publisher's website link</label>
-                            {{ form_widget(formW.websiteLink, {'attr': {'class': 'form-control', 'placeholder': 'Website link', 'type':'text'}}) }} 
+                            {{ form_widget(formW.websiteLink, {'attr': {'class': 'form-control requiredInput', 'placeholder': 'Website link', 'type':'text'}}) }} 
                         </div>
                     </div>
                 </div>

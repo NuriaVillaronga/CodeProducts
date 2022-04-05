@@ -45,10 +45,8 @@ $(function() {
         /^\d{4}$/.test( value );
     }, "Insert a valid Year (only numbers in format AAAA)");
 
-    /**
-     * ------ Price Amount/ Taxable Amount validador --------
-     */
-     $.validator.addMethod("number_greater_0_Option", function( value, element ) {
+    
+    $.validator.addMethod("number_greater_0_Option", function( value, element ) {
         return this.optional( element ) || 
         /^([1-9]\d*(\.\d*)?)|(0\.\d*[1-9][0-9])|(0\.\d*[1-9])$/.test( value );
     }, "Insert a valid value (only numbers greater than 0)");
@@ -283,9 +281,14 @@ $(function() {
         });
     });
 
-    //--------------------------------------------TO FIX-----------------------------------------
+
+    jQuery.validator.addClassRules("link_contributor", {
+        url: true       
+    });
+    
+    $.validator.messages.url = 'Insert a valid URL';
+
     $('#website_form_tab').validate({
-        ignore: '.select2-search__field, input[type=hidden]',
         rules: {
             "website_form[websiteLink]": {
                 url: true
@@ -299,29 +302,58 @@ $(function() {
     });
 
 
-    $("#supplier_form_tab").validate({
-        rules: {
-            "supplier_form_tab[packQuantity]": {
-                digits: true
-            },
-            "supplier_form_tab[supplierRole]": {
-                required: true 
-            },
-            "supplier_form_tab[productAvailability]": {
-                required: true
+    jQuery.validator.addClassRules("tax_amount_validation", {
+        number: true       
+    });
+
+    jQuery.validator.addClassRules("tax_rate_percent_validation", {
+        number: true       
+    });
+
+    jQuery.validator.addClassRules("taxable_amount_validation", {
+        number_greater_0_Option: true       
+    });
+
+    jQuery.validator.addClassRules("price_amount_validation", {
+        number_greater_0_Option: true       
+    });
+    
+    $.validator.messages.number = 'Insert a valid value (only numbers)';
+
+    $('.supplier_own_tab').each(function() {
+
+        tabChildrenNodes = $(this).children();
+
+        tabChildrenNodes.each(function() {
+
+            if ($(this).prop("nodeName") == "FORM") {
+                
+                $(this).validate({
+                    rules: {
+                        "supplier_form[packQuantity]": {
+                            digits: true
+                        },
+                        "supplier_form[supplierRole]": {
+                            required: true 
+                        },
+                        "supplier_form[productAvailability]": {
+                            required: true
+                        }
+                    },
+                    messages: {
+                        "supplier_form[packQuantity]": {
+                            digits: 'Insert a valid PackQuantity (only integer numbers)'
+                        },
+                        "supplier_form[supplierRole]": {
+                            required: 'SupplierRole is required'
+                        },
+                        "supplier_form[productAvailability]": { 
+                            required: 'ProductAvailability is required'
+                        }
+                    },
+                });
             }
-        },
-        messages: {
-            "supplier_form_tab[packQuantity]": {
-                digits: 'Insert a valid PackQuantity (only integer numbers)'
-            },
-            "supplier_form_tab[supplierRole]": {
-                required: 'SupplierRole is required'
-            },
-            "supplier_form_tab[productAvailability]": {
-                required: 'ProductAvailability is required'
-            }
-        },
+        });
     });
 
 });

@@ -89,7 +89,7 @@
                                                     </div>
                                                     <div class="col-12 col-lg-3 inputsGI">
                                                         <label class="form-label">Price</label>
-                                                        {{ form_widget(price.priceAmount, {'attr': {'class': 'form-control', 'placeholder': 'Price', 'type':'text'}}) }}
+                                                        {{ form_widget(price.priceAmount, {'attr': {'class': 'form-control requiredInput price_amount_validation', 'placeholder': 'Price', 'type':'text'}}) }}
                                                     </div>
                                                     <div class="col-12 col-lg-3 inputsGI">
                                                         <label class="form-label">Currency</label>
@@ -117,17 +117,17 @@
                                                     </div>
                                                     <div class="col-12 col-lg-4 inputsGI">
                                                         <label class="form-label">Taxable</label>
-                                                        {{ form_widget(price.taxableAmount, {'attr': {'class': 'form-control', 'placeholder': 'Taxable', 'type':'text'}}) }}
+                                                        {{ form_widget(price.taxableAmount, {'attr': {'class': 'form-control requiredInput taxable_amount_validation', 'placeholder': 'Taxable', 'type':'text'}}) }}
                                                     </div>
                                                 </div>
                                                 <div class="row last_GI">
                                                     <div class="col-12 col-lg-4 inputsGI"> 
                                                         <label class="form-label">Tax amount</label>
-                                                        {{ form_widget(price.taxAmount, {'attr': {'class': 'form-control', 'placeholder': 'Tax amount', 'type':'text'}}) }}
+                                                        {{ form_widget(price.taxAmount, {'attr': {'class': 'form-control requiredInput tax_amount_validation', 'placeholder': 'Tax amount', 'type':'text'}}) }}
                                                     </div>
                                                     <div class="col-12 col-lg-4 inputsGI">
                                                         <label class="form-label">Tax %</label>
-                                                        {{ form_widget(price.taxRatePercent, {'attr': {'class': 'form-control', 'placeholder': 'Tax %', 'type':'text'}}) }}
+                                                        {{ form_widget(price.taxRatePercent, {'attr': {'class': 'form-control requiredInput tax_rate_percent_validation', 'placeholder': 'Tax %', 'type':'text'}}) }}
                                                     </div>
                                                 </div>
                                             </div>
