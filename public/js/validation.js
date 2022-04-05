@@ -12,7 +12,7 @@ $(function() {
         unhighlight: function(element) {
           $(element)
             .closest('.requiredInput')
-            .addBack().css( "border-color", "rgb(185, 185, 185)" ); //Cambiar al color necesario
+            .addBack().css( "border-color", "rgb(185, 185, 185) !important" ); //Cambiar al color necesario
         }
     });
 
@@ -52,17 +52,81 @@ $(function() {
      * BASIC EDITION FORM
      */
 
+    var buttonSubmit = document.getElementById('btn_save_BE');
+
+    var isbn13 = document.getElementById("basic_edition_form_ISBN13");
+    var ean = document.getElementById("basic_edition_form_EAN");
+    
+    buttonSubmit.addEventListener('click', () => {
+
+        function setVisibilityErrors(visibilityEAN, visibilityISBN13, colorEAN, colorISBN13) {
+            if (document.getElementById("basic_edition_form_ISBN13-error") != null) {
+                document.getElementById("basic_edition_form_ISBN13-error").style.display = visibilityISBN13;
+                document.getElementById("basic_edition_form_ISBN13").setAttribute("style",colorISBN13);
+            }
+            if (document.getElementById("basic_edition_form_EAN-error") != null) {
+                document.getElementById("basic_edition_form_EAN-error").style.display = visibilityEAN;
+                document.getElementById("basic_edition_form_EAN").setAttribute("style",colorEAN);
+            }
+        }
+
+        function setRequired(isbn13Value, eanValue) {
+            if (isbn13Value == "" && eanValue == "") {  
+
+                jQuery.validator.addClassRules("isbn13_validation", {
+                    required: true       
+                });
+        
+                jQuery.validator.addClassRules("ean_validation", {
+                    required: true       
+                });
+                
+                setVisibilityErrors.call(this.visibilityEAN, "inline", "inline", "border-color: red !important", "border-color: red !important");
+            }
+            if (isbn13Value != "" && eanValue == "") {
+        
+                jQuery.validator.addClassRules("ean_validation", {
+                    required: false       
+                });
+
+                setVisibilityErrors.call(this.visibilityEAN, "none", "inline", "border-color: rgb(185, 185, 185) !important", "border-color: red !important");
+            }
+            if (isbn13Value == "" && eanValue != "") {
+        
+                jQuery.validator.addClassRules("isbn13_validation", {
+                    required: false       
+                });
+                
+                setVisibilityErrors.call(this.visibilityEAN, "inline", "none", "border-color: red !important", "border-color: rgb(185, 185, 185) !important");
+            }
+
+            $.validator.messages.required = 'You must add at least one ISBN13 or one EAN';
+        }
+    
+        setRequired.call(this.setRequired, isbn13.value, ean.value);
+
+        isbn13.addEventListener('keyup', () => {
+            isbn13.setAttribute('value', isbn13.value);
+            setRequired.call(this.setRequired, isbn13.value, ean.value);
+        });
+        
+        ean.addEventListener('keyup', () => {
+            ean.setAttribute('value', ean.value); 
+            setRequired.call(this.setRequired, isbn13.value, ean.value);
+        });
+
+    });
+
+
     $("#basic_edition_form_pretab").validate({
         rules: {
             "basic_edition_form[recordReference]": {
                 required : true
             },
             "basic_edition_form[ISBN13]": {
-                required : true,
                 isbn13Option : true
             },
             "basic_edition_form[EAN]": {
-                required : true,
                 ean_digits : true
             },
             "basic_edition_form[ISBN10]": {
@@ -71,7 +135,7 @@ $(function() {
             "basic_edition_form[titleWithoutPrefix]": {
                 required : true
             },
-            "basic_edition_form[titlePrefix]": {
+            "basic_edition_form[ean]": {
                 required : true
             },
             "basic_edition_form[titleText]": {
@@ -82,17 +146,13 @@ $(function() {
             "basic_edition_form[recordReference]": { 
                 required : 'RecordRference is required'
             },
-            "basic_edition_form[ISBN13]": {
-                required : 'You must add at least one ISBN13 or one EAN'
-            },
             "basic_edition_form[EAN]": {
-                required : 'You must add at least one ISBN13 or one EAN',
                 ean_digits : 'EAN must contain <u>13 digits</u>'
             },
             "basic_edition_form[titleWithoutPrefix]": {
                 required : "Title must contain a TitleWithoutPrefix and a TitleText"
             },
-            "basic_edition_form[titlePrefix]": {
+            "basic_edition_form[ean]": {
                 required : "Title must contain a TitleWithoutPrefix and a TitleText"
             },
             "basic_edition_form[titleText]": {

@@ -14,9 +14,9 @@ class BasicEditionFormType extends AbstractType
     {
         $builder
             ->add('recordReference', TextType::class)
-            ->add('ISBN13', TextType::class)
+            ->add('ISBN13', TextType::class, ['required' => false])
             ->add('ISBN10', TextType::class, ['required' => false])
-            ->add('EAN', TextType::class)
+            ->add('EAN', TextType::class, ['required' => false])
             ->add('titlePrefix', TextType::class, ['required' => false])
             ->add('titleWithoutPrefix', TextType::class, ['required' => false])
             ->add('titleText', TextType::class, ['required' => false])
