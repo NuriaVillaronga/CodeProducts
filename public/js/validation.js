@@ -222,6 +222,44 @@ $(function() {
     });
 
 
+    $('.contributor_own_tab').each(function() {
+
+        tabChildrenNodes = $(this).children();
+
+        tabChildrenNodes.each(function() {
+
+            if ($(this).prop("nodeName") == "FORM") {
+                
+                $(this).validate({
+                    rules: {
+                        "contributor_form[contributorRole][]": {
+                            required: true 
+                        },
+                        "contributor_form[namesBeforeKey]": {
+                            letters: true 
+                        },
+                        "contributor_form[keyNames]": {
+                            letters: true 
+                        }
+                    },
+                    messages: {
+                        "contributor_form[contributorRole][]": {
+                            required: 'ContributorRole is required'
+                        },
+                        "contributor_form[namesBeforeKey]": {
+                            letters: 'NamesBeforeKey must contain only letters'
+                        },
+                        "contributor_form[keyNames]": {
+                            letters: 'KeyNames must contain only letters'
+                        }
+                    },
+                });
+
+            }
+        });
+    });
+
+    //--------------------------------------------TO FIX-----------------------------------------
     $('#website_form_tab').validate({
         ignore: '.select2-search__field, input[type=hidden]',
         rules: {
@@ -236,10 +274,21 @@ $(function() {
         },
     });
     
-
-    /**
-     *  PARA LOS FORMULARIOS DE ABAJO HAY QUE UTILIZAR FOREACH PARA RECORRER TODOS LOS FORMULARIOS QUE APARECEN (se aplique la validacion a todos)
-     */
+    $('#related_product_form_card').each(function() {
+        $(this).validate({
+            ignore: '.select2-search__field, input[type=hidden]',
+            rules: {
+                "related_product_form[relatedProductISBN]": {
+                    ean_digits: true
+                }
+            },
+            messages: {
+                "related_product_form[relatedProductISBN]": {
+                    ean_digits: '<b>ISBN13</b> must contain <u>13 digits</u> and start with <em>978</em> or <em>979</em><br><b>EAN</b> only must contain <u>13 digits</u>'
+                }
+            },
+        });
+    });
 
     $("#supplier_form_tab").validate({
         rules: {
@@ -262,47 +311,6 @@ $(function() {
             },
             "supplier_form_tab[productAvailability]": {
                 required: 'ProductAvailability is required'
-            }
-        },
-    });
-
-
-    $("#contributor_form_tab").validate({
-        rules: {
-            "contributor_form_tab[contributorRole]": {
-                required: true 
-            },
-            "contributor_form_tab[namesBeforeKey]": {
-                letters: true 
-            },
-            "contributor_form_tab[keyNames]": {
-                letters: true 
-            }
-        },
-        messages: {
-            "contributor_form_tab[contributorRole]": {
-                required: 'ContributorRole is required'
-            },
-            "contributor_form_tab[namesBeforeKey]": {
-                letters: 'NamesBeforeKey must contain only letters'
-            },
-            "contributor_form_tab[keyNames]": {
-                letters: 'KeyNames must contain only letters'
-            }
-        },
-    });
-
-
-    $('#related_product_form_card').validate({
-        ignore: '.select2-search__field, input[type=hidden]',
-        rules: {
-            "related_product_form[relatedProductISBN]": {
-                ean_digits: true
-            }
-        },
-        messages: {
-            "related_product_form[relatedProductISBN]": {
-                ean_digits: '<b>ISBN13</b> must contain <u>13 digits</u> and start with <em>978</em> or <em>979</em><br><b>EAN</b> only must contain <u>13 digits</u>'
             }
         },
     });

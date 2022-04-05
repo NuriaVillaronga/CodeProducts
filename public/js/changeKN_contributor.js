@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
                     personNameInverted.readOnly = true;
                     personName.readOnly = true;
                 }
-                
 
                 for (let i = 0; i < tabChildren.length; i++) {
                     if(tabChildren[i].id == "contributor_form_personNameInverted") {
