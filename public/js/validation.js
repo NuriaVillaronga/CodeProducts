@@ -254,7 +254,31 @@ $(function() {
                         }
                     },
                 });
+            }
+        });
+    });
 
+
+    $('.card-body').each(function() {
+
+        tabChildrenNodes = $(this).children();
+
+        tabChildrenNodes.each(function() {
+
+            if ($(this).prop("nodeName") == "FORM") {
+                
+                $(this).validate({
+                    rules: {
+                        "related_product_form[relatedProductISBN]": {
+                            ean_digits: true
+                        }
+                    },
+                    messages: {
+                        "related_product_form[relatedProductISBN]": {
+                            ean_digits: '<b>ISBN13</b> must contain <u>13 digits</u> and start with <em>978</em> or <em>979</em><br><b>EAN</b> only must contain <u>13 digits</u>'
+                        }
+                    },
+                });
             }
         });
     });
@@ -273,22 +297,7 @@ $(function() {
             }
         },
     });
-    
-    $('#related_product_form_card').each(function() {
-        $(this).validate({
-            ignore: '.select2-search__field, input[type=hidden]',
-            rules: {
-                "related_product_form[relatedProductISBN]": {
-                    ean_digits: true
-                }
-            },
-            messages: {
-                "related_product_form[relatedProductISBN]": {
-                    ean_digits: '<b>ISBN13</b> must contain <u>13 digits</u> and start with <em>978</em> or <em>979</em><br><b>EAN</b> only must contain <u>13 digits</u>'
-                }
-            },
-        });
-    });
+
 
     $("#supplier_form_tab").validate({
         rules: {
