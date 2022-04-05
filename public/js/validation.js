@@ -12,7 +12,7 @@ $(function() {
         unhighlight: function(element) {
           $(element)
             .closest('.requiredInput')
-            .addBack().css( "border-color", "rgb(185, 185, 185) !important" ); //Cambiar al color necesario
+            .addBack().css( "border-color", "rgb(185, 185, 185)" ); //Cambiar al color necesario
         }
     });
 
@@ -81,7 +81,7 @@ $(function() {
                     required: true       
                 });
                 
-                setVisibilityErrors.call(this.visibilityEAN, "inline", "inline", "border-color: red !important", "border-color: red !important");
+                setVisibilityErrors.call(this.visibilityEAN, "inline", "inline", "border-color: red", "border-color: red");
             }
             if (isbn13Value != "" && eanValue == "") {
         
@@ -89,15 +89,35 @@ $(function() {
                     required: false       
                 });
 
-                setVisibilityErrors.call(this.visibilityEAN, "none", "inline", "border-color: rgb(185, 185, 185) !important", "border-color: red !important");
+                jQuery.validator.addClassRules("isbn13_validation", {
+                    required: true       
+                });
+
+                setVisibilityErrors.call(this.visibilityEAN, "none", "inline", "border-color: rgb(185, 185, 185)", "border-color: red");
             }
             if (isbn13Value == "" && eanValue != "") {
         
+                jQuery.validator.addClassRules("isbn13_validation", { 
+                    required: false       
+                });
+
+                jQuery.validator.addClassRules("ean_validation", {
+                    required: true       
+                });
+                
+                setVisibilityErrors.call(this.visibilityEAN, "inline", "none", "border-color: red", "border-color: rgb(185, 185, 185)");
+            }
+            if (isbn13Value != "" && eanValue != "") {  
+
                 jQuery.validator.addClassRules("isbn13_validation", {
                     required: false       
                 });
+        
+                jQuery.validator.addClassRules("ean_validation", {
+                    required: false       
+                });
                 
-                setVisibilityErrors.call(this.visibilityEAN, "inline", "none", "border-color: red !important", "border-color: rgb(185, 185, 185) !important");
+                setVisibilityErrors.call(this.visibilityEAN, "none", "none", "border-color: rgb(185, 185, 185)", "border-color: rgb(185, 185, 185)");
             }
 
             $.validator.messages.required = 'You must add at least one ISBN13 or one EAN';
