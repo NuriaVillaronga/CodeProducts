@@ -37,20 +37,20 @@ $(function() {
         /^[a-zA-ZÀ-ÿ]+$/.test( value );
     });
 
-    /**
-     * ---------------- Prize (Year) validador -------------------
-     */
-    $.validator.addMethod("year_Option", function( value, element ) {
+    $.validator.addMethod("year", function( value, element ) {
         return this.optional( element ) || 
         /^\d{4}$/.test( value );
     }, "Insert a valid Year (only numbers in format AAAA)");
 
-    
     $.validator.addMethod("number_greater_0_Option", function( value, element ) {
         return this.optional( element ) || 
         /^([1-9]\d*(\.\d*)?)|(0\.\d*[1-9][0-9])|(0\.\d*[1-9])$/.test( value );
     }, "Insert a valid value (only numbers greater than 0)");
 
+
+    /**
+     * BASIC EDITION FORM
+     */
 
     $("#basic_edition_form_pretab").validate({
         rules: {
@@ -101,6 +101,11 @@ $(function() {
         }
     });
 
+
+    /**
+     * GENERAL INFORMATION TAB
+     */
+
     $('#general_information_form_tab').validate({
         ignore: '.select2-search__field, input[type=hidden]',
         rules: {
@@ -134,6 +139,10 @@ $(function() {
     });
 
 
+    /**
+     * SUBJECT & AUDIENCE TAB
+     */
+
     $('#subject_audience_form_tab').validate({
         ignore: '.select2-search__field, input[type=hidden]',
         rules: {
@@ -160,6 +169,10 @@ $(function() {
         },
     });
 
+
+    /**
+     * MEASURE & EXTENT TAB
+     */
 
     $('#measure_extent_form_tab').validate({
         ignore: '.select2-search__field, input[type=hidden]',
@@ -205,6 +218,11 @@ $(function() {
         },
     });
 
+
+    /**
+     * ILLUSTRATION TAB
+     */
+
     $('#illustration_form_tab').validate({
         ignore: '.select2-search__field, input[type=hidden]',
         rules: {
@@ -219,6 +237,10 @@ $(function() {
         },
     });
 
+
+    /**
+     * CONTRIBUTOR TAB
+     */
 
     $('.contributor_own_tab').each(function() {
 
@@ -257,6 +279,10 @@ $(function() {
     });
 
 
+    /**
+     * RELATED PRODUCT CARD
+     */
+
     $('.card-body').each(function() {
 
         tabChildrenNodes = $(this).children();
@@ -282,6 +308,10 @@ $(function() {
     });
 
 
+    /**
+     * WEBSITE TAB
+     */
+
     jQuery.validator.addClassRules("link_contributor", {
         url: true       
     });
@@ -301,6 +331,10 @@ $(function() {
         },
     });
 
+
+    /**
+     * SUPPLIER TAB (SUPPLIER + PRICE)
+     */
 
     jQuery.validator.addClassRules("tax_amount_validation", {
         number: true       
@@ -355,5 +389,24 @@ $(function() {
             }
         });
     });
+
+
+    /**
+     * PROMOTION && PRIZE TAB
+     */
+
+    var yearsPrize = document.querySelectorAll(".year_prize_validation");
+     yearsPrize.forEach((yearPrize) => {
+         
+        $(yearPrize.id).rules("add", {
+            year: true
+        });
+    });
+
+    /*
+    jQuery.validator.addClassRules("year_prize_validation", {
+        year: true       
+    });
+    */
 
 });

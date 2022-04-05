@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form name="promotion_form" method="post" class="dataForm" novalidate="novalidate" action="{{ path('promotion', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}">   
+    <form name="promotion_form" id="promotion_tab_form" method="post" class="dataForm" novalidate="novalidate" action="{{ path('promotion', {'id_user': user.id, 'id_catalog': catalog.id, 'id_product': product.id}) }}">   
         <div class="row general_information_content">
             <div class="col-12">
                 <div class="row first_GI">
@@ -18,53 +18,70 @@
                         {{ form_widget(formP.promotionCampaign, {'attr': {'class': 'form-control', 'placeholder': 'Promotion campaign'}}) }}
                     </div>
                 </div>
-                <div class="row tab last_GI">
-                    {{ render(path('prize', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id } )) }}
-                    <div class="tab-content">
-                        {% set contadorPrize = 0 %}
-                        {% for prize in formP.prizes %}
-                        {#{{ dump(prize.vars.value.id)}}#}
-                            {% set contadorPrize = contadorPrize + 1 %}
-                            <div class="tab-pane fade tab-content-item" id="prize{{contadorPrize}}" role="tabpanel" aria-labelledby="prize{{contadorPrize}}-tab">
-                                <div class="row general_information_content">
-                                    <div class="col-12">
-                                        <div class="row first_GI">
-                                            <div class="col-12 col-lg-3 inputsGI">
-                                                <label class="form-label">Name</label> 
-                                                {{ form_widget(prize.prizeName, {'attr': {'class': 'form-control', 'placeholder': 'Name', 'type':'text'}}) }}
+                <div class="col-12">
+                <div class="row">
+                    <div class="col-12 col-lg-3">Name</div> 
+                    <div class="col-12 col-lg-2">Year</div>
+                    <div class="col-12 col-lg-2">Country</div>
+                    <div class="col-12 col-lg-2">Code</div>
+                    <div class="col-12 col-lg-3"><a class="btn btn-add-object" href="{{ path('new_prize', {'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id}) }}" class="btn btn-light">Add</a></div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="accordion accordion-flush">
+                    {% set contadorPrize = 0 %}  
+                    {% for prize in formP.prizes %}
+                        {% set contadorPrize = contadorPrize + 1 %}
+                            <div class="accordion-item" id="accordion{{contadorPrize}}">
+                                <div class="row border accordion-button col-12 container-fluid" type="button" data-bs-toggle="collapse" data-bs-target="#option{{contadorPrize}}" aria-expanded="false" aria-controls="option{{contadorPrize}}">
+                                    <div class="col-12 col-lg-3">------</div>
+                                    <div class="col-12 col-lg-2">------</div>
+                                    <div class="col-12 col-lg-2">------</div>
+                                    <div class="col-12 col-lg-2">-------</div>
+                                    <div class="col-12 col-lg-3">-------</div>
+                                </div>
+                                <div id="option{{contadorPrize}}" class="accordion-collapse collapse" aria-labelledby="heading{{contadorPrize}}" data-bs-parent="#accordion{{contadorPrize}}">
+                                    <div class="accordion-body">
+                                        <div class="row general_information_content">
+                                            <div class="col-12">
+                                                <div class="row first_GI">
+                                                    <div class="col-12 col-lg-3 inputsGI">
+                                                        <label class="form-label">Name</label> 
+                                                        {{ form_widget(prize.prizeName, {'attr': {'class': 'form-control', 'placeholder': 'Name', 'type':'text'}}) }}
+                                                    </div>
+                                                    <div class="col-12 col-lg-3 inputsGI">
+                                                        <label class="form-label">Year</label>
+                                                        {{ form_widget(prize.prizeYear, {'attr': {'class': 'form-control requiredInput year_prize_validation', 'placeholder': 'Year', 'type':'text'}}) }}
+                                                    </div>
+                                                    <div class="col-12 col-lg-3 inputsGI">
+                                                        <span>Country</span>
+                                                        {{ form_widget(prize.prizeCountry, {'attr': {'class': 'form-select'}}) }}
+                                                    </div>
+                                                    <div class="col-12 col-lg-3 inputsGI">
+                                                        <span>Code</span>
+                                                        {{ form_widget(prize.prizeCode, {'attr': {'class': 'form-select'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="row last_GI">
+                                                    <div class="col-12 inputsGI"> 
+                                                        <label class="form-label">Jury</label>
+                                                        {{ form_widget(prize.prizeJury, {'attr': {'class': 'form-control', 'placeholder': 'Jury'}}) }}
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col-12 col-lg-3 inputsGI">
-                                                <label class="form-label">Year</label>
-                                                {{ form_widget(prize.prizeYear, {'attr': {'class': 'form-control', 'placeholder': 'Year', 'type':'text'}}) }}
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-12 col-lg-2 col-remove-object">
+                                                        <a class="btn btn-remove-object" href="{{ path('delete_prize', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id, 'id_prize': prize.vars.value.id }) }}">Delete prize</a>
+                                                    </div>
+                                                    <div class="col-12 col-lg-10 column_hidden_before_md"></div>
+                                                </div>
                                             </div>
-                                            <div class="col-12 col-lg-3 inputsGI">
-                                                <span>Country</span>
-                                                {{ form_widget(prize.prizeCountry, {'attr': {'class': 'form-select'}}) }}
-                                            </div>
-                                            <div class="col-12 col-lg-3 inputsGI">
-                                                <span>Code</span>
-                                                {{ form_widget(prize.prizeCode, {'attr': {'class': 'form-select'}}) }}
-                                            </div>
-                                        </div>
-                                        <div class="row last_GI">
-                                            <div class="col-12 inputsGI"> 
-                                                <label class="form-label">Jury</label>
-                                                {{ form_widget(prize.prizeJury, {'attr': {'class': 'form-control', 'placeholder': 'Jury'}}) }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-12 col-lg-2 col-remove-object">
-                                                <a class="btn btn-remove-object" href="{{ path('delete_prize', { 'id_product': product.id, 'id_user': user.id, 'id_catalog': catalog.id, 'id_prize': prize.vars.value.id }) }}">Delete prize</a>
-                                            </div>
-                                            <div class="col-12 col-lg-10 column_hidden_before_md"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        {% endfor %}
-                    </div>         
+                    {% endfor %}
                 </div>
             </div>
         </div>

@@ -19,8 +19,7 @@ class PromotionFormType extends AbstractType
             ->add('prizes', CollectionType::class, [
                 'entry_type' => PrizeFormType::class, 
                 'entry_options' => ['label' => false],
-                'allow_delete' => true,
-                'allow_add' => true
+                'allow_delete' => true
             ])
         ;
     }
